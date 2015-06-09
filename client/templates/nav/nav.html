@@ -16,5 +16,10 @@
       <a id="logo" href="#">Cherish</a>
     </li>
     <li><a href="#">About</a></li>
+    {{#if currentUser }}
+    <li><a class="logout" href="/logout">Sign out</a></li>
+    {{else}}
+    <li><a href="/login">Sign in</a></li>
+    {{/if}}
   </ul>
 </template>
