@@ -1,4 +1,3 @@
-.navbar-default {
-  border: none;
-  border-radius: 0;
+nav.top-nav a.page-title {
+  font-size: 30px;
 }
