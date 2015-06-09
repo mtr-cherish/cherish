@@ -1,17 +1,22 @@
+// Note: Not responsive, only works in large and mobile
+
 $initiative: "initiative"
 
 .#{$initiative}
   p
-    padding: 0 1em
+    padding: 0
+    margin: 0
   &--user-image
+    display: inline-block
     position: relative
     float: right
-    margin-top: -6em
-    margin-right: 1em
+    top: -30px
+    right: 0
   
-
-  .card-title
-      max-width: 80%
+  &--card-content
+    padding: 0 1em
+    .card-title
+      color: #333
       margin: 0 
 
 
