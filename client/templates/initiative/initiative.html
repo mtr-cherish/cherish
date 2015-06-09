@@ -1,13 +1,22 @@
 <template name='initiative'>
-  <div class="col s12 m4">
-    <div class="initiative card medium">
+  <div class="initiative col s12 m4">
+    <div class="card small">
       <div class="card-image">
-        <img src="{{image}}">
-        <span class="card-title">{{title}}</span>
+        <a href="#">
+          <img src="{{image}}">
+        </a>
       </div>
-      <p>
-        {{description}}
-      </p>
+      <div class="initiative--card-content">
+        <a href="#" class="initiative--user-image">
+          <img src="{{userImage}}" alt="" class="circle responsive-img user-photo">
+        </a>
+        <a href="#">
+          <h2 class="card-title">{{title}}</h2>
+        </a>
+        <p>
+          {{description}}
+        </p>
+      </div>
     </div>
   </div>
 </template>
