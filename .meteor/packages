@@ -10,3 +10,7 @@ insecure
 iron:router
 materialize:materialize
 fourseven:scss
+accounts-base
+accounts-password
+juliancwirko:s-alert
+juliancwirko:s-alert-flip
