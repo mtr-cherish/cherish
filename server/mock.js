@@ -14,6 +14,18 @@ if(Meteor.isServer) {
         Initiatives.insert(item);
       });
     }
+
+    if(Meteor.users.find().count() === 0) {
+      console.log('Add first test user');
+      Accounts.createUser({
+        username: 'cherishuser',
+        password: 'password',
+        email: 'admin@cherish.com',
+        profile: {
+          name: 'Test User'
+        }
+      });
+    }
   });
 
   // TODO: Implement this when we have pub/sub going.
