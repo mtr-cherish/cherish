@@ -1,13 +1,4 @@
-Template.initiativeCard.helpers({
-  // canVote: function(){
-  //   // return true if initiative Id is not in votedOn array
-  //   var user = Meteor.users.findOne({_id: Meteor.userId()});
-  //   if(_.contains(user.profile.votedOn, this._id)){
-  //     return false;
-  //   }
-  //   return true;
-  // }
-});
+Template.initiativeCard.helpers({});
 
 Template.initiativeCard.events({
   'click .votes': function(e, tpl){

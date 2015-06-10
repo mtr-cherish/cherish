@@ -8,8 +8,7 @@ Template.registerHelper('getInitiativeAuthorImage', function(context) {
 
 Template.registerHelper('canVote', function(context){
     // return true if initiative Id is not in votedOn array
-    
-    var user = Meteor.users.findOne({_id: Meteor.userId()});
+    var user = Meteor.user();
     if(user){
       if(_.contains(user.profile.votedOn, this._id)){
         return false;
@@ -20,9 +19,9 @@ Template.registerHelper('canVote', function(context){
 
 // Helper functions
 addOrRemoveVote = function(initiative){
-  var user = Meteor.users.findOne({_id: Meteor.userId()});
+  var user = Meteor.user();
   /* user already voted */
-  if(Meteor.userId()){
+  if(user){
     if(_.contains(user.profile.votedOn, initiative._id)){
       if(initiative.votes > 0){
         Initiatives.update(initiative._id, {$inc: {votes: -1}});
