@@ -6,7 +6,7 @@
       </div>
       <div class="initiative-card--content">
         <div class="votes">
-          <i class="mdi-action-favorite"></i> {{votes}}
+          <i class="mdi-action-favorite{{#if canVote}}-outline{{/if}}"></i> {{votes}}
         </div>
         <a href="#" class="initiative-card--user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
