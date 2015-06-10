@@ -2,7 +2,7 @@
   <nav>
     {{> sidenav}}
     <div class="nav-wrapper blue darken-1 ">
-      <a href="#" class="brand-logo center">Cherish</a>
+      <a href="{{pathFor 'initiatives'}}" class="brand-logo center">Cherish</a>
       <ul class="left">
         <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a></li>
       </ul>
@@ -13,13 +13,13 @@
 <template name="sidenav">
   <ul id="slide-out" class="side-nav">
     <li id="logo-container">
-      <a id="logo" href="#">Cherish</a>
+      <a id="logo" href="{{pathFor 'initiatives'}}">Cherish</a>
     </li>
-    <li><a href="#">About</a></li>
+    <li><a href="{{pathFor 'about'}}">About</a></li>
     {{#if currentUser }}
-    <li><a class="logout" href="/logout">Sign out</a></li>
+      <li><a class="logout" href="{{pathFor 'logout'}}">Sign out</a></li>
     {{else}}
-    <li><a href="/login">Sign in</a></li>
+      <li><a href="{{pathFor 'login'}}">Sign in</a></li>
     {{/if}}
   </ul>
 </template>
