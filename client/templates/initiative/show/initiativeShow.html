@@ -5,20 +5,16 @@
   <div class="initiative col s12 m12">
     <div class="card small">
       <div class="card-image">
-        <a href="#">
-          <img src="{{image}}">
-        </a>
+        <img src="{{getInitiativeImage}}">
       </div>
       <div class="initiative--content">
         <div class="votes">
           <i class="mdi-action-favorite "></i> {{votes}}
         </div>
         <a href="#" class="initiative--user-image">
-          <img src="{{userImage}}" alt="" class="circle responsive-img user-photo">
+          <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
         </a>
-        <a href="#">
-          <h2 class="card-title">{{title}}</h2>
-        </a>
+        <h2 class="card-title">{{title}}</h2>
         <p>
           {{description}}
         </p>
