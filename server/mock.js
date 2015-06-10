@@ -1,17 +1,29 @@
 if(Meteor.isServer) {
   Meteor.startup(function() {
+    if(Meteor.users.find().count() === 0) {
+      console.log('Add first test user');
+      var userId = Accounts.createUser({
+        username: 'cherishuser',
+        password: 'password',
+        email: 'admin@cherish.com',
+        profile: {
+          name: 'Test User'
+        },
+        votedOn:[]
+      });
+    }
     if(Initiatives.find().count() === 0) {
       var mockData = [
-      {title: 'Initiative 1', description: 'Some arbitrary description goes here.', votes: 20},
-      {title: 'Initiative 2', description: 'Some arbitrary description goes here.', votes: 5},
-      {title: 'Initiative 3', description: 'Some arbitrary description goes here.', votes: 100},
-      {title: 'Initiative 4', description: 'Some arbitrary description goes here.', votes: 10},
-      {title: 'Initiative 5', description: 'Some arbitrary description goes here.', votes: 150},
-      {title: 'Initiative 6', description: 'Some arbitrary description goes here.', votes: 20},
-      {title: 'Initiative 7', description: 'Some arbitrary description goes here.', votes: 5},
-      {title: 'Initiative 8', description: 'Some arbitrary description goes here.', votes: 100},
-      {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10},
-      {title: 'Initiative 10', description: 'Some arbitrary description goes here.', votes: 1}
+      {title: 'Initiative 1', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId},
+      {title: 'Initiative 2', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId},
+      {title: 'Initiative 3', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId},
+      {title: 'Initiative 4', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId},
+      {title: 'Initiative 5', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId},
+      {title: 'Initiative 6', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId},
+      {title: 'Initiative 7', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId},
+      {title: 'Initiative 8', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId},
+      {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId},
+      {title: 'Initiative 10', description: 'Some arbitrary description goes here.', votes: 1, createdBy: userId}
       ];
 
       mockData.forEach(function(item) {
@@ -21,20 +33,16 @@ if(Meteor.isServer) {
      });
     }
 
-    if(Meteor.users.find().count() === 0) {
-      console.log('Add first test user');
-      Accounts.createUser({
-        username: 'cherishuser',
-        password: 'password',
-        email: 'admin@cherish.com',
-        profile: {
-          name: 'Test User',
-          votedOn:[]
-        }
-      });
-    }
+    
   });
 
   // TODO: Implement this when we have pub/sub going.
   //Meteor.publish('initiatives');
+  Meteor.publish("userData", function () {
+    if (this.userId) {
+      return Meteor.users.find({_id: this.userId}, {fields: {'votedOn': 1}});
+    } else {
+      this.ready();
+    }
+  });
 }

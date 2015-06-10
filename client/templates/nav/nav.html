@@ -17,6 +17,7 @@
     </li>
     <li><a href="{{pathFor 'about'}}">About</a></li>
     {{#if currentUser }}
+      <li><a href="{{pathFor 'profile'}}">My Profile</a></li>
       <li><a class="logout" href="{{pathFor 'logout'}}">Sign out</a></li>
     {{else}}
       <li><a href="{{pathFor 'login'}}">Sign in</a></li>
