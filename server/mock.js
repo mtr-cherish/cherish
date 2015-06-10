@@ -2,11 +2,11 @@ if(Meteor.isServer) {
   Meteor.startup(function() {
     if(Initiatives.find().count() === 0) {
       var mockData = [
-          {title: 'Initiative 1', description: 'Some arbitrary description goes here.'},
-          {title: 'Initiative 2', description: 'Some arbitrary description goes here.'},
-          {title: 'Initiative 3', description: 'Some arbitrary description goes here.'},
-          {title: 'Initiative 4', description: 'Some arbitrary description goes here.'},
-          {title: 'Initiative 5', description: 'Some arbitrary description goes here.'},
+          {title: 'Initiative 1', description: 'Some arbitrary description goes here.', votes: 20},
+          {title: 'Initiative 2', description: 'Some arbitrary description goes here.', votes: 5},
+          {title: 'Initiative 3', description: 'Some arbitrary description goes here.', votes: 100},
+          {title: 'Initiative 4', description: 'Some arbitrary description goes here.', votes: 10},
+          {title: 'Initiative 5', description: 'Some arbitrary description goes here.', votes: 15},
         ];
 
       mockData.forEach(function(item) {
