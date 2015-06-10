@@ -1,0 +1,31 @@
+// Note: Not responsive, only works in large and mobile
+
+$initiativeCard: "initiative-card"
+
+.#{$initiativeCard}
+  p
+    padding: 0
+    margin: 0
+  .card
+    transition: box-shadow 0.2s linear
+  .card:hover
+    box-shadow: 0 0 15px #000
+  .card-title:hover
+    text-decoration: underline
+  &--user-image
+    display: inline-block
+    position: relative
+    float: right
+    top: -30px
+    right: 0
+  &--content
+    padding: 0 1em
+    .card-title
+      color: #333
+      margin: 0
+    .votes
+      color: #000
+      cursor: pointer
+      position: absolute
+      bottom: 1em
+      right: 1em

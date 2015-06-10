@@ -1,21 +1,21 @@
 <template name="initiativeCard">
-  <a href="{{pathFor 'initiative'}}" class="initiative col s12 m4">
+  <div class="initiative-card col s12 m4">
     <div class="card small">
       <div class="card-image">
-        <img src="{{getInitiativeImage}}">
+        <a href="{{pathFor 'initiative'}}"><img src="{{getInitiativeImage}}"></a>
       </div>
-      <div class="initiative--content">
+      <div class="initiative-card--content">
         <div class="votes">
           <i class="mdi-action-favorite"></i> {{votes}}
         </div>
-        <a href="#" class="initiative--user-image">
+        <a href="#" class="initiative-card--user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
         </a>
-        <h2 class="card-title">{{title}}</h2>
+        <h2 class="card-title"><a href="{{pathFor 'initiative'}}">{{title}}</a></h2>
         <p>
           {{description}}
         </p>
       </div>
     </div>
-  </a>
+  </div>
 </template>
