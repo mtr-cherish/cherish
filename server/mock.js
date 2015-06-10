@@ -11,7 +11,7 @@ if(Meteor.isServer) {
 
       mockData.forEach(function(item) {
         console.log("Inserting " + item.title);
-        item._id = new Meteor.Collection.ObjectID();
+       // item._id = new Meteor.Collection.ObjectID();
         Initiatives.insert(item);
       });
     }
