@@ -1,13 +1,4 @@
-Template.initiativeCard.helpers({
-  image: function(){
-    return "https://placeimg.com/300/250/arch";
-  },
-  userImage: function(){
-    return "https://placeimg.com/60/60/people";
-  }
-});
-
-Template.initiativeCard.events({
+Template.initiativeShow.events({
   'click .votes': function(e, tpl){
     // TODO: restrict votes to 1 pr initiative
     if(Meteor.userId()){
