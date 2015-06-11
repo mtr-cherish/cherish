@@ -1,5 +1,5 @@
 Template.registerHelper('getInitiativeImage', function(context) {
-  return "https://placeimg.com/300/250/arch";
+  return this.imageUrl
 });
 
 Template.registerHelper('getInitiativeAuthorImage', function(context) {
