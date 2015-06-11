@@ -8,6 +8,9 @@
         <div class="votes">
           <i class="mdi-action-favorite{{#if canVote}}-outline{{/if}}"></i> {{votes}}
         </div>
+        <div class="comments">
+          <i class="mdi-editor-mode-comment"></i> {{zeroIfEmptyOrNotExists comments}}
+        </div>
         <a href="#" class="initiative-card--user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
         </a>
