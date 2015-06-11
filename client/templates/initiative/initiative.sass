@@ -1,3 +1,20 @@
+%open-source
+  background: #ffca28
+  color: #333 
+
+%event
+  background: #66BB6A
+  color: #fff 
+
+%charity
+  background: #d4e157
+  color: #333 
+
+%non-profit
+  background: #ff7043
+  color: #fff 
+
+
 .initiative
   .votes
     color: #000
@@ -12,7 +29,7 @@
     left: 1em
 
   .badge
-    background: #FFF 
+    // background: #FFF 
     color: #333
     display: inline-block
     font-weight: 300
@@ -21,4 +38,11 @@
     top: 1em
     // left: 1em  
     &.open-source
-      @extend .badge, .lighten-4
+      @extend %open-source
+    &.event
+      @extend %event 
+    &.charity
+      @extend %charity
+    &.non-profit
+      @extend %non-profit
+    
