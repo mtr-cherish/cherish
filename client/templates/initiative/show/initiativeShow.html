@@ -7,7 +7,10 @@
       </div>
       <div class="initiative--content">
         <div class="votes">
-         <i class="mdi-action-favorite{{#if canVote}}-outline{{/if}}"></i> {{votes}}
+          <i class="mdi-action-favorite{{#if canVote}}-outline{{/if}}"></i> {{votes}}
+        </div>
+        <div class="comments-count">
+          <i class="mdi-editor-mode-comment"></i> {{zeroIfEmptyOrNotExists comments}}
         </div>
         <a href="#" class="initiative--user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
@@ -17,6 +20,16 @@
           {{description}}
         </p>
       </div>
+    </div>
+    <div class="comments-container">
+      <ul class="collection">
+      {{#each comments}}
+        <li class="collection-item avatar valign-wrapper">
+          <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
+          <p class="valign">{{message}}</p>
+        </li>
+      {{/each}}
+      </ul>
     </div>
   </div>
   {{/with}}

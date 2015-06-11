@@ -7,30 +7,36 @@ Template.registerHelper('getInitiativeAuthorImage', function(context) {
 });
 
 Template.registerHelper('canVote', function(context){
-    // return true if initiative Id is not in votedOn array
-    var user = Meteor.user();
-    if(user){
-      if(_.contains(user.votedOn, this._id)){
-        return false;
-      }
+  // return true if initiative Id is not in votedOn array
+  var user = Meteor.user();
+  if(user){
+    if(_.contains(user.votedOn, this._id)){
+      return false;
     }
-    return true;
-  });
+  }
+  return true;
+});
+
+Template.registerHelper('zeroIfEmptyOrNotExists', function(context) {
+  if(!context || Object.keys(context).length == 0) {
+    return 0;
+  } else {
+    return Object.keys(context).length;
+  }
+});
 
 // Helper functions
 addOrRemoveVote = function(initiative){
   var user = Meteor.user();
   /* user already voted */
   if(user){
-    if(_.contains(user.votedOn, initiative._id)){
-      if(initiative.votes > 0){
-        Initiatives.update(initiative._id, {
-          $inc: { votes: -1 }, 
-          $pull: { usersVoted: user._id }
-        });
-        Meteor.users.update(Meteor.userId(), {$pull: {"votedOn": initiative._id}});
-        sAlert.error('Ok, We removed your vote...');
-      }
+    if(_.contains(user.votedOn, initiative._id)){      
+      Initiatives.update(initiative._id, {
+        $inc: { votes: -1 }, 
+        $pull: { usersVoted: user._id }
+      });
+      Meteor.users.update(Meteor.userId(), {$pull: {"votedOn": initiative._id}});
+      sAlert.error('Ok, We removed your vote...');
     } else {
       Initiatives.update(initiative._id, {
         $inc: { votes: 1 }, 
