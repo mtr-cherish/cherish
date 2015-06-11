@@ -6,6 +6,14 @@ Template.registerHelper('getInitiativeAuthorImage', function(context) {
   return "https://placeimg.com/60/60/people";
 });
 
+Template.registerHelper('getInitiativeCategory', function(context) {
+  return this.category.toLowerCase();
+});
+
+Template.registerHelper('getInitiativeCategoryClass', function(context) {
+  return s.slugify(this.category);
+});
+
 Template.registerHelper('canVote', function(context){
   // return true if initiative Id is not in votedOn array
   var user = Meteor.user();
@@ -30,7 +38,7 @@ addOrRemoveVote = function(initiative){
   var user = Meteor.user();
   /* user already voted */
   if(user){
-    if(_.contains(user.votedOn, initiative._id)){      
+    if(_.contains(user.votedOn, initiative._id)){
       Initiatives.update(initiative._id, {
         $inc: { votes: -1 }, 
         $pull: { usersVoted: user._id }

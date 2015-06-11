@@ -1,10 +1,11 @@
 <template name="initiativeCard">
-  <div class="initiative-card col s12 m4">
+  <div class="initiative initiative-card col s12 m4">
     <div class="card small">
       <div class="card-image">
         <a href="{{pathFor 'initiative'}}"><img src="{{getInitiativeImage}}"></a>
       </div>
       <div class="initiative-card--content">
+      <span class="badge {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
         <div class="votes">
           <i class="mdi-action-favorite{{#if canVote}}-outline{{/if}}"></i> {{votes}}
         </div>
