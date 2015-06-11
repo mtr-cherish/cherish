@@ -16,14 +16,22 @@ if(Meteor.isServer) {
 
     if(Initiatives.find().count() === 0) {
       var mockData = [
-        {title: 'Initiative 1', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity'},
-        {title: 'Initiative 2', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId, category: 'Event'},
+        {
+          title: 'Initiative 1', 
+          description: 'Some arbitrary description goes here.', 
+          votes: 20, 
+          createdBy: userId, 
+          category: 'Charity',
+          imageUrl: "https://placeimg.com/300/250/arch"
+        },
+        {title: 'Initiative 2', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
         {
           title: 'Initiative 3', 
           description: 'Some arbitrary description goes here.', 
           votes: 100, 
           createdBy: userId,
           category: 'Event',
+          imageUrl: "https://placeimg.com/300/250/arch",
           comments: [
             {
               message: "This is a comment.",
@@ -59,15 +67,16 @@ if(Meteor.isServer) {
             }
           ]          
         },
-        {title: 'Initiative 4', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Non Profit'},
-        {title: 'Initiative 5', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source'},
-        {title: 'Initiative 6', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity'},
+        {title: 'Initiative 4', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Initiative 5', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source',imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Initiative 6', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
         {
           title: 'Initiative 7', 
           description: 'Some arbitrary description goes here.', 
           votes: 5, 
           createdBy: userId,
           category: 'Event',
+          imageUrl: "https://placeimg.com/300/250/arch",
           comments: [
             {
               message: "This is a comment.",
@@ -79,14 +88,15 @@ if(Meteor.isServer) {
             }
           ]          
         },
-        {title: 'Initiative 8', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity'},
-        {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Event'},
+        {title: 'Initiative 8', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
         {
           title: 'Initiative 10', 
           description: 'Some arbitrary description goes here.', 
           votes: 1, 
           createdBy: userId,
           category: 'Charity',
+          imageUrl: "https://placeimg.com/300/250/arch",
           comments: [
             {
               message: "This is a comment.",
