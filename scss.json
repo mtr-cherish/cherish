@@ -1,3 +1,5 @@
 {
-  "enableAutoprefixer": true
+  "enableAutoprefixer": true,
+  "indexFilePath" : "style.sass"
+}
 }
