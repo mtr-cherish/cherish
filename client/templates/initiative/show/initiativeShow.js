@@ -5,3 +5,11 @@ Template.initiativeShow.events({
     addOrRemoveVote(initiative);
   }
 });
+
+Template.initiativeShow.onRendered(function(){
+    $('body').addClass('show-initiative');
+});
+
+Template.initiativeShow.onDestroyed(function(){
+    $('body.show-initiative').removeClass('show-initiative');
+});

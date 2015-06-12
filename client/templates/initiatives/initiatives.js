@@ -8,3 +8,11 @@ Template.initiatives.helpers({
     }
   }
 })
+
+Template.initiatives.onRendered(function(){
+    $('body').addClass('home');
+});
+
+Template.initiatives.onDestroyed(function(){
+    $('body.home').removeClass('home');
+});
