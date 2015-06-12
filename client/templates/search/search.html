@@ -1,15 +1,13 @@
 <template name="search">
-  <div class="search">
-    <div class="col s12 m12">
+  <div class="search row">
+    <div class="col s12 m12 center">
       <form>
-        <p>
-          {{#each categories}}
+        {{#each categories}}
           <span class="checkbox">
             <input type="checkbox" class="{{.}}" checked="{{checked}}" id="{{.}}" data-label='event' value="{{.}}"   />
             <label for="{{.}}">{{.}}</label>
           </span>
-          {{/each}}
-        </p>
+        {{/each}}
       </form>  
     </div>
   </div>

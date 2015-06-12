@@ -1,3 +1,5 @@
-nav.top-nav a.page-title {
-  font-size: 30px;
+body {
+  background: url('images/background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
 }
