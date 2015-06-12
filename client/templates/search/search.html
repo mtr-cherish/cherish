@@ -3,7 +3,7 @@
 		<form>
 		<p>
 		{{ #each categories}}
-	      <input type="checkbox" class="{{.}}" checked="{{filterEvent}}" id="{{.}}" data-label='event' value="{{.}}"   />
+	      <input type="checkbox" class="{{.}}" checked="{{checked}}" id="{{.}}" data-label='event' value="{{.}}"   />
 	      <label for="{{.}}">{{.}}</label>
 		{{/each}}
 		</p>
