@@ -25,7 +25,16 @@ Template.publicSignup.events({
         sAlert.error('Your password must be at least 8 characters long');
       }
     } else {
-      Accounts.createUser({email: emailAddress, password: password},
+      Accounts.createUser({
+        username: emailAddress,
+        email: emailAddress, 
+        password: password,
+        profile: {
+          name: emailAddress
+        },
+        votedOn: [],
+        commentedOn: []
+      },
         function(err) {
           if(err) {
             sAlert.error(err.reason);
