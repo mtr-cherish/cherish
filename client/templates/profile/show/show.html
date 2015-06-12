@@ -1,16 +1,18 @@
 <template name="profileShow">
   <div class="profile-show">
-    <h4>You've voted on these initiatives</h4>
-    <ul>
-      {{#each initiatives}}
-      <li>
-        {{title}}
-      </li>
-      {{else}}
-      <li>
-        <p>You haven't voted on any initiatives yet...  <a href="{{pathFor 'initiatives'}}">Go vote</a></p>
-      </li>
-      {{/each}}
-    </ul>
+    {{#if currentUser}}
+      <h4>You've voted on these initiatives</h4>
+      <ul>
+        {{#each initiatives}}
+        <li>
+          {{title}}
+        </li>
+        {{else}}
+        <li>
+          <p>You haven't voted on any initiatives yet...  <a href="{{pathFor 'initiatives'}}">Go vote</a></p>
+        </li>
+        {{/each}}
+      </ul>
+    {{/if}}
   </div>
 </template>
