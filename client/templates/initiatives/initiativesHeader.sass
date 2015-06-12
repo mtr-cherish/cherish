@@ -1,6 +1,9 @@
 .initiatives--header
   background: url(https://placeimg.com/1300/400/arch) top left no-repeat
   background-size: cover
+  display: flex
+  flex-direction: column
+  flex-flow: center
   width: 100%
   position: absolute
   height: 300px
@@ -10,11 +13,24 @@
   height: 300px
   h2
     color: #FFF 
+    margin-top: 80px
     text-align: center 
     text-transform: uppercase 
-    
+  .form-container
+    background-color: rgba(0,0,0, .5) 
+    bottom: 0
+    height: 80px
+    left: 0
+    right: 0  
+    padding: 1em
+    position: absolute
   form
-    max-width: 40%
-    margin: 0 auto
-    height: 40%
-     
+    
+    
+    
+    input
+      padding: 0 1em
+      border: none
+      font-size: 150% 
+      &:focus
+        border: none
