@@ -1,7 +1,8 @@
 <template name="initiatives">
   {{> initiativesHeader}}
-	{{> search}}
+	
   <div class="initiatives row">
+  {{> search}}
     {{#each initiatives}}
       {{> initiativeCard}}
     {{/each}}
