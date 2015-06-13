@@ -1,7 +1,8 @@
 .initiatives--header
   background-image: url('images/ngo.png')
-  background-size: contain 
-  background-attachment: fixed 
+  background-repeat: no-repeat
+  background-size: cover
+  background-attachment: fixed
   background-position: top center
   display: flex
   flex-direction: column
@@ -20,20 +21,20 @@
     bottom: 0
     right: 0
     left: 0
-    background-color: rgba(0,0,0,.3) 
+    background-color: rgba(0,0,0,.3)
   .container
-    z-index: 1 
+    z-index: 1
     h2
-      color: #FFF 
+      color: #FFF
       margin-top: 80px
-      text-align: center 
+      text-align: center
       &:before
         content: ''
-        background-color: #FFF 
-        background-image: url('images/cherish-logo.png') 
-        background-position: center 
+        background-color: #FFF
+        background-image: url('images/cherish-logo.png')
+        background-position: center
         background-size: 80%
-        background-repeat: no-repeat 
+        background-repeat: no-repeat
         width: 5rem
         height: 5rem
         display: block
@@ -41,14 +42,19 @@
         margin: 0 auto 1rem auto
         text-indent: -9999px 
     .form-container
-      background-color: rgba(0,0,0, .5) 
+      background-color: rgba(0,0,0, .5)
       bottom: 0
       height: 90px
       left: 0
-      right: 0  
+      right: 0
       padding: 1.5em 1em 1.5em 1em
       position: absolute
     form
+      input[type="text"]:focus:not([readonly]) + label
+        color: #00A2E8
+      input[type="text"]:focus
+        border-bottom: 1px solid #00A2E8
+        box-shadow: none
       .input-field
         margin-top: 0
       input, label
