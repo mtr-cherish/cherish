@@ -17,16 +17,16 @@ if(Meteor.isServer) {
     if(Initiatives.find().count() === 0) {
       var mockData = [
         {
-          title: 'Initiative 1', 
+          title: 'Project water', 
           description: 'Some arbitrary description goes here.', 
           votes: 20, 
           createdBy: userId, 
           category: 'Charity',
           imageUrl: "https://placeimg.com/300/250/arch"
         },
-        {title: 'Initiative 2', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Digging in dirt', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
         {
-          title: 'Initiative 3', 
+          title: 'Free the pigs', 
           description: 'Some arbitrary description goes here.', 
           votes: 100, 
           createdBy: userId,
@@ -67,11 +67,11 @@ if(Meteor.isServer) {
             }
           ]          
         },
-        {title: 'Initiative 4', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch"},
-        {title: 'Initiative 5', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source',imageUrl: "https://placeimg.com/300/250/arch"},
-        {title: 'Initiative 6', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Vegan community', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Spiritual commerce', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source',imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Earth Documentary', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
         {
-          title: 'Initiative 7', 
+          title: 'Feature film', 
           description: 'Some arbitrary description goes here.', 
           votes: 5, 
           createdBy: userId,
@@ -88,10 +88,10 @@ if(Meteor.isServer) {
             }
           ]          
         },
-        {title: 'Initiative 8', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'We\'re going to Japan', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
         {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
         {
-          title: 'Initiative 10', 
+          title: 'Feeding Nicaragua', 
           description: 'Some arbitrary description goes here.', 
           votes: 1, 
           createdBy: userId,
