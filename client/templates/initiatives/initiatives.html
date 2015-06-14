@@ -1,9 +1,13 @@
 <template name="initiatives">
   {{> initiativesHeader}}
   <div class="initiatives row">
-  {{> search}}
+    {{> filter}}
     {{#each initiatives}}
       {{> initiativeCard}}
+    {{else}}
+      {{# unless isLoading}}
+        <h3>No Initiatives match the terms or filter</h3>
+      {{/unless}}
     {{/each}}
   </div>
 </template>

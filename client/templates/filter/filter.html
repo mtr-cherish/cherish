@@ -1,0 +1,14 @@
+<template name="filter">
+  <div class="filter row">
+    <div class="col s12 m12 center">
+      <form>
+        {{#each categories}}
+          <span class="checkbox">
+            <input type="checkbox" class="{{.}}" checked="{{checked}}" id="{{.}}" data-label='event' value="{{.}}"   />
+            <label for="{{.}}">{{.}}</label>
+          </span>
+        {{/each}}
+      </form>  
+    </div>
+  </div>
+</template>

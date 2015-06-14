@@ -1,21 +1,17 @@
-Template.search.helpers({
-  categories: function(){
-    return InititaiveCategorySlugs;
-  }
-});
-
 Template.search.events({
-  "click input[type=checkbox]": function (event, tpl) {
-    Session.set('categories', undefined)
-    delete Session.keys.categories
-
-    var categories = tpl.$('input:checked').map(function () {
-      return $(this).val();
-    });
-    categories = $.makeArray(categories);
-
-    if (categories.length > 0) {
-      Session.set('categories', categories);
-    }
-  }
+  "click .close-button": function(e, tpl){
+    Session.set('searchTerm', null);
+    $("#search_initiatives").val('').blur().focus();
+  },
+  "keyup #search_initiatives": _.throttle(function(e) {
+      var text = $(e.target).val().trim();
+      Session.set('searchTerm', text);
+      InitiativeSearch.search(text);
+    }, 200)
 });
+
+Template.search.helpers({
+  isSearching: function(){
+    return Session.get('searchTerm') == null ? false : true;
+  }
+})
