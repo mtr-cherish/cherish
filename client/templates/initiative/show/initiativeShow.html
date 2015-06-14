@@ -22,16 +22,34 @@
         </p>
       </div>
     </div>
-    <div class="comments-container">
-      <ul class="collection">
+    {{#if currentUser}}
+      {{> initiativeCommenter}}
+    {{/if}}
+    {{> initiativeComments}}
+  </div>
+  {{/with}}
+</template>
+
+<template name="initiativeCommenter">
+  <div class="commenter-container row">
+    <form class="col s12">
+      <div class="input-field col s12">
+        <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
+        <label for="comment">Say something about {{title}}</label>
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="initiativeComments">
+  <div class="comments-container">
+    <ul class="collection">
       {{#each comments}}
         <li class="collection-item avatar valign-wrapper">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
           <p class="valign">{{message}}</p>
         </li>
       {{/each}}
-      </ul>
-    </div>
+    </ul>
   </div>
-  {{/with}}
 </template>
