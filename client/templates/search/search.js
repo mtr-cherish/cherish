@@ -14,4 +14,4 @@ Template.search.helpers({
   isSearching: function(){
     return Session.get('searchTerm') == null ? false : true;
   }
-})
+});
