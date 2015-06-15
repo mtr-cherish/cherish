@@ -6,18 +6,10 @@
       </h2>
       <div class="form-container">
         <div class="container">
-          <form action="search" id="initiative_search_form" class="row">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="search_initiatives" type="text" class="validate">
-                <label for="search_initiatives">
-                  <i class="mdi-action-search"></i> Start exploring ...
-                </label>
-              </div>
-            </div>
-          </form>
+          {{> search}}
         </div>
       </div>
     </div>
   </div>
+  {{getInitiatives}}
 </template>

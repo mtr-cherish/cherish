@@ -1,14 +1,17 @@
 <template name="search">
-  <div class="search row">
-    <div class="col s12 m12 center">
-      <form>
-        {{#each categories}}
-          <span class="checkbox">
-            <input type="checkbox" class="{{.}}" checked="{{checked}}" id="{{.}}" data-label='event' value="{{.}}"   />
-            <label for="{{.}}">{{.}}</label>
-          </span>
-        {{/each}}
-      </form>  
-    </div>
+  <div class="search">
+    <form action="search" id="initiative_search_form" class="row">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="search_initiatives" type="text" class="validate">
+          {{#if isSearching}}
+            <span class="btn-small btn-floating close-button"><i class="mdi-content-clear"></i></span>
+          {{/if}}
+          <label for="search_initiatives">
+            <i class="mdi-action-search"></i> Start exploring ...
+          </label>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
