@@ -6,7 +6,7 @@
         <ul>
           {{#each votedInitiatives}}
             <li>
-              {{title}}
+              <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
             </li>
             {{else}}
             <li>
