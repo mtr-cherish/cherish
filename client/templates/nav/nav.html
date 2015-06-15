@@ -6,7 +6,12 @@
         <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a></li>
       </ul>
       <ul class="right">
-        <li><a href="{{pathFor 'profile'}}">{{currentUser.profile.name}}</a></li>
+        <li class="user-profile">
+          <a href="{{pathFor 'profile'}}">
+          <img src="{{avatar}}" class="circle responsive-img" alt="" width="30" height="30">
+            {{currentUser.profile.name}}
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -19,11 +24,11 @@
     </li>
     <li><a href="{{pathFor 'about'}}">About</a></li>
     {{#if currentUser }}
-      <li><a href="{{pathFor 'profile'}}">My Profile</a></li>
-      <li><a class="logout" href="#">Sign out</a></li>
+    <li><a href="{{pathFor 'profile'}}">My Profile</a></li>
+    <li><a class="logout" href="#">Sign out</a></li>
     {{else}}
-      <li><a href="{{pathFor 'login'}}">Sign in</a></li>
-      <li><a href="{{pathFor 'signup'}}">Sign up</a></li>
+    <li><a href="{{pathFor 'login'}}">Sign in</a></li>
+    <li><a href="{{pathFor 'signup'}}">Sign up</a></li>
     {{/if}}
   </ul>
 </template>
