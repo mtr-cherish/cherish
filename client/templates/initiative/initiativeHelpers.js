@@ -14,6 +14,10 @@ Template.registerHelper('getInitiativeCategoryClass', function(context) {
   return s.slugify(this.category);
 });
 
+Template.registerHelper('getPrettyDate', function(timestamp) {
+  return moment(new Date(timestamp)).fromNow();
+})
+
 Template.registerHelper('canVote', function(context){
   // return true if initiative Id is not in votedOn array
   var user = Meteor.user();
