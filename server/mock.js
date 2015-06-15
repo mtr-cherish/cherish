@@ -7,7 +7,8 @@ if(Meteor.isServer) {
         password: 'password',
         email: 'admin@cherish.com',
         profile: {
-          name: 'Test User'
+          name: 'Test User',
+          avatarImg: "https://placeimg.com/100/100/people"
         },
         votedOn: [],
         commentedOn: []
@@ -145,9 +146,13 @@ if(Meteor.isServer) {
 
   Meteor.publish("userData", function () {
     if (this.userId) {
-      return Meteor.users.find({_id: this.userId}, {fields: {'votedOn': 1}});
+      return Meteor.users.find({_id: this.userId}, {fields: {'votedOn': 1, 'avatarImg': 1, 'commentedOn': 1}});
     } else {
       this.ready();
     }
   });
+
+  Meteor.publish('initiatives', function(){
+    return Initiatives.find({}, {sort: {vaote: -1}});
+  })
 }
