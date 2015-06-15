@@ -1,7 +1,12 @@
 Template.profileShow.helpers({
-  initiatives: function(){
+  votedInitiatives: function(){
     return Initiatives.find({
       usersVoted: Meteor.userId()
+    });
+  },
+  commentedInitiatives: function(){
+    return Initiatives.find({
+      'comments.createdBy': Meteor.userId()
     });
   }
 })
