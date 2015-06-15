@@ -24,6 +24,8 @@
     </div>
     {{#if currentUser}}
       {{> initiativeCommenter}}
+    {{else}}
+      <span class="not-logged-in">You must be logged in to comment.</span>
     {{/if}}
     {{> initiativeComments}}
   </div>
@@ -32,10 +34,11 @@
 
 <template name="initiativeCommenter">
   <div class="commenter-container row">
-    <form class="col s12">
+    <form class="col s12 commenter-form">
       <div class="input-field col s12">
-        <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
+        <input id="comment" type="text" name="comment" required>
         <label for="comment">Say something about {{title}}</label>
+        <button class="btn waves-effect waves-light" type="submit">Comment</button>
       </div>
     </form>
   </div>
@@ -45,9 +48,10 @@
   <div class="comments-container">
     <ul class="collection">
       {{#each comments}}
-        <li class="collection-item avatar valign-wrapper">
+        <li class="collection-item avatar">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
-          <p class="valign">{{message}}</p>
+          <p class="comment-message left">{{message}}</p>
+          <span class="comment-time right">{{getPrettyDate createdAt}}</span>
         </li>
       {{/each}}
     </ul>

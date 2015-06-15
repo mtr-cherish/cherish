@@ -35,35 +35,43 @@ if(Meteor.isServer) {
           comments: [
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             }
           ]          
         },
@@ -80,13 +88,15 @@ if(Meteor.isServer) {
           comments: [
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             }
-          ]          
+          ]
         },
         {title: 'Initiative 8', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
         {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
@@ -100,19 +110,23 @@ if(Meteor.isServer) {
           comments: [
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             },
             {
               message: "This is a comment.",
-              createdBy: userId
+              createdBy: userId,
+              createdAt: new Date()
             }
           ]
         }
