@@ -6,7 +6,14 @@
         <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a></li>
       </ul>
       <ul class="right">
-        <li><a href="{{pathFor 'profile'}}">{{currentUser.profile.name}}</a></li>
+        {{#if currentUser}}
+        <li class="user-profile">
+          <a href="{{pathFor 'profile'}}">
+          <img src="{{avatar}}" class="circle responsive-img" alt="" width="30" height="30">
+            {{currentUser.profile.name}}
+          </a>
+        </li>
+        {{/if}}
       </ul>
     </div>
   </nav>

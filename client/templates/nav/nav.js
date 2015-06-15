@@ -4,6 +4,12 @@ Template.nav.onRendered(function() {
   });
 });
 
+Template.nav.helpers({
+  avatar: function(){
+    return Meteor.user().profile.avatarImg;
+  }
+});
+
 Template.nav.events({
   'click .logout': function(e, tpl){
     e.preventDefault();
