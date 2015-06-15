@@ -1,12 +1,14 @@
 Template.initiativeShow.helpers({
   comments: function(){
-    return this.comments.sort(function(a, b) {
-      if(a && b && a.createdAt && b.createdAt) {
-        return b.createdAt - a.createdAt;
-      } else {
-        return 1;
-      }
-    });
+    if(this && this.comments) {
+      return this.comments.sort(function(a, b) {
+        if(a && b && a.createdAt && b.createdAt) {
+          return b.createdAt - a.createdAt;
+        } else {
+          return 1;
+        }
+      });
+    }
   }
 });
 
