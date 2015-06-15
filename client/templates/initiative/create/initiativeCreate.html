@@ -1,0 +1,23 @@
+<template name="initiativeCreate">
+  <div class="initiative-create row">
+    <div class="col s12">
+      <form class="form-create">
+        <h2 class="center">Begin Your Initiative</h2>
+        <div class="input-field col s12">
+          <input id="name" name="name" type="text" class="validate">
+          <label for="name">What is the name of your Initiative?</label>
+        </div>
+        <div class="input-field col s12">
+          <select>
+            <option value="" disabled selected></option>
+            <option value="event">Event</option>
+            <option value="charity">Charity</option>
+            <option value="non-profit">Non Profit</option>
+            <option value="open-source">Open Source</option>
+          </select>
+          <label>What is the type of your Initiative?</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
