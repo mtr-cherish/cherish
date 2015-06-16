@@ -2,9 +2,6 @@ Template.initiatives.helpers({
   hasUpdates: function(){
     return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}}).count() > 0;
   },
-  newInitiatives: function(){
-    return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}}).count();
-  },
   initiatives: function(){
     var cursor = {};
     if(Session.get('searchTerm')) {
@@ -23,12 +20,6 @@ Template.initiatives.helpers({
     return InitiativeSearch.getStatus().loading;
   },
 });
-
-Template.initiatives.events({
-  'click .update': function(){
-    Session.set('lastUpdated', new Date().getTime());
-  }
-})
 
 
 Template.initiatives.onRendered(function(){

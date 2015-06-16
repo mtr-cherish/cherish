@@ -3,7 +3,7 @@
   <div class="initiatives row">
     {{> filter}}
    {{#if hasUpdates}}
-      <a class="button btn update">New Initiatives <span class="number">{{newInitiatives}}</span></a>
+      {{> initiativesUpdate}}
    {{/if}}
     {{#each initiatives}}
       {{> initiativeCard}}
