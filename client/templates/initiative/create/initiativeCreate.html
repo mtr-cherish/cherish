@@ -1,21 +1,36 @@
 <template name="initiativeCreate">
   <div class="initiative-create row">
-    <div class="col s12">
+    <div class="col s6 offset-s3">
       <form class="form-create">
         <h2 class="center">Begin Your Initiative</h2>
         <div class="input-field col s12">
           <input id="name" name="name" type="text" class="validate">
-          <label for="name">What is the name of your Initiative?</label>
+          <label for="name">Enter a name for your Initiative.</label>
         </div>
         <div class="input-field col s12">
-          <select>
-            <option value="" disabled selected></option>
-            <option value="event">Event</option>
-            <option value="charity">Charity</option>
-            <option value="non-profit">Non Profit</option>
-            <option value="open-source">Open Source</option>
-          </select>
-          <label>What is the type of your Initiative?</label>
+          <input id="description" name="description" type="text" class="validate">
+          <label for="description">Enter a description for your Initiative.</label>
+        </div>
+        <div class="input-field col s12 center checkboxes">
+          <span class="checkbox">
+            <input type="checkbox" id="event" value="event"/>
+            <label for="event">Event</label>
+          </span>
+          <span class="checkbox">
+            <input type="checkbox" id="charity" value="charity"/>
+            <label for="charity">Charity</label>
+          </span>
+          <span class="checkbox">
+            <input type="checkbox" id="nonprofit" value="non-profit"/>
+            <label for="nonprofit">Non Profit</label>
+          </span>
+          <span class="checkbox">
+            <input type="checkbox" id="opensource" value="open-source"/>
+            <label for="opensource">Open Source</label>
+          </span>
+        </div>
+        <div class="col s12 center">
+          <button class="btn waves-effect waves-light blue darken-1" type="submit">Create Your Initiative</button>
         </div>
       </form>
     </div>
