@@ -141,6 +141,9 @@ if(Meteor.isServer) {
     }
   });
 
+  Initiatives.before.insert(function(userId, doc){
+      doc.createdAt = new Date().getTime();
+  })
   // TODO: Implement this when we have pub/sub going.
   //Meteor.publish('initiatives');
 
