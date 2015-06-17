@@ -27,8 +27,18 @@ Template.initiativeCreate.events({
       return;
     }
 
-    Session.set('initiativeCreated', true);
-    Router.go('initiatives');
+    Meteor.call('createInitiative', title, description, category, function(err, response) {
+      if(err) {
+        sAlert.error(err);
+      } else {
+        sAlert.success('Congratulations! Your Initiative has been created.');
+        Router.go('initiative', {slug: response});
+      }
+
+    });
+    //sAlert.success('Congratulations! Your Initiative has been created.');
+    //Session.set('initiativeCreated', true);
+    //Router.go('initiatives');
   },
 
   'click input[type=checkbox]': function(event, template) {
