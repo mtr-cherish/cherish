@@ -8,6 +8,27 @@ Meteor.startup(function() {
         message: input,
         createdAt: new Date()
       }}});
+    },
+
+    createInitiative: function(title, description, category) {
+      var slug = s.slugify(title);
+      var categorySlug = s.slugify(category);
+      var initiative =
+      {
+        title: title,
+        description: description,
+        votes: 0,
+        createdBy: Meteor.userId(),
+        createdAt: new Date(),
+        category: category,
+        imageUrl: "https://placeimg.com/300/250/arch",
+        comments: [],
+        slug: slug,
+        categorySlug: categorySlug
+      }
+
+      Initiatives.insert(initiative);
+      return slug;
     }
   });
 });
