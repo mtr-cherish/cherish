@@ -34,7 +34,7 @@ Template.initiativeCommenter.events({
 
     // Grab input, and current user.
     var input = template.find('input[name="comment"]');
-    Meteor.call("addComment", Meteor.userId(), this._id, input.value);
+    Meteor.call("addComment", this._id, input.value);
     input.value = "";
     sAlert.info('Thank you for your comment');
   }
