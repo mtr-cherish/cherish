@@ -74,7 +74,7 @@ if(Meteor.isServer) {
               createdBy: userId,
               createdAt: new Date()
             }
-          ]          
+          ]
         },
         {title: 'Vegan community', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch"},
         {title: 'Spiritual commerce', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source',imageUrl: "https://placeimg.com/300/250/arch"},
