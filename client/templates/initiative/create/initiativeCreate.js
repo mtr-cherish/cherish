@@ -34,11 +34,7 @@ Template.initiativeCreate.events({
         sAlert.success('Congratulations! Your Initiative has been created.');
         Router.go('initiative', {slug: response});
       }
-
     });
-    //sAlert.success('Congratulations! Your Initiative has been created.');
-    //Session.set('initiativeCreated', true);
-    //Router.go('initiatives');
   },
 
   'click input[type=checkbox]': function(event, template) {
