@@ -29,7 +29,11 @@ Template.initiativeCreate.events({
 
     Meteor.call('createInitiative', title, description, category, function(err, response) {
       if(err) {
-        sAlert.error(err);
+        if(err.error ==  403) {
+          sAlert.error(err.reason);
+        } else {
+          console.log(err);
+        }
       } else {
         sAlert.success('Congratulations! Your Initiative has been created.');
         Router.go('initiative', {slug: response});
