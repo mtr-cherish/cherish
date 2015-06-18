@@ -21,3 +21,5 @@ underscorestring:underscore.string
 matb33:collection-hooks
 momentjs:moment
 meteorhacks:search-source
+meteorhacks:ssr
+email
