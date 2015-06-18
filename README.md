@@ -2,7 +2,7 @@
 
 Cherish is a cloud platform for showing off your Initiatives to the world, and allowing the community to decide which ones they want to see some to fruition.
 
-With Cherish will be able to:
+With Cherish you will be able to:
 
 * Create Initiatives
 * Vote and comment on Initiatives
@@ -12,7 +12,7 @@ With Cherish will be able to:
 
 ## Why Cherish?
 
-There are a few options out there for hosting your goals and projects, and asking the community for help and feedback... so why Cherish?
+There are a few options out there for hosting your goals and projects with community feedback and assistance... so why Cherish?
 
 Cherish aims to set itself apart by enforcing a *good willed* policy on all of our Initiatives. That is, an Initiatve must be within the following categories to be considered eligible for Cherish:
 
