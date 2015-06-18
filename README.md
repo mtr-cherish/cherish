@@ -58,3 +58,6 @@ The Cherish roadmap is currently private, but we plan on making it public soon. 
   * Github: [mariocatch](https://github.com/mariocatch)
 * iamlasse
   * Github: [iamlasse](https://github.com/iamlasse)
+* ralphking
+  * Twitter: [@ralphomking](https://twitter.com/ralphomking)
+  * Github: [ralphking](https://github.com/ralphking)
