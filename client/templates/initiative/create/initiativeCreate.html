@@ -1,7 +1,8 @@
 <template name="initiativeCreate">
   <div class="initiative-create row">
     <div class="col s6 offset-s3">
-      <form class="form-create">
+      {{#unless overLimit}}
+        <form class="form-create">
         <h2 class="center">Begin Your Initiative</h2>
         <div class="input-field col s12">
           <input id="name" name="name" type="text" class="validate">
@@ -33,6 +34,9 @@
           <button class="btn waves-effect waves-light blue darken-1" type="submit">Create Your Initiative</button>
         </div>
       </form>
+      {{else}}
+      <p>You have too many active initiatives, remove or deactivate some to create new.</p>
+      {{/unless}}
     </div>
   </div>
 </template>

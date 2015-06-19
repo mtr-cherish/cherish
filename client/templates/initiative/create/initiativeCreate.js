@@ -2,6 +2,13 @@ Template.initiativeCreate.onRendered(function() {
   $('select').material_select();
 });
 
+Template.initiativeCreate.helpers({
+  overLimit: function(){
+    var initiatives = Initiatives.find({createdBy: Meteor.userId()}).count();
+    return initiatives >= Meteor.settings.public.initiativeLimit;
+  }
+})
+
 Template.initiativeCreate.events({
   'submit .form-create': function (event, template) {
     event.preventDefault();
