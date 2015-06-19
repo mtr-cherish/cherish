@@ -11,7 +11,7 @@ Meteor.startup(function() {
     },
 
     createInitiative: function(title, description, category) {
-      var initiativeLimit = Meteor.settings.initiativeLimit;
+      var initiativeLimit = Meteor.settings.public.initiativeLimit;
       var existingInitiatives = Initiatives.find({createdBy: Meteor.userId()});
       if(existingInitiatives && existingInitiatives.count() < initiativeLimit) {
         var slug = s.slugify(title);
