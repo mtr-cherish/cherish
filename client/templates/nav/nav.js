@@ -2,7 +2,11 @@ Template.nav.onRendered(function() {
   this.$('.button-collapse').sideNav({
     closeOnClick: true
   });
+  Meteor.setTimeout(function () {
+      this.$('.dropdown-button').dropdown();
+  }, 200);
 });
+
 
 Template.nav.helpers({
   avatar: function(){
