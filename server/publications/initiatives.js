@@ -1,5 +1,5 @@
-Meteor.publish('my.initiatives', function (userId) {
-   if(userId){
-    return initiatives.find({createdBy: userId})
+Meteor.publish('my.initiatives', function () {
+   if(this.userId){
+    return Initiatives.find({createdBy: this.userId})
    }
 });
