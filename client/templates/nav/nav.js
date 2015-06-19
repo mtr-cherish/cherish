@@ -2,16 +2,6 @@ Template.nav.onRendered(function() {
   this.$('.button-collapse').sideNav({
     closeOnClick: true
   });
-  Meteor.setTimeout(function () {
-      this.$('.dropdown-button').dropdown();
-  }, 200);
-});
-
-
-Template.nav.helpers({
-  avatar: function(){
-    return Meteor.user().profile.avatarImg;
-  }
 });
 
 Template.nav.events({
@@ -22,3 +12,13 @@ Template.nav.events({
     });
   }
 })
+
+Template.userDropdown.onRendered(function() {
+  this.$('.dropdown-button').dropdown();
+});
+
+Template.userDropdown.helpers({
+  avatar: function(){
+    return Meteor.user().profile.avatarImg;
+  }
+});
