@@ -1,7 +1,4 @@
 Template.initiatives.helpers({
-  hasUpdates: function(){
-    return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}}).count() > 0;
-  },
   initiatives: function(){
     var cursor = {};
     if(Session.get('searchTerm')) {

@@ -2,9 +2,6 @@
   {{> initiativesHeader}}
   <div class="initiatives row">
     {{> filter}}
-   {{#if hasUpdates}}
-      {{> initiativesUpdate}}
-   {{/if}}
     {{#each initiatives}}
       {{> initiativeCard}}
     {{else}}
