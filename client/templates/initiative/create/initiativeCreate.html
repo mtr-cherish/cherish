@@ -35,7 +35,8 @@
         </div>
       </form>
       {{else}}
-      <p>You have too many active initiatives, remove or deactivate some to create new.</p>
+      <h3>You have too many active initiatives, remove or deactivate some to create new.</h3>
+      <a href="{{pathFor 'initiatives.mine'}}">My Initiatives</a>
       {{/unless}}
     </div>
   </div>
