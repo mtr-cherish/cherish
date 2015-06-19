@@ -44,7 +44,7 @@ Cherish is open source and developed with [Meteor](https://www.meteor.com/). Che
 
 ### Project Roadmap
 
-The Cherish roadmap is currently private, but we plan on making it public soon. We will take suggestions from the community on what features they would like to see implemented.
+The Cherish roadmap is currently private, but we plan on making it public soon. We will take suggestions from the community on what features they would like to see implemented. We may open up a public slack channel as well.
 
 ### Contributing to Cherish
 
@@ -58,3 +58,6 @@ The Cherish roadmap is currently private, but we plan on making it public soon. 
   * Github: [mariocatch](https://github.com/mariocatch)
 * iamlasse
   * Github: [iamlasse](https://github.com/iamlasse)
+* ralphking
+  * Twitter: [@ralphomking](https://twitter.com/ralphomking)
+  * Github: [ralphking](https://github.com/ralphking)
