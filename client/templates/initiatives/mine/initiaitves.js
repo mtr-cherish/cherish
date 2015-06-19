@@ -1,15 +1,14 @@
 Template.initiativesMine.helpers({
-  activeInitiatives: function(){
-    return initiatives.find({
-      createdBy: meteor.userId()}, 
+  count: function(active){
+    return Initiatives.find({createdBy: Meteor.userId(), 
       active: {"$exists": true}, 
-      active: true});
+      active: active
+    }).count()
   },
-
-  inactiveInitiatives: function(){
-    return initiatives.find({
-      createdBy: meteor.userId(), 
+  initiatives: function(active){
+    return Initiatives.find({
+      createdBy: Meteor.userId(), 
       active: {"$exists": true}, 
-      active: false});
+      active: active});
   }
-})
+});
