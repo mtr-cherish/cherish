@@ -4,7 +4,7 @@ Template.nav.onRendered(function() {
   });
   Meteor.setTimeout(function () {
       this.$('.dropdown-button').dropdown();
-  }, 100);
+  }, 200);
 });
 
 
