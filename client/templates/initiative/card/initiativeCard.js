@@ -25,10 +25,11 @@ Template.initiativeCard.events({
   },
   'click .status': function(e, tpl){
     Meteor.call('setInactiveActive', this, function(err, res){
-      if(err)
+      if(err){
         sAlert.error(err.message);
-
-      sAlert.info('initiative updated');
+      } else {
+        sAlert.info('initiative updated');
+      }
     });
   }
 });
