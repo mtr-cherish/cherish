@@ -1,3 +1,5 @@
-{
-  "initiativeLimit": "10"
+{ 
+  "public": {
+    "initiativeLimit": "10"
+  }
 }
