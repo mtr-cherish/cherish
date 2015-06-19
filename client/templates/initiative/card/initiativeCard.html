@@ -5,7 +5,7 @@
         <a href="{{pathFor 'initiative'}}"><img src="{{getInitiativeImage}}"></a>
       </div>
       <div class="initiative-card--content">
-      {{#if isMine}}<a href="" class="badge status">{{status}}</a>{{/if}}
+      {{#if isMine}}<a href="" class="badge status is-{{status}}">{{status}}</a>{{/if}}
       <span class="badge type {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
         <div class="votes">
           {{{voteIcon}}} {{votes}}
