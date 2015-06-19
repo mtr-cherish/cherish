@@ -158,8 +158,4 @@ if(Meteor.isServer) {
       this.ready();
     }
   });
-
-  Meteor.publish('initiatives', function(){
-    return Initiatives.find({}, {sort: {vaote: -1}});
-  })
 }
