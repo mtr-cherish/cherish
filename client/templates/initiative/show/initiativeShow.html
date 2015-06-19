@@ -8,7 +8,7 @@
       <div class="initiative--content">
       <span class="badge {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
         <div class="votes">
-          <i class="mdi-action-favorite{{#if canVote}}-outline{{/if}}"></i> {{votes}}
+          <i class="mdi-action-favorite{{#if currentUser.canVote _id}}-outline{{/if}}"></i> {{votes}}
         </div>
         <div class="comments-count">
           <i class="mdi-editor-mode-comment"></i> {{zeroIfEmptyOrNotExists comments}}
