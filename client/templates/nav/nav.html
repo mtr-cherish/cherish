@@ -1,5 +1,12 @@
 <template name="nav">
+
   <nav>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="{{pathFor 'profile'}}">My profile</a></li>
+    <li><a href="{{pathFor 'initiatives.mine'}}">My Initiatives</a></li>
+    <li class="divider"></li>
+    <li><a class="logout" href="#">Sign out</a></li>
+  </ul>
     {{> sidenav}}
     <div class="nav-wrapper">
       <ul class="left">
@@ -8,9 +15,14 @@
       <ul class="right">
         {{#if currentUser}}
         <li class="user-profile">
-          <a href="{{pathFor 'profile'}}">
-          <img src="{{avatar}}" class="circle responsive-img" alt="" width="30" height="30">
+          <a class="dropdown-button" href="#!" data-activates="dropdown1">
+             <img src="{{avatar}}" class="circle responsive-img" alt="" width="30" height="30">
             {{currentUser.profile.name}}
+            <i class="mdi-navigation-arrow-drop-down right"></i>
+          </a>
+        </li>
+        <li class="user-profile">
+          <a>
           </a>
         </li>
         {{/if}}
@@ -27,12 +39,12 @@
     <!-- Removing this for now, as it serves no purpose -->
     <!--<li><a href="{{pathFor 'about'}}">About</a></li>-->
     {{#if currentUser }}
-      <li><a href="{{pathFor 'initiativeCreate'}}">Create</a></li>
-      <li><a href="{{pathFor 'profile'}}">My Profile</a></li>
-      <li><a class="logout" href="#">Sign out</a></li>
+    <li><a href="{{pathFor 'initiativeCreate'}}">Create</a></li>
+    <li><a href="{{pathFor 'profile'}}">My Profile</a></li>
+    <li><a class="logout" href="#">Sign out</a></li>
     {{else}}
-      <li><a href="{{pathFor 'login'}}">Sign in</a></li>
-      <li><a href="{{pathFor 'signup'}}">Sign up</a></li>
+    <li><a href="{{pathFor 'login'}}">Sign in</a></li>
+    <li><a href="{{pathFor 'signup'}}">Sign up</a></li>
     {{/if}}
   </ul>
 </template>
