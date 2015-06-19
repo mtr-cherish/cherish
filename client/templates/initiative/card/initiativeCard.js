@@ -1,4 +1,11 @@
-Template.initiativeCard.helpers({});
+Template.initiativeCard.helpers({
+  isMine: function(){
+    return this.createdBy === Meteor.userId();
+  },
+  status: function(){
+    return this.active ? 'Active': 'Inactive';
+  }
+});
 
 Template.initiativeCard.events({
   'click .votes': function(e, tpl){
@@ -12,5 +19,13 @@ Template.initiativeCard.events({
     e.preventDefault();
     var initiative = this;
     addOrRemoveVote(initiative); 
+  },
+  'click .status': function(e, tpl){
+    Meteor.call('setInactiveActive', this, function(err, res){
+      if(err)
+        sAlert.error(err.message);
+
+      sAlert.info('initiative updated');
+    });
   }
 });
