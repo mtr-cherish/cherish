@@ -6,6 +6,13 @@ Template.registerHelper('getPrettyDate', function(timestamp) {
   return moment(new Date(timestamp)).fromNow();
 });
 
+Template.registerHelper("voteIcon", function(){
+  if (!Meteor.user() || Meteor.user().canVote(this._id)) {
+    return '<i class="mdi-action-favorite-outline"></i>';
+  }
+  return '<i class="mdi-action-favorite"></i>';
+});
+
 Template.registerHelper('zeroIfEmptyOrNotExists', function(context) {
   if(!context || Object.keys(context).length == 0) {
     return 0;
