@@ -24,15 +24,11 @@
     background-color: rgba(0,0,0,.3)
   .container
     z-index: 1
-    position: relative
     h2
       color: #FFF
-      font-weight: 100
-      margin-top: 80px
+      font-weight: 100 
+      margin-top: 70px
       text-align: center
-      position: absolute
-      width: 100%
-      left: 0
       &:before
         content: ''
         background-color: #FFF
@@ -45,26 +41,25 @@
         display: block
         position: relative
         margin: 0 auto 1rem auto
-        text-indent: -9999px
-  .form-container
-    background-color: rgba(0,0,0, .5)
-    bottom: 0
-    height: 90px
-    left: 0
-    right: 0
-    padding: 1.5em 1em 1.5em 1em
-    position: absolute
-    z-index: 1
-  form
-    input[type="text"]:focus:not([readonly]) + label
-      color: #00A2E8
-    input[type="text"]:focus
-      border-bottom: 1px solid #00A2E8
-      box-shadow: none
-    .input-field
-      margin-top: 0
-    input, label
-      color: #fff
-      &:focus
-        border: none
+        text-indent: -9999px 
+    .form-container
+      background-color: rgba(0,0,0, .5)
+      bottom: 0
+      height: 90px
+      left: 0
+      right: 0
+      padding: 1.5em 1em 1.5em 1em
+      position: absolute
+    form
+      input[type="text"]:focus:not([readonly]) + label
+        color: #00A2E8
+      input[type="text"]:focus
+        border-bottom: 1px solid #00A2E8
+        box-shadow: none
+      .input-field
+        margin-top: 0
+      input, label
         color: #fff
+        &:focus
+          border: none
+          color: #fff
