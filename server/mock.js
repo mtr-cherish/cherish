@@ -23,7 +23,8 @@ if(Meteor.isServer) {
           votes: 20, 
           createdBy: userId, 
           category: 'Charity',
-          imageUrl: "https://placeimg.com/300/250/arch"
+          imageUrl: "https://placeimg.com/300/250/arch",
+          active: true,
         },
         {title: 'Digging in dirt', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
         {
@@ -33,6 +34,7 @@ if(Meteor.isServer) {
           createdBy: userId,
           category: 'Event',
           imageUrl: "https://placeimg.com/300/250/arch",
+          active: true,
           comments: [
             {
               message: "This is a comment.",
@@ -86,6 +88,7 @@ if(Meteor.isServer) {
           createdBy: userId,
           category: 'Event',
           imageUrl: "https://placeimg.com/300/250/arch",
+          active: true,
           comments: [
             {
               message: "This is a comment.",
@@ -108,6 +111,7 @@ if(Meteor.isServer) {
           createdBy: userId,
           category: 'Charity',
           imageUrl: "https://placeimg.com/300/250/arch",
+          active: true,
           comments: [
             {
               message: "This is a comment.",
@@ -154,8 +158,4 @@ if(Meteor.isServer) {
       this.ready();
     }
   });
-
-  Meteor.publish('initiatives', function(){
-    return Initiatives.find({}, {sort: {vaote: -1}});
-  })
 }
