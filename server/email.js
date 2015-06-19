@@ -6,9 +6,8 @@ Meteor.startup(function () {
     port: 25
   }
 
-  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+  //process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 });
-
 
 // Compile the welcome_user.html template into blaze
 SSR.compileTemplate('welcomeUser', Assets.getText('email/welcome_user.html'));
