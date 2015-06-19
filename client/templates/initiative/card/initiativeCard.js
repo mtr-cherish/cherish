@@ -2,6 +2,9 @@ Template.initiativeCard.helpers({
   isMine: function(){
     return this.createdBy === Meteor.userId();
   },
+  showStatus: function(){
+    return Router.current().route.path(this).match('/profile/');
+  },
   status: function(){
     return this.active ? 'Active': 'Inactive';
   }
