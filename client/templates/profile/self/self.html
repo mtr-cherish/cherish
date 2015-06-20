@@ -1,0 +1,47 @@
+<template name="profileSelf">
+  <div class="row profile-self">
+     <div class="col m12">
+        <div class="row">
+          {{#with user.profile}}
+            <div class="col s12 m2">
+             <a href="#" class="profile-self--user-image">
+              <img src="{{avatarImg}}" wiidth="100%" height="auto" alt="" class="circle responsive-img photo">
+            </a>
+            </div>
+            <div class="col m10">
+              <h4>{{name}}</h4>
+              <a class="button" href="{{pathFor 'initiatives.create'}}">New Initiative</a>
+            </div>
+          {{/with}}
+        </div>
+       <h4>You've voted on:</h4>
+       <ul>
+        {{#each votedInitiatives}}
+        <li>
+          <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
+        </li>
+        {{else}}
+        <li>
+          <p>Nothing here... <a href="{{pathFor 'initiatives'}}">Go vote!</a></p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m12">
+      <h4>You've commented on:</h4>
+      <ul>
+        {{#each commentedInitiatives}}
+        <li>
+          <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
+        </li>
+        {{else}}
+        <li>
+          <p>Nothing here... <a href="{{pathFor 'initiatives'}}">Start commenting!</a></p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
