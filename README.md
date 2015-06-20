@@ -14,7 +14,7 @@ With Cherish you will be able to:
 
 There are a few options out there for hosting your goals and projects with community feedback and assistance... so why Cherish?
 
-Cherish aims to set itself apart by enforcing a *good willed* policy on all of our Initiatives. That is, an Initiatve must be within the following categories to be considered eligible for Cherish:
+Cherish aims to set itself apart by enforcing a *good willed* policy on all of our Initiatives. That is, an Initiative must be within the following categories to be considered eligible for Cherish:
 
 * Open Source Project
 * Nonprofit
