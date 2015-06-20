@@ -11,9 +11,29 @@
             <div class="col m10">
               <h4>{{name}}</h4>
               <a class="button" href="{{pathFor 'initiatives.create'}}">New Initiative</a>
+              <div class="row profile-self--stats">
+                <div class="col m12">
+                <hr>
+                  <ul class="row">
+                    <li class="align-center col m4">
+                      <h4>{{votedOnCount}}</h4>
+                      <p>Votes</p>
+                    </li>
+                    <li class="align-center col m4">
+                      <h4>{{initiativesCount}}</h4>
+                      <p>Active initiatives</p>
+                    </li>
+                    <li class="align-center col m4">
+                      <h4>{{followerCount}}</h4>
+                      <p>Followers</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           {{/with}}
         </div>
+
        <h4>You've voted on:</h4>
        <ul>
         {{#each votedInitiatives}}
