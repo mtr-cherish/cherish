@@ -1,13 +1,21 @@
+var addCommentKey;
 Meteor.startup(function() {
   Meteor.methods({
     addComment: function(initiativeId, input) {
       var userId = Meteor.userId();
+      if (!addCommentKey) {
+        addCommentKey = 'addComment-' + Meteor.userId();
+      }
+      if (!Throttle.checkThenSet(addCommentKey, 1, 3000)) {
+        throw new Meteor.Error(500, 'You can only comment every 3 seconds');
+      }
       Meteor.users.update(userId, { $addToSet: { commentedOn: initiativeId } });
       Initiatives.update(initiativeId, {$addToSet: {comments: {
         createdBy: userId,
         message: input,
         createdAt: new Date()
       }}});
+      return true;
     },
 
     createInitiative: function(title, description, category) {
