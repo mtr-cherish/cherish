@@ -5,7 +5,10 @@
         <a href="{{pathFor 'initiative'}}"><img src="{{getInitiativeImage}}"></a>
       </div>
       <div class="initiative-card--content">
-      <span class="badge {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
+      {{#if showStatus}}
+        {{#if isMine}}<a href="" class="badge status is-{{status}}">{{status}}</a>{{/if}}
+      {{/if}}
+      <span class="badge type {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
         <div class="votes">
           {{{voteIcon}}} {{votes}}
         </div>
@@ -15,7 +18,11 @@
         <a href="#" class="initiative-card--user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
         </a>
-        <h2 class="card-title truncate"><a href="{{pathFor 'initiative'}}">{{title}}</a></h2>
+        <h2 class="card-title truncate">
+          <a href="{{pathFor 'initiative'}}">
+            {{title}}
+          </a>
+        </h2>
         <p>
           {{description}}
         </p>

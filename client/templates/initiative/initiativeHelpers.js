@@ -3,7 +3,7 @@ Template.registerHelper('getInitiativeCategoryClass', function() {
 });
 
 Template.registerHelper('hasUpdates', function() {
-    return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}}).count() > 0;
+    return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}, active: {"$exists": true}, active: true}).count() > 0;
 });
 
 Template.registerHelper('getPrettyDate', function(timestamp) {

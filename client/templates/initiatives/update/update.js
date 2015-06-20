@@ -1,6 +1,10 @@
 Template.initiativesUpdate.helpers({
   newInitiatives: function(){
-    return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}}).count();
+    return Initiatives.find({
+      createdAt: {$gt: Session.get('lastUpdated')}, 
+      active: {"$exists": true},
+      active: true
+    }).count();
   }
 })
 
