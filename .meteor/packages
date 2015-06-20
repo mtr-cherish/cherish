@@ -24,5 +24,3 @@ meteorhacks:search-source
 meteorhacks:ssr
 email
 dburles:collection-helpers
-sacha:spin
-multiply:iron-router-progress
