@@ -2,10 +2,6 @@ Template.registerHelper('getInitiativeCategoryClass', function() {
   return s.slugify(this.category);
 });
 
-Template.registerHelper('hasUpdates', function() {
-    return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}}).count() > 0;
-});
-
 Template.registerHelper('getPrettyDate', function(timestamp) {
   return moment(new Date(timestamp)).fromNow();
 });
