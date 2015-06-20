@@ -9,7 +9,7 @@ Template.initiatives.helpers({
     if (Session.get('categories')) {
       cursor = _.extend(Initiatives.find({categorySlug: {$in: Session.get('categories')}}, {sort: {votes: -1}}), cursor);
     } else if(!Session.get('categories') || !Session.get('searchTerm')) {
-      cursor = _.extend(Initiatives.find({}, {sort: {votes: -1, title: -1}}), cursor);
+      cursor = _.extend(Initiatives.find({createdAt: {$lt: Session.get('lastUpdated')}}, {sort: {createdAt: -1, votes: -1, title: -1}}), cursor);
     }
     return cursor;
   },

@@ -21,6 +21,9 @@
   <main>
     <div class="container">
       {{> sAlert}}
+      {{#if hasUpdates}}
+        {{> initiativesUpdate}}
+      {{/if}}
       {{> yield}}
     </div>
   </main>
