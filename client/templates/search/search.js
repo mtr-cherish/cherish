@@ -1,8 +1,9 @@
 Template.search.events({
   "click .close-button": function(e, tpl){
-    Session.set('searchTerm', null);
-    $("#search_initiatives").val('').blur().focus();
+    Session.set('searchTerm', '');
+    $("#search_initiatives").val('').blur();
   },
+
   "keyup #search_initiatives": _.throttle(function(e) {
       var text = $(e.target).val().trim();
       Session.set('searchTerm', text);
@@ -12,6 +13,6 @@ Template.search.events({
 
 Template.search.helpers({
   isSearching: function(){
-    return Session.get('searchTerm') == null ? false : true;
+    return Session.get('searchTerm') == '' ? false : true;
   }
 });
