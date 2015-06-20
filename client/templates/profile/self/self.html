@@ -1,41 +1,42 @@
 <template name="profileSelf">
-  <div class="row profile-self">
-     <div class="col m12">
-        <div class="row">
-          {{#with user.profile}}
-            <div class="col s12 m2">
+  <div class="profile-self">
+    {{#with user}}
+      <div class="row">
+         {{#with profile}}
+           <div class="col s12 m2">
              <a href="#" class="profile-self--user-image">
               <img src="{{avatarImg}}" wiidth="100%" height="auto" alt="" class="circle responsive-img photo">
             </a>
-            </div>
-            <div class="col s12 m10 profile-self--body">
-              <h4>{{name}}</h4>
-              <a class="button btn waves-effect waves-light blue darken-1 new-initiative" href="{{pathFor 'initiatives.create'}}">New Initiative</a>
-              <div class="row profile-self--stats">
-                <div class="col s12">
-                <hr>
-                  <ul class="row">
-                    <li class="align-center col m4 s4">
-                      <h4>{{votedOnCount}}</h4>
-                      <p>Votes</p>
-                    </li>
-                    <li class="align-center col m4 s4">
-                      <h4>{{initiativesCount}}</h4>
-                      <p>Active initiatives</p>
-                    </li>
-                    <li class="align-center col m4 s4">
-                      <h4>{{followerCount}}</h4>
-                      <p>Followers</p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          {{/with}}
-        </div>
-
-       <h4>You've voted on:</h4>
-       <ul>
+          </div>
+          <div class="col s12 m10 profile-self--body">
+            <h4>{{name}}</h4>
+            <a class="button btn waves-effect waves-light blue darken-1 new-initiative" href="{{pathFor 'initiatives.create'}}">New Initiative</a>
+          </div>
+        {{/with}}
+      </div>
+    
+     <div class="row profile-self--stats">
+      <div class="col s12">
+        <hr>
+        <ul class="row">
+          <li class="align-center col m4 s4">
+            <h4>{{votedOnCount}}</h4>
+            <p>Votes</p>
+          </li>
+          <li class="align-center col m4 s4">
+            <h4>{{initiativesCount}}</h4>
+            <p>Active initiatives</p>
+          </li>
+          <li class="align-center col m4 s4">
+            <h4>{{followerCount}}</h4>
+            <p>Followers</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <h4>You've voted on:</h4>
+      <ul>
         {{#each votedInitiatives}}
         <li>
           <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
@@ -47,21 +48,22 @@
         {{/each}}
       </ul>
     </div>
-  </div>
-  <div class="row">
-    <div class="col m12">
-      <h4>You've commented on:</h4>
-      <ul>
-        {{#each commentedInitiatives}}
-        <li>
-          <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
-        </li>
-        {{else}}
-        <li>
-          <p>Nothing here... <a href="{{pathFor 'initiatives'}}">Start commenting!</a></p>
-        </li>
-        {{/each}}
-      </ul>
+    <div class="row">
+      <div class="col m12">
+        <h4>You've commented on:</h4>
+        <ul>
+          {{#each commentedInitiatives}}
+          <li>
+            <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
+          </li>
+          {{else}}
+          <li>
+            <p>Nothing here... <a href="{{pathFor 'initiatives'}}">Start commenting!</a></p>
+          </li>
+          {{/each}}
+        </ul>
+        </div>
     </div>
+    {{/with}}
   </div>
 </template>
