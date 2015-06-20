@@ -1,4 +1,4 @@
-Template.profileShow.helpers({
+Template.profileSelf.helpers({
   votedInitiatives: function(){
     return Initiatives.find({
       usersVoted: Meteor.userId()
