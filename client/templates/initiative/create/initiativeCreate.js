@@ -4,8 +4,14 @@ Template.initiativeCreate.onRendered(function() {
 
 Template.initiativeCreate.helpers({
   overLimit: function(){
-    var initiatives = Initiatives.find({createdBy: Meteor.userId()}).count();
-    return initiatives >= Meteor.settings.public.initiativeLimit;
+    var initiativeCount = Initiatives.find({
+      createdBy: Meteor.userId(), 
+      active: {
+        "$exists": true
+      },
+      active: true
+    }).count();
+    return initiativeCount >= Meteor.settings.public.initiativeLimit;
   }
 })
 

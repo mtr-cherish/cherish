@@ -1,0 +1,20 @@
+<template name="initiativesMine">
+  <div class="initiatives-mine">
+    <h2>My Initiatives</h2>
+    <h3>Active <span class="badge-count">{{count true}}</span></h3>
+    <div class="initiatives-grid row">
+      {{#each initiatives true}}
+        {{> initiativeCard}}
+      {{/each}}
+    </div>
+    <h3>Inactive <span class="badge-count">{{count false}}</span></h3>
+    <div class="initiatives-grid row">
+       {{#each initiatives false}}
+        {{> initiativeCard}}
+      {{/each}}
+    </div>
+    <div class="initiative-mine row center-align">
+        <a class="button btn" href="{{pathFor 'initiatives.create'}}">New Initiative</a>
+    </div>
+  </div>
+</template>

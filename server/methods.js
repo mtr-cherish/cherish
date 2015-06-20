@@ -12,7 +12,7 @@ Meteor.startup(function() {
 
     createInitiative: function(title, description, category) {
       var initiativeLimit = Meteor.settings.public.initiativeLimit;
-      var existingInitiatives = Initiatives.find({createdBy: Meteor.userId()});
+      var existingInitiatives = Initiatives.find({createdBy: Meteor.userId(), active: {"$exists": true}, active: true});
       if(existingInitiatives && existingInitiatives.count() < initiativeLimit) {
         var slug = s.slugify(title);
         var categorySlug = s.slugify(category);
@@ -27,13 +27,26 @@ Meteor.startup(function() {
           imageUrl: "https://placeimg.com/300/250/arch",
           comments: [],
           slug: slug,
-          categorySlug: categorySlug
+          categorySlug: categorySlug,
+          active: true
         }
 
         Initiatives.insert(initiative);
         return slug;
       } else {
         throw new Meteor.Error(403, "You have reached the limit of " + initiativeLimit + " initiatives.");
+      }
+    },
+
+    setInactiveActive: function(initiative){
+      if(initiative.createdBy === Meteor.userId()){
+        var updated = Initiatives.update(initiative._id, {$set: { active: !initiative.active}});
+      }
+
+      if(updated){
+        return true;
+      } else {
+        throw new Meteor.Error(500, 'Initiative could not be updated at current');
       }
     }
   });
