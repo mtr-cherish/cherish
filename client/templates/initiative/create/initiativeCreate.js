@@ -19,12 +19,10 @@ Template.initiativeCreate.events({
   'submit .form-create': function (event, template) {
     event.preventDefault();
 
-    var title = template.find('input[name=name]').value || undefined;
-    var description = template.find('input[name=description]').value || undefined;
-    var category;
-    $('input[type=checkbox]:checked').each(function() {
-      category = $(this).val() || undefined;
-    });
+    var title = template.find('input[name=name]').value || undefined,
+        description = template.find('input[name=description]').value || undefined,
+        category = template.find('select').value || undefined;
+    
 
     if(!title) {
       sAlert.error('You must enter a name for your Initiative.');

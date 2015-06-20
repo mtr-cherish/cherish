@@ -12,8 +12,15 @@
           <input id="description" name="description" type="text" class="validate">
           <label for="description">Enter a description for your Initiative.</label>
         </div>
-        <div class="input-field col s12 center checkboxes">
-          <span class="checkbox">
+        <div class="input-field col s12 center select-type">
+         <select name="" id="category_select">
+          <option value="">Select Type</option>
+          <option value="Open Source">Open Source</option>
+          <option value="Non Profit">Non Profit</option>
+          <option value="Event">Event</option>
+          <option value="Charity">Charity</option>
+        </select>
+          <!-- <span class="checkbox">
             <input type="checkbox" id="event" value="Event"/>
             <label for="event">Event</label>
           </span>
@@ -28,8 +35,9 @@
           <span class="checkbox">
             <input type="checkbox" id="opensource" value="Open Source"/>
             <label for="opensource">Open Source</label>
-          </span>
+          </span> -->
         </div>
+       
         <div class="col s12 center">
           <button class="btn waves-effect waves-light blue darken-1" type="submit">Create Your Initiative</button>
         </div>
