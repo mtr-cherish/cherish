@@ -1,6 +1,6 @@
 # Cherish
 
-Cherish is a cloud platform for showing off your Initiatives to the world, and allowing the community to decide which ones they want to see some to fruition.
+Cherish is a cloud platform for showing off your Initiatives to the world, and allowing the community to decide which ones they want to see come to fruition.
 
 With Cherish you will be able to:
 
