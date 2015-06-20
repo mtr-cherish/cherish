@@ -5,4 +5,6 @@ var options = {
 };
 var fields = ['title', 'category'];
 
+Session.setDefault('searchTerm', '');
+
 InitiativeSearch = new SearchSource('initiatives', fields, options);
