@@ -32,3 +32,15 @@
     {{/if}}
   </div>
 </template>
+
+<template name="initiativesMine">
+  <h2>My Initiatives</h2>
+  <div class="initiatives-grid row">
+    {{#each initiatives}}
+        {{> initiativeCard}}
+      {{/each}}
+  </div>
+  <div class="initiative-mine row center-align">
+      <a class="button btn" href="{{pathFor 'initiatives.create'}}">New Initiative</a>
+  </div>
+</template>

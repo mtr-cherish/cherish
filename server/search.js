@@ -6,14 +6,14 @@ SearchSource.defineSource('initiatives', function(searchText, options) {
   
   if(searchText) {
     var regExp = buildRegExp(searchText);
-    var selector = {active: true, $or: [
+    var selector = {$or: [
       {title: regExp},
       {category: regExp}
     ]};
     
     return Initiatives.find(selector, options).fetch();
   } else {
-    return Initiatives.find({active: true}, options).fetch();
+    return Initiatives.find({}, options).fetch();
   }
 });
 
