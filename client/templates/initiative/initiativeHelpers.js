@@ -27,25 +27,16 @@ Template.registerHelper('zeroIfEmptyOrNotExists', function(context) {
 
 // Helper functions
 addOrRemoveVote = function(initiative){
-  var user = Meteor.user();
-  /* user already voted */
-  if(user){
-    if(_.contains(user.votedOn, initiative._id)){
-      Initiatives.update(initiative._id, {
-        $inc: { votes: -1 },
-        $pull: { usersVoted: user._id }
-      });
-      Meteor.users.update(Meteor.userId(), {$pull: {"votedOn": initiative._id}});
-      sAlert.error('Ok, We removed your vote...');
-    } else {
-      Initiatives.update(initiative._id, {
-        $inc: { votes: 1 },
-        $addToSet: { usersVoted: user._id }
-      });
-      Meteor.users.update(Meteor.userId(), {$addToSet: {"votedOn": initiative._id}});
-      sAlert.info('Thanks for voting on: '+ initiative.title);
+  Meteor.call('addOrRemoveVote', initiative, function(err, result) {
+    if (err) {
+      sAlert.error(err.message);
+      return;
     }
-  } else {
-    sAlert.error('Can only vote as logged in user');
-  }
+    if (result) {
+      sAlert.info('Thanks for voting on: ' + initiative.title);
+      return;
+    }
+    sAlert.error('Ok, we removed your vote...');
+  });
+  return;
 }

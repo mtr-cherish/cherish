@@ -34,12 +34,12 @@ Template.initiativeCommenter.events({
 
     // Grab input, and current user.
     var input = template.find('input[name="comment"]');
-    Meteor.call("addComment", this._id, input.value, function(err, result) {
+    Meteor.call('addComment', this._id, input.value, function(err, result) {
       if (err) {
-        sAlert.error('You are only able to comment every 3 seconds');
+        sAlert.error(err.message);
         return;
       }
-      input.value = "";
+      input.value = '';
       sAlert.info('Thank you for your comment');
     });
   }
