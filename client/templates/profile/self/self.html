@@ -14,7 +14,7 @@
           </div>
         {{/with}}
       </div>
-    
+
      <div class="row profile-self--stats">
       <div class="col s12">
         <hr>
@@ -49,20 +49,18 @@
       </ul>
     </div>
     <div class="row">
-      <div class="col m12">
-        <h4>You've commented on:</h4>
-        <ul>
-          {{#each commentedInitiatives}}
-          <li>
-            <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
-          </li>
-          {{else}}
-          <li>
-            <p>Nothing here... <a href="{{pathFor 'initiatives'}}">Start commenting!</a></p>
-          </li>
-          {{/each}}
-        </ul>
-        </div>
+      <h4>You've commented on:</h4>
+      <ul>
+        {{#each commentedInitiatives}}
+        <li>
+          <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
+        </li>
+        {{else}}
+        <li>
+          <p>Nothing here... <a href="{{pathFor 'initiatives'}}">Start commenting!</a></p>
+        </li>
+        {{/each}}
+      </ul>
     </div>
     {{/with}}
   </div>
