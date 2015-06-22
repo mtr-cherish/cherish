@@ -1,13 +1,50 @@
 Meteor.startup(function() {
   Meteor.methods({
     addComment: function(initiativeId, input) {
+      check(initiativeId, String);
+      check(input, String);
       var userId = Meteor.userId();
+
+      if (!userId) {
+        throw new Meteor.Error(401, 'Can only comment as logged in user')
+      }
+
+      if (!Throttle.checkThenSet('addcomment', 1, 3000)) {
+        throw new Meteor.Error(500, 'You can only comment every 3 seconds');
+      }
       Meteor.users.update(userId, { $addToSet: { commentedOn: initiativeId } });
-      Initiatives.update(initiativeId, {$addToSet: {comments: {
+      return Initiatives.update(initiativeId, {$addToSet: {comments: {
         createdBy: userId,
         message: input,
         createdAt: new Date()
       }}});
+    },
+
+    addOrRemoveVote: function(initiative) {
+      var user = Meteor.user();
+
+      if (!user) {
+        throw new Meteor.Error(401, 'Can only vote as logged in user')
+      }
+
+      if (!Throttle.checkThenSet('vote', 1, 3000)) {
+        throw new Meteor.Error(500, 'You can only vote every 3 seconds');
+      }
+
+      if (_.contains(user.votedOn, initiative._id)) {
+        Initiatives.update(initiative._id, {
+          $inc: { votes: -1 },
+          $pull: { usersVoted: user._id }
+        });
+        Meteor.users.update(Meteor.userId(), {$pull: {'votedOn': initiative._id}});
+        return false;
+      }
+      Initiatives.update(initiative._id, {
+        $inc: { votes: 1 },
+        $addToSet: { usersVoted: user._id }
+      });
+      Meteor.users.update(Meteor.userId(), {$addToSet: {'votedOn': initiative._id}});
+      return true;
     },
 
     createInitiative: function(title, description, category) {

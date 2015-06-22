@@ -34,8 +34,13 @@ Template.initiativeCommenter.events({
 
     // Grab input, and current user.
     var input = template.find('input[name="comment"]');
-    Meteor.call("addComment", this._id, input.value);
-    input.value = "";
-    sAlert.info('Thank you for your comment');
+    Meteor.call('addComment', this._id, input.value, function(err, result) {
+      if (err) {
+        sAlert.error(err.message);
+        return;
+      }
+      input.value = '';
+      sAlert.info('Thank you for your comment');
+    });
   }
 });
