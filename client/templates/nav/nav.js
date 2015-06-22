@@ -52,13 +52,13 @@ Template.notificationsDropdown.helpers({
   getNotificationsIcon: function() {
     switch(this.type){
       case 'comment':
-        return  'mdi-editor-mode-comment';
+      return  'mdi-editor-mode-comment';
       break;
       case 'vote':
-        return 'mdi-action-favorite';
+      return 'mdi-action-favorite';
       break;
       case 'remove-vote':
-        return 'mdi-action-favorite-outline';
+      return 'mdi-action-favorite-outline';
       break;
     }
   },
@@ -66,13 +66,13 @@ Template.notificationsDropdown.helpers({
     var initiative = Initiatives.findOne({_id: this.item});
     switch(this.type){
       case 'comment':
-        return 'New comment on ' + initiative.title;
+      return 'New comment on ' + initiative.title;
       break;
       case 'vote':
-        return 'New Vote on ' + initiative.title;
+      return 'New Vote on ' + initiative.title;
       break;
       case 'remove-vote':
-        return "Removed vote on " + initiative.title;
+      return "Removed vote on " + initiative.title;
       break;
     }
     

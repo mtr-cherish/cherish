@@ -1,4 +1,6 @@
-if(Meteor.isServer) {
+if(Meteor.settings.mode === 'dev') {
+  console.log("Staging mock data...");
+
   Meteor.startup(function() {
     if(Meteor.users.find().count() === 0) {
       console.log('Add first test user');
@@ -139,13 +141,28 @@ if(Meteor.isServer) {
 
       mockData.forEach(function(item) {
         console.log("Inserting " + item.title);
-       // item._id = new Meteor.Collection.ObjectID();
-       Initiatives.insert(item);
+        Initiatives.insert(item);
      });
     }
   });
 
+<<<<<<< HEAD
   
   // TODO: Implement this when we have pub/sub going.
   //Meteor.publish('initiatives');
+=======
+  Initiatives.before.insert(function(userId, doc){
+      doc.createdAt = new Date().getTime();
+  })
+
+  Meteor.publish("userData", function () {
+    if (this.userId) {
+      return Meteor.users.find({_id: this.userId}, {fields: {'votedOn': 1, 'avatarImg': 1, 'commentedOn': 1}});
+    } else {
+      this.ready();
+    }
+  });
+
+  console.log("Mock data staged.");
+>>>>>>> f325b7aeae881cb76a6523f0be0a0c201b3f5982
 }
