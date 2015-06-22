@@ -85,6 +85,16 @@ Meteor.startup(function() {
       } else {
         throw new Meteor.Error(500, 'Initiative could not be updated at current');
       }
+    },
+    deleteNotification: function(notification){
+      if(Meteor.user()){
+        Meteor.users.update(Meteor.userId(), {"$pull": {
+          notifications: {
+            when: notification.when, 
+            item: notification.item
+          }
+        }});
+      }
     }
   });
 });
