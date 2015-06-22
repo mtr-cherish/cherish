@@ -4,8 +4,8 @@
       <form>
         {{#each categories}}
           <span class="checkbox">
-            <input type="checkbox" class="{{.}}" checked="{{checked}}" id="{{.}}" data-label='event' value="{{.}}"   />
-            <label for="{{.}}">{{.}}</label>
+            <input type="checkbox" class="{{slug}}" checked="{{checked}}" id="{{slug}}" data-label='event' value="{{slug}}"   />
+            <label for="{{slug}}">{{category}}</label>
           </span>
         {{/each}}
       </form>  
