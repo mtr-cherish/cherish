@@ -1,5 +1,5 @@
 {
-  "mode": "prod",
+  "mode": "dev",
   "public": {
     "initiativeLimit": 5
   }
