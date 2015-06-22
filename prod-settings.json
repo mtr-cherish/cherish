@@ -1,0 +1,6 @@
+{
+  "mode": "prod",
+  "public": {
+    "initiativeLimit": 5
+  }
+}

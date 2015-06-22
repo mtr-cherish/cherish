@@ -1,0 +1,6 @@
+{
+  "mode": "dev",
+  "public": {
+    "initiativeLimit": 5
+  }
+}
