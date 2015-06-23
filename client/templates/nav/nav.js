@@ -56,10 +56,6 @@ Template.notificationsDropdown.helpers({
       return Meteor.user().notificationsCount();
   },
   getNotificationsIcon: function() {
-    if(Meteor.user())
-      return Meteor.user().notificationsCount();
-  },
-  getNotificationsIcon: function() {
     switch(this.type){
       case 'comment':
       return  'mdi-editor-mode-comment';
