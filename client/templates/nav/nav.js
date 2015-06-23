@@ -51,6 +51,10 @@ Template.notificationsDropdown.helpers({
       return Meteor.user().notifications;
     }
   },
+  getNotificationsCount: function() {
+    if(Meteor.user())
+      return Meteor.user().notificationsCount();
+  },
   getNotificationsIcon: function() {
     switch(this.type){
       case 'comment':
