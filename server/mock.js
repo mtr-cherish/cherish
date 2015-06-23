@@ -145,12 +145,6 @@ if(Meteor.settings.mode === 'dev') {
      });
     }
   });
-
-
   
-  // TODO: Implement this when we have pub/sub going.
-  //Meteor.publish('initiatives');
-
   console.log("Mock data staged.");
-
 }
