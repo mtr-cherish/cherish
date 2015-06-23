@@ -40,14 +40,16 @@ Template.notificationsDropdown.onRendered(function() {
 
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
-    if(Meteor.user().notificationsCount() > 0){
+    if(Meteor.user() && Meteor.user().notificationsCount() > 0){
       return true;
     }
 
     return false;
   },
   notifications: function() {
-    return Meteor.user().notifications;
+    if(Meteor.user()){
+      return Meteor.user().notifications;
+    }
   },
   getNotificationsIcon: function() {
     switch(this.type){
