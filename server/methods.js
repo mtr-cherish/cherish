@@ -23,13 +23,15 @@ Meteor.startup(function() {
     addOrRemoveVote: function(initiative) {
       var user = Meteor.user();
 
-      if (!user) {
-        throw new Meteor.Error(401, 'Can only vote as logged in user')
-      }
+      if(user._id === initiative.createdBy)
+        throw new Meteor.Error(401, 'You can\'t vote on your own Initiatives')
 
-      if (!Throttle.checkThenSet('vote', 1, 3000)) {
+      if (!user)
+        throw new Meteor.Error(401, 'Can only vote as logged in user')
+      
+
+      if (!Throttle.checkThenSet('vote', 1, 3000))
         throw new Meteor.Error(500, 'You can only vote every 3 seconds');
-      }
 
       if (_.contains(user.votedOn, initiative._id)) {
         Initiatives.update(initiative._id, {
