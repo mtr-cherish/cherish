@@ -88,6 +88,14 @@ Meteor.startup(function() {
       }
     },
     deleteNotification: function(notification){
+      check(notification._id, String);
+      check(notification.initiativeId, String);
+      check(notification.userId, String);
+      check(notification.ownerId, String);
+      check(notification.type, String);
+      check(notification.isRead, Boolean);
+      check(notification.createdAt, Number);
+
       if(Meteor.user()){
         Notifications.remove(notification._id);
       }
