@@ -99,7 +99,7 @@ Meteor.startup(function() {
       });
 
       if(Meteor.user()){
-        Notifications.remove(notification._id);
+        Notifications.update(notification._id, {$set: { isRead: true }});
       }
     }
   });
