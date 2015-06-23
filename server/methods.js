@@ -89,14 +89,7 @@ Meteor.startup(function() {
     },
     deleteNotification: function(notification){
       if(Meteor.user()){
-        Meteor.users.update({
-          _id: Meteor.userId(), 
-          "notifications.createdAt": notification.createdAt
-        }, {
-          "$set": {
-            "notifications.$.read": true
-          }
-        });
+        Notifications.remove(notification._id);
       }
     }
   });

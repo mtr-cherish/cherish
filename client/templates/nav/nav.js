@@ -40,15 +40,11 @@ Template.notificationsDropdown.onRendered(function() {
 
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
-    if(Meteor.user() && Meteor.user().notificationsCount() > 0){
-      return true;
-    }
-
-    return false;
+    return Meteor.user() && Meteor.user().notificationsCount() > 0;
   },
   notifications: function() {
     if(Meteor.user())
-      return Meteor.user().notifications;
+      return Notifications.find({ownerId: Meteor.userId(), isRead: false}, {sort: {createdAt: -1}});
   },
   getNotificationsCount: function() {
     if(Meteor.user())
@@ -68,7 +64,7 @@ Template.notificationsDropdown.helpers({
     }
   },
   getNotificationsContent: function() {
-    var initiative = Initiatives.findOne({_id: this.item});
+    var initiative = Initiatives.findOne({_id: this.initiativeId});
     switch(this.type){
       case 'comment':
       return 'New comment on ' + initiative.title;
@@ -82,8 +78,8 @@ Template.notificationsDropdown.helpers({
     }
     
   },
-  getNotificationsAuthor: function(author){
-    var user = Meteor.users.findOne({_id: author});
+  getUserWhoTriggeredNotification: function(userId){
+    var user = Meteor.users.findOne({_id: userId});
     if(user.profile.name)
       return user.profile.name;
 
@@ -95,7 +91,7 @@ Template.notificationsDropdown.events({
   'click .notification-link': function(e, tpl) {
     e.preventDefault();
 
-    var initiative = Initiatives.findOne({_id: this.item});
+    var initiative = Initiatives.findOne({_id: this.initiativeId});
 
     Router.go('initiative', {slug: initiative.slug});
     Meteor.call('deleteNotification', this, function(err, response){
