@@ -64,7 +64,7 @@
     {{/each}}  
     </ul>
     <a class="dropdown-button" href="#" data-activates="notifications-dropdown">     
-      <i class="mdi-social-notifications{{#unless hasNotifications}}-none{{/unless}} center"></i>
+      <i class="mdi-social-notifications{{#unless hasNotifications}}-none{{/unless}} center"></i> {{getNotificationsCount}}
     </a>
   </li>
 </template>

@@ -17,6 +17,18 @@ if(Meteor.settings.mode === 'dev') {
       });
     }
 
+    var userId2 = Accounts.createUser({
+        username: 'cherishuser2',
+        password: 'password',
+        email: 'admin2@cherish.com',
+        profile: {
+          name: 'Test User 2',
+          avatarImg: "https://placeimg.com/100/100/people"
+        },
+        votedOn: [],
+        commentedOn: []
+      });
+
     if(Initiatives.find().count() === 0) {
       var mockData = [
         {
@@ -33,7 +45,7 @@ if(Meteor.settings.mode === 'dev') {
           title: 'Free the pigs', 
           description: 'Some arbitrary description goes here.', 
           votes: 100, 
-          createdBy: userId,
+          createdBy: userId2,
           category: 'Event',
           imageUrl: "https://placeimg.com/300/250/arch",
           active: true,
@@ -55,7 +67,7 @@ if(Meteor.settings.mode === 'dev') {
             },
             {
               message: "This is a comment.",
-              createdBy: userId,
+              createdBy: userId2,
               createdAt: new Date()
             },
             {
@@ -65,7 +77,7 @@ if(Meteor.settings.mode === 'dev') {
             },
             {
               message: "This is a comment.",
-              createdBy: userId,
+              createdBy: userId2,
               createdAt: new Date()
             },
             {
@@ -80,7 +92,7 @@ if(Meteor.settings.mode === 'dev') {
             }
           ]
         },
-        {title: 'Vegan community', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Vegan community', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId2, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch"},
         {title: 'Spiritual commerce', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source',imageUrl: "https://placeimg.com/300/250/arch"},
         {title: 'Earth Documentary', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
         {
@@ -94,7 +106,7 @@ if(Meteor.settings.mode === 'dev') {
           comments: [
             {
               message: "This is a comment.",
-              createdBy: userId,
+              createdBy: userId2,
               createdAt: new Date()
             },
             {
@@ -105,12 +117,12 @@ if(Meteor.settings.mode === 'dev') {
           ]
         },
         {title: 'We\'re going to Japan', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
-        {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId2, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
         {
           title: 'Feeding Nicaragua', 
           description: 'Some arbitrary description goes here.', 
           votes: 1, 
-          createdBy: userId,
+          createdBy: userId2,
           category: 'Charity',
           imageUrl: "https://placeimg.com/300/250/arch",
           active: true,
@@ -122,7 +134,7 @@ if(Meteor.settings.mode === 'dev') {
             },
             {
               message: "This is a comment.",
-              createdBy: userId,
+              createdBy: userId2,
               createdAt: new Date()
             },
             {
