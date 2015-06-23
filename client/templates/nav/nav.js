@@ -47,9 +47,8 @@ Template.notificationsDropdown.helpers({
     return false;
   },
   notifications: function() {
-    if(Meteor.user()){
+    if(Meteor.user())
       return Meteor.user().notifications;
-    }
   },
   getNotificationsCount: function() {
     if(Meteor.user())

@@ -88,12 +88,14 @@ Meteor.startup(function() {
     },
     deleteNotification: function(notification){
       if(Meteor.user()){
-        Meteor.users.update(Meteor.userId(), {"$pull": {
-          notifications: {
-            when: notification.when, 
-            item: notification.item
+        Meteor.users.update({
+          _id: Meteor.userId(), 
+          "notifications.createdAt": notification.createdAt
+        }, {
+          "$set": {
+            "notifications.$.read": true
           }
-        }});
+        });
       }
     }
   });

@@ -52,13 +52,15 @@
   <li class="notifications">
     <ul id="notifications-dropdown" class="dropdown-content">
     {{#each notifications}}
-      <li>
-        <a href="#!" class="notification-link">
-          <div class="notifications-content"><i class="{{getNotificationsIcon}}"></i> <p>{{getNotificationsContent}}</p></div>
-          <span class="notifications-date">{{getPrettyDate when}}</span>
-          <span class="notifications-author">By: {{getNotificationsAuthor by}}</span>
-        </a>
-      </li>
+      {{#unless read}}
+        <li>
+          <a href="#!" class="notification-link">
+            <div class="notifications-content"><i class="{{getNotificationsIcon}}"></i> <p>{{getNotificationsContent}}</p></div>
+            <span class="notifications-date">{{getPrettyDate createdAt}}</span>
+            <span class="notifications-author">By: {{getNotificationsAuthor createdBy}}</span>
+          </a>
+        </li>
+      {{/unless}}
     {{else}}
       <li><a href="#"><em>No notifications</em></a></li>
     {{/each}}  
