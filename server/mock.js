@@ -15,9 +15,8 @@ if(Meteor.settings.mode === 'dev') {
         votedOn: [],
         commentedOn: []
       });
-    }
 
-    var userId2 = Accounts.createUser({
+      var userId2 = Accounts.createUser({
         username: 'cherishuser2',
         password: 'password',
         email: 'admin2@cherish.com',
@@ -28,6 +27,9 @@ if(Meteor.settings.mode === 'dev') {
         votedOn: [],
         commentedOn: []
       });
+    }
+
+    
 
     if(Initiatives.find().count() === 0) {
       var mockData = [
