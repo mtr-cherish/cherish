@@ -88,15 +88,18 @@ Meteor.startup(function() {
       }
     },
     deleteNotification: function(notification){
+      check(notification, {
+        _id: String,
+        initiativeId: String,
+        userId: String,
+        ownerId: String,
+        type: String,
+        isRead: Boolean,
+        createdAt: Number
+      });
+
       if(Meteor.user()){
-        Meteor.users.update({
-          _id: Meteor.userId(), 
-          "notifications.createdAt": notification.createdAt
-        }, {
-          "$set": {
-            "notifications.$.read": true
-          }
-        });
+        Notifications.update(notification._id, {$set: { isRead: true }});
       }
     }
   });
