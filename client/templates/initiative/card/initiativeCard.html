@@ -9,11 +9,13 @@
         {{#if isMine}}<a href="" class="badge status is-{{status}}">{{status}}</a>{{/if}}
       {{/if}}
       <span class="badge type {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
-        {{#unless isMine}}
-        <div class="follow-button">
-          <button class="{{getFollowClass}}">{{#if canFollow}}Follow{{else}}Unfollow{{/if}}</button>
-        </div>
-        {{/unless}}
+        {{#if currentUser}}
+          {{#unless isMine}}
+            <div class="follow-button">
+              <button class="{{getFollowClass}}">{{#if canFollow}}Follow{{else}}Unfollow{{/if}}</button>
+            </div>
+          {{/unless}}
+        {{/if}}
         <div class="votes">
           {{{voteIcon}}} {{votes}}
         </div>
