@@ -117,11 +117,11 @@ Template.notificationsDropdown.events({
       }
     });
   }
-})
-
-Template.registerHelper('getAvatar', function(userId){
-  return Meteor.users.findOne({_id: userId}).profile.avatarImg;
 });
+
+function getAvatar(userId) {
+  return Meteor.users.findOne({_id: userId}).profile.avatarImg;
+}
 
 function getUserNameById(userId){
   var user = Meteor.users.findOne({_id: userId});
@@ -171,8 +171,6 @@ function rollUpNotifications(notifications) {
     unreadNotifications.push(type + initiativeId);
   });
 
-  console.log(notificationsObj);
-
   for (initiativeId in notificationsObj) {
     for (type in notificationsObj[initiativeId]) {
       userArray = notificationsObj[initiativeId][type];
@@ -189,6 +187,7 @@ function rollUpNotifications(notifications) {
       }
       rolledUpNotifications.push({
         ids: notificationIds[type + initiativeId],
+        avatar: getAvatar(userArray[0]),
         users: userText,
         text: edAWord(type) + ' on',
         othersText: othersText,

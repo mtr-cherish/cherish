@@ -89,11 +89,8 @@ Meteor.startup(function() {
     },
     markNotificationsAsRead: function(notificationIds){
       _.each(notificationIds, function(notificationId) {
-        console.log(notificationId, typeof notificationId);
         check(notificationId, String);
       });
-
-      console.log(Notifications.find({_id: {$in: notificationIds}}).fetch());
 
       if(Meteor.user()){
         Notifications.update({_id: {$in: notificationIds}}, {$set: {isRead: true}}, {multi: true});

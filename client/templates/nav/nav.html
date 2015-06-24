@@ -54,7 +54,7 @@
     {{#each notifications}}
       <li class="notification {{getReadClass}}">
         <div class="notification-content">
-
+          <span class="notification-content--avatar"><img src="{{avatar}}" class="circle responsive-img" alt="" width="40" height="40"></span>
           <div class="notification-content--body">
             <b>{{users}}{{othersText}}</b> {{text}} <a href="{{pathFor 'initiative' slug=getInitiativeSlug}}">{{getInitiativeTitle}}</a>
             <span class="notification-content--date"><i class="{{getNotificationsIcon}}"></i> {{getPrettyDate createdAt}}</span>
