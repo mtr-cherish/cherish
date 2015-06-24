@@ -5,7 +5,7 @@ Template.nav.onRendered(function() {
 });
 
 Template.nav.events({
-  'click .logout': function(e, tpl){
+  'click .logout': function(e){
     e.preventDefault();
     Meteor.logout(function(){
       sAlert.info('Logged out succesfully');
@@ -55,8 +55,10 @@ Template.notificationsDropdown.helpers({
     return getNotifications();
   },
   getNotificationsCount: function() {
-    if(Meteor.user())
-      return getNotifications().length;
+    if (!Meteor.user()) {
+      return undefined;
+    }
+    return _.where(getNotifications(), {isRead: false}).length;
   },
   getNotificationsIcon: function() {
     switch(this.type){
@@ -103,13 +105,13 @@ Template.notificationsDropdown.helpers({
 });
 
 Template.notificationsDropdown.events({
-  'click .notification.unread': function(e, tpl) {
+  'click .notification': function(e) {
     e.preventDefault();
 
     var initiative = Initiatives.findOne({_id: this.initiativeId});
 
     Router.go('initiative', {slug: initiative.slug});
-    Meteor.call('deleteNotification', this, function(err, response){
+    Meteor.call('markNotificationsAsRead', this.ids, function(err, response) {
       if(err){
         sAlert.error('Something went wrong...');
       }
@@ -138,8 +140,9 @@ function rollUpNotifications(notifications) {
   var rolledUpNotifications = [];
   var unreadNotifications = [];
   var notificationDates = {};
+  var notificationIds = {};
   var notificationsObj = {};
-  var userArray, users, othersText, lastUser, initiativeId, type;
+  var userArray, users, userText, othersText, lastUser, initiativeId, type;
 
   notifications.forEach(function(notification) {
     var initiativeId = notification.initiativeId;
@@ -152,6 +155,12 @@ function rollUpNotifications(notifications) {
     }
     if (!notificationDates[type + initiativeId] || notification.createdAt > notificationDates[type + initiativeId]) {
       notificationDates[type + initiativeId] = notification.createdAt;
+    }
+    if (!notificationIds[type + initiativeId]) {
+      notificationIds[type + initiativeId] = [];
+    }
+    if (notificationIds[type + initiativeId].indexOf(notification._id) === -1) {
+      notificationIds[type + initiativeId].push(notification._id);
     }
     if (notificationsObj[initiativeId][type].indexOf(notification.userId)) {
       notificationsObj[initiativeId][type].push(notification.userId);
@@ -179,6 +188,7 @@ function rollUpNotifications(notifications) {
         userText = users.join(', ') + ' and ' + lastUser + ' ';
       }
       rolledUpNotifications.push({
+        ids: notificationIds[type + initiativeId],
         users: userText,
         text: edAWord(type) + ' on',
         othersText: othersText,
