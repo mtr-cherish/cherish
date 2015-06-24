@@ -40,7 +40,7 @@ Template.notificationsDropdown.onRendered(function() {
 
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
-    return Meteor.user() && Meteor.user().notificationsCount() > 0;
+    return Notifications.find({ownerId: Meteor.userId()});
   },
   notifications: function() {
     if(Meteor.user())
@@ -48,7 +48,7 @@ Template.notificationsDropdown.helpers({
   },
   getNotificationsCount: function() {
     if(Meteor.user())
-      return Meteor.user().notificationsCount();
+      return Notifications.find({ownerId: Meteor.userId()}).count();
   },
   getNotificationsIcon: function() {
     switch(this.type){
@@ -73,6 +73,12 @@ Template.notificationsDropdown.helpers({
       break;
       case 'remove-vote':
       return " removed their vote on ";
+      break;
+      case 'follow':
+      return " is now following ";
+      break;
+      case 'unfollow':
+      return " stopped following ";
       break;
     }
     
