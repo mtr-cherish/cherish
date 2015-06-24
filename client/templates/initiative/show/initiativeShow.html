@@ -1,34 +1,13 @@
 <template name='initiativeShow'>
   {{#with initiative}}
-  <div class="initiative col s12 m12">
-    <div class="card small">
-      <div class="card-image">
-        <img src="{{getInitiativeImage}}">
-      </div>
-      <div class="initiative--content">
-      <span class="badge {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
-        <div class="votes">
-          {{{voteIcon}}} {{votes}}
-        </div>
-        <div class="comments-count">
-          <i class="mdi-editor-mode-comment"></i> {{zeroIfEmptyOrNotExists comments}}
-        </div>
-        <a href="#" class="initiative--user-image">
-          <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
-        </a>
-        <h2 class="card-title">{{title}}</h2>
-        <p>
-          {{description}}
-        </p>
-      </div>
-    </div>
+    {{> initiativeCard}}
+
     {{#if currentUser}}
       {{> initiativeCommenter}}
     {{else}}
       <span class="not-logged-in">You must be logged in to comment.</span>
     {{/if}}
     {{> initiativeComments}}
-  </div>
   {{/with}}
 </template>
 
