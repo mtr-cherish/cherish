@@ -39,23 +39,24 @@ Template.notificationsDropdown.onRendered(function() {
   });
 });
 
+function getNotifications() {
+  var notifications = Notifications.find({ownerId: Meteor.userId()}, {sort: {createdAt: -1}});
+  return rollUpNotifications(notifications);
+}
+
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
     return Notifications.find({ownerId: Meteor.userId(), isRead: false});
   },
   notifications: function() {
-    var notifications;
     if (!Meteor.user()) {
       return undefined;
     }
-    notifications = Notifications.find({ownerId: Meteor.userId()}, {sort: {createdAt: -1}});
-
-    return rollUpNotifications(notifications);
-
+    return getNotifications();
   },
   getNotificationsCount: function() {
     if(Meteor.user())
-      return Notifications.find({ownerId: Meteor.userId(), isRead: false}).count();
+      return getNotifications().length;
   },
   getNotificationsIcon: function() {
     switch(this.type){
@@ -98,15 +99,6 @@ Template.notificationsDropdown.helpers({
   },
   getInitiativeSlug: function(){
     return Initiatives.findOne({_id: this.initiativeId}).slug;
-  },
-  getUsersWhoTriggeredNotification: function(userIds){
-    var users = Meteor.users.find({_id: {$in: userIds}});
-    return users.fetch().map(function(user) {
-      if (user.profile.name) {
-        return user.profile.name;
-      }
-      return user.username;
-    });
   }
 });
 
@@ -131,7 +123,7 @@ Template.registerHelper('getAvatar', function(userId){
 
 function getUserNameById(userId){
   var user = Meteor.users.findOne({_id: userId});
-  return user.profile.name ? user.profile.name : user.username;
+  return user.profile.name.substring(0, user.profile.name.indexOf('@'));
 }
 
 function edAWord(word) {
