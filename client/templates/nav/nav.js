@@ -32,7 +32,7 @@ Template.notificationsDropdown.onRendered(function() {
     if(instance.view.template.__helpers[" hasNotifications"]()){
       this.$('.dropdown-button').dropdown({
         beloworigin: true,
-        constrainwidth: true
+        constrainwidth: false
       });
     }
   });
@@ -40,19 +40,15 @@ Template.notificationsDropdown.onRendered(function() {
 
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
-    if(Meteor.user() && Meteor.user().notificationsCount() > 0){
-      return true;
-    }
-
-    return false;
+    return Notifications.find({ownerId: Meteor.userId(), isRead: false});
   },
   notifications: function() {
     if(Meteor.user())
-      return Meteor.user().notifications;
+      return Notifications.find({ownerId: Meteor.userId()}, {sort: {createdAt: -1}});
   },
   getNotificationsCount: function() {
     if(Meteor.user())
-      return Meteor.user().notificationsCount();
+      return Notifications.find({ownerId: Meteor.userId(), isRead: false}).count();
   },
   getNotificationsIcon: function() {
     switch(this.type){
@@ -68,22 +64,36 @@ Template.notificationsDropdown.helpers({
     }
   },
   getNotificationsContent: function() {
-    var initiative = Initiatives.findOne({_id: this.item});
     switch(this.type){
       case 'comment':
-      return 'New comment on ' + initiative.title;
+      return ' commented on ';
       break;
       case 'vote':
-      return 'New Vote on ' + initiative.title;
+      return ' voted on ';
       break;
       case 'remove-vote':
-      return "Removed vote on " + initiative.title;
+      return " removed their vote on ";
+      break;
+      case 'follow':
+      return " is now following ";
+      break;
+      case 'unfollow':
+      return " stopped following ";
       break;
     }
     
   },
-  getNotificationsAuthor: function(author){
-    var user = Meteor.users.findOne({_id: author});
+  getReadClass: function() {
+    return this.isRead ? 'read' : 'unread';
+  },
+  getInitiativeTitle: function(){
+    return Initiatives.findOne({_id: this.initiativeId}).title;
+  },
+  getInitiativeSlug: function(){
+    return Initiatives.findOne({_id: this.initiativeId}).slug;
+  },
+  getUserWhoTriggeredNotification: function(userId){
+    var user = Meteor.users.findOne({_id: userId});
     if(user.profile.name)
       return user.profile.name;
 
@@ -92,10 +102,10 @@ Template.notificationsDropdown.helpers({
 });
 
 Template.notificationsDropdown.events({
-  'click .notification-link': function(e, tpl) {
+  'click .notification.unread': function(e, tpl) {
     e.preventDefault();
 
-    var initiative = Initiatives.findOne({_id: this.item});
+    var initiative = Initiatives.findOne({_id: this.initiativeId});
 
     Router.go('initiative', {slug: initiative.slug});
     Meteor.call('deleteNotification', this, function(err, response){
@@ -104,4 +114,8 @@ Template.notificationsDropdown.events({
       }
     });
   }
+})
+
+Template.registerHelper('getAvatar', function(userId){
+  return Meteor.users.findOne({_id: userId}).profile.avatarImg;
 })

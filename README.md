@@ -51,6 +51,12 @@ The Cherish roadmap is currently private, but we plan on making it public soon. 
 * Anyone is free to submit pull requests of their liking to Cherish through Github
 * You can also use the [issues](https://github.com/mtr-cherish/cherish/issues) section of our Github project for keeping the discussion going
 
+### Running Cherish
+
+* Clone this repository
+* Run `meteor --settings settings.json` for a production environment (no users/Initiatives)
+* Run `meteor --setings dev-settings.json` for a development environment (admin user, mocked Initiatives)
+
 ## The Cherish Team
 
 * mariocatch

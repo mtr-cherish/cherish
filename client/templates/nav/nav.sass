@@ -34,22 +34,74 @@ nav
       margin-right: 10px
       position: relative
       top: 10px
-  .notifications
-    padding: 0 
-    ul
-      min-width: 330px 
+
+
+.notifications
+  $notification-color: #1e88e5
+  $notification-text-color: #333
+  $unread-bg-color: lighten($notification-color, 40%)
+  $unread-border-color: darken($unread-bg-color, 10%)
+  
+  $read-bg-color: #fff
+  $read-border-color: darken($read-bg-color, 20%)
+  
+  padding: 0 
+  .dropdown-button
+    font-size: 100%  
     i
-      font-size: 120% 
-      display: inline 
-    p
-      display: inline-block 
-    .notifications-date
-      display: block
-      font-size: 70%
-      float: right
-      margin-top: -1.5em 
-    .notifications-author
-      display: block
-      font-size: 70%
+      font-size: 120%
       float: left 
-      margin-top: -1.5em
+  ul.dropdown-content
+    min-width: 400px
+    max-height: 350px 
+    overflow-y: scroll 
+  .notification
+    $notification-content: 'notification-content'
+    border-bottom: 1px solid lighten(#333, 50%)
+    line-height: 1.5rem !important 
+  
+    .#{$notification-content}
+      padding: 1em 
+      p
+        margin: 0
+        i
+          display: inline
+          font-size: 100%  
+        a
+          color: $notification-color 
+          display: inline
+          padding: 0
+    .#{$notification-content}--avatar
+      display: block
+      float: left
+      margin-right: .5em
+    .#{$notification-content}--body
+      display: inline-block
+      
+      a
+        color: $notification-color
+        display: inline  
+        padding: 0
+    .#{$notification-content}--date
+        display: block
+        color: lighten($notification-text-color, 40%)
+        i
+          display: inline
+          font-size: 100% 
+          height: auto
+          line-height: 1 
+    &.read
+      background: $read-bg-color 
+      border-bottom: 1px solid $read-border-color 
+      &:hover
+        background: darken($read-bg-color, 5%) 
+      
+    &.unread
+      background: $unread-bg-color
+      border-bottom: 1px solid $unread-border-color
+      &:hover
+        background: darken($unread-bg-color, 2%)
+      
+    &:last-child
+      border-bottom: none 
+    

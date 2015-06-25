@@ -26,7 +26,24 @@ $colors: #ffca28 #66BB6A #d4e157 #ff7043
     position: absolute
     bottom: 1em
     right: 1em
-
+  .follow-button
+    position: absolute
+    bottom: 1em
+    right: 5em
+    button 
+      border: none
+      border-radius:  6px
+      color: #FFF 
+      padding: .2em 1em 0
+      
+      &.unfollow
+        background: #666
+        border-bottom: 3px solid darken(#666, 30%)
+      &.follow
+        background: #1e88e5 
+        border-bottom: 3px solid darken(#1e88e5, 30%)
+      &:active
+        border-bottom: none
   .comments-count
     position: absolute
     bottom: 1em

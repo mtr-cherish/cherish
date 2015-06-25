@@ -52,15 +52,15 @@
   <li class="notifications">
     <ul id="notifications-dropdown" class="dropdown-content">
     {{#each notifications}}
-      {{#unless read}}
-        <li>
-          <a href="#!" class="notification-link">
-            <div class="notifications-content"><i class="{{getNotificationsIcon}}"></i> <p>{{getNotificationsContent}}</p></div>
-            <span class="notifications-date">{{getPrettyDate createdAt}}</span>
-            <span class="notifications-author">By: {{getNotificationsAuthor createdBy}}</span>
-          </a>
-        </li>
-      {{/unless}}
+      <li class="notification {{getReadClass}}">
+        <div class="notification-content">
+        <span class="notification-content--avatar"><img src="{{getAvatar userId}}" class="circle responsive-img" alt="" width="40" height="40"></span>
+          <div class="notification-content--body">
+            <b>{{getUserWhoTriggeredNotification userId}}</b> {{getNotificationsContent}}<a href="{{pathFor 'initiative' slug=getInitiativeSlug}}">{{getInitiativeTitle}}</a>
+            <span class="notification-content--date"><i class="{{getNotificationsIcon}}"></i> {{getPrettyDate createdAt}}</span>
+          </div>
+        </div>
+      </li>
     {{else}}
       <li><a href="#"><em>No notifications</em></a></li>
     {{/each}}  
