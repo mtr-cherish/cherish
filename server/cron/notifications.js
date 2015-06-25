@@ -7,17 +7,12 @@ SyncedCron.add({
   job: function() {
     // Remove notifications older than x days
     var d          = new Date(),
-        oneWeekOld = d.setMinutes(d.getMinutes() - 10080),
-        notifications = Meteor.users.find({"notifications.createdAt": { $lt: oneWeekOld }}).fetch();
+    twentyDaysOld  = d.setMinutes(d.getMinutes() - 1);
+    console.log('====> Removing older notifications');
 
-    _.each(notifications, function(value, key, list){
-      console.log('value: ', value);
-      console.log('key: ', key);
-      // Meteor.users.update({"notifications.createdAt": { $lt: oneWeekOld } }, {"$pullAll": {
-      //   "notifications.$.createdAt":  
-      // }})
-    })    
-    
-
+    Notifications.remove({createdAt: { $lt: twentyDaysOld }, isRead: false}, function(error){
+      if(error)
+        console.log(error)
+    });
   }
 });
