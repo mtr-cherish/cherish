@@ -48,7 +48,7 @@ Template.notificationsDropdown.helpers({
   },
   getNotificationsCount: function() {
     if(Meteor.user())
-      return Notifications.find({ownerId: Meteor.userId()}).count();
+      return Notifications.find({ownerId: Meteor.userId(), isRead: false}).count();
   },
   getNotificationsIcon: function() {
     switch(this.type){
