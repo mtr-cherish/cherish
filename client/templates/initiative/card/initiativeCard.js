@@ -4,6 +4,9 @@ Template.initiativeCard.helpers({
   },
   status: function status() {
     return this.active ? 'Active' : 'Inactive';
+  },
+  getEditingClass: function getEditingClass(){
+    return Session.get('editing') === this._id ? 'open' : '';
   }
 });
 
@@ -26,5 +29,8 @@ Template.initiativeCard.events({
   'click .follow-button': function clickFollowButton(ev) {
     ev.preventDefault();
     followUnfollow(this);
+  },
+  'click .edit-initiative': function(e, tpl){
+    Session.set('editing', this._id);
   }
 });

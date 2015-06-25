@@ -1,0 +1,32 @@
+<template name="initiativeEdit">
+  <div class="initiative-edit">
+    <!-- {{#with initiative}} -->
+    <span class="edit-title grey-text text-darken-4">Edit {{title}}<i class="material-icons right close">close</i></span>
+    <form class="form-edit">
+      <div class="input-field col s12">
+        <input id="title" name="title" type="text" class="validate" placeholder="{{title}}" value="{{title}}">
+        <label for="name" class="active">Initiative Title</label>
+      </div>
+      <div class="input-field col s12">
+        <textarea id="description" name="description" type="text" class="validate valid materialize-textarea">{{description}}</textarea>
+        <label for="description" class="active">Enter a description for your Initiative.</label>
+      </div>
+
+      <div class="input-field col s12 center select-type">
+       <select name="category" class="browser-default" id="category_select">
+        {{#each getCategories}}
+        <option {{getSelected .}} value="{{.}}">{{.}}</option>
+        {{else}}
+        something is wrong
+        {{/each}}
+      </select>
+      <label for="description" class="active">Enter a description for your Initiative.</label>
+    </div>
+
+    <div class="col s12 center">
+    <button class="btn waves-effect waves-light blue darken-1 save" type="submit">Save Initiative</button>
+    </div>
+  </form>
+  <!-- {{/with}} -->
+</div>
+</template>
