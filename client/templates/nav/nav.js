@@ -40,7 +40,7 @@ Template.notificationsDropdown.onRendered(function() {
 
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
-    return Notifications.find({ownerId: Meteor.userId()});
+    return Notifications.find({ownerId: Meteor.userId(), isRead: false});
   },
   notifications: function() {
     if(Meteor.user())
