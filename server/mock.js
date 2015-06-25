@@ -1,9 +1,11 @@
 if(Meteor.settings.mode === 'dev') {
-  console.log("Staging mock data...");
+  console.log("======> Staging mock data...");
 
   Meteor.startup(function() {
+    var users;
+
     if(Meteor.users.find().count() === 0) {
-      console.log('Add first test user');
+      console.log('Add test users');
       var userId = Accounts.createUser({
         username: 'cherishuser',
         password: 'password',
@@ -27,11 +29,17 @@ if(Meteor.settings.mode === 'dev') {
         votedOn: [],
         commentedOn: []
       });
+      console.log(userId);
+      users = [userId, userId2];
     }
 
     
 
+    
+
     if(Initiatives.find().count() === 0) {
+      console.log("Inserting Initiatives");
+      
       var mockData = [
         {
           title: 'Project water', 
@@ -42,7 +50,7 @@ if(Meteor.settings.mode === 'dev') {
           imageUrl: "https://placeimg.com/300/250/arch",
           active: true,
         },
-        {title: 'Digging in dirt', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Digging in dirt', description: 'Some arbitrary description goes here.', votes: 5, createdBy: userId, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch", active: true},
         {
           title: 'Free the pigs', 
           description: 'Some arbitrary description goes here.', 
@@ -51,52 +59,11 @@ if(Meteor.settings.mode === 'dev') {
           category: 'Event',
           imageUrl: "https://placeimg.com/300/250/arch",
           active: true,
-          comments: [
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId2,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId2,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            }
-          ]
+          comments: []
         },
-        {title: 'Vegan community', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId2, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch"},
-        {title: 'Spiritual commerce', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source',imageUrl: "https://placeimg.com/300/250/arch"},
-        {title: 'Earth Documentary', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'Vegan community', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId2, category: 'Non Profit', imageUrl: "https://placeimg.com/300/250/arch", active: true},
+        {title: 'Spiritual commerce', description: 'Some arbitrary description goes here.', votes: 150, createdBy: userId, category: 'Open Source',imageUrl: "https://placeimg.com/300/250/arch", active: true},
+        {title: 'Earth Documentary', description: 'Some arbitrary description goes here.', votes: 20, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch", active: true},
         {
           title: 'Feature film', 
           description: 'Some arbitrary description goes here.', 
@@ -105,21 +72,10 @@ if(Meteor.settings.mode === 'dev') {
           category: 'Event',
           imageUrl: "https://placeimg.com/300/250/arch",
           active: true,
-          comments: [
-            {
-              message: "This is a comment.",
-              createdBy: userId2,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            }
-          ]
+          comments: []
         },
-        {title: 'We\'re going to Japan', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch"},
-        {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId2, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch"},
+        {title: 'We\'re going to Japan', description: 'Some arbitrary description goes here.', votes: 100, createdBy: userId, category: 'Charity', imageUrl: "https://placeimg.com/300/250/arch", active: true},
+        {title: 'Initiative 9', description: 'Some arbitrary description goes here.', votes: 10, createdBy: userId2, category: 'Event', imageUrl: "https://placeimg.com/300/250/arch", active: true},
         {
           title: 'Feeding Nicaragua', 
           description: 'Some arbitrary description goes here.', 
@@ -128,37 +84,35 @@ if(Meteor.settings.mode === 'dev') {
           category: 'Charity',
           imageUrl: "https://placeimg.com/300/250/arch",
           active: true,
-          comments: [
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId2,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            },
-            {
-              message: "This is a comment.",
-              createdBy: userId,
-              createdAt: new Date()
-            }
-          ]
+          comments: []
         }
       ];
 
       mockData.forEach(function(item) {
         console.log("Inserting " + item.title);
-        Initiatives.insert(item);
+        var initiative = Initiatives.insert(item);
+        var count = _.random(0, 10);
+        
+        
+
+        for(var i = 0; i <= count; i++){
+          console.log('Adding comment');
+          var user = _.random(0, users.length-1);
+          Initiatives.update(initiative, {$addToSet: {comments: {
+              message: "This is a comment.",
+              createdBy: users[user],
+              createdAt: new Date().getTime()
+            }}});
+          var UpdateInitiative = Initiatives.findOne({_id: initiative});
+          if(UpdateInitiative.createdBy !== users[user]){
+            Initiatives.update(UpdateInitiative._id, {$inc: {votes: 1}, $addToSet: {usersVoted: users[user]}});
+            // Remove once votes only stored on Initiative
+            Meteor.users.update(users[user], {$addToSet: {votedOn: UpdateInitiative._id}});
+          }
+        }
+
      });
+      console.log("======> Mock data staged.");
     }
   });
-  
-  console.log("Mock data staged.");
 }
