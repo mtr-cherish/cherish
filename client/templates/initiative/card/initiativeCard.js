@@ -7,6 +7,12 @@ Template.initiativeCard.helpers({
   },
   status: function(){
     return this.active ? 'Active': 'Inactive';
+  },
+  canFollow: function(){
+    return !_.contains(this.usersFollowing, Meteor.userId());
+  },
+  getFollowClass: function(){
+    return _.contains(this.usersFollowing, Meteor.userId()) ? 'unfollow' : 'follow';
   }
 });
 
@@ -31,5 +37,9 @@ Template.initiativeCard.events({
         sAlert.info('initiative updated');
       }
     });
+  },
+  'click .follow-button': function(e, tpl){
+    e.preventDefault();
+    followUnfollow(this);
   }
 });

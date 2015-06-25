@@ -40,3 +40,18 @@ addOrRemoveVote = function(initiative){
   });
   return;
 }
+
+followUnfollow = function(initiative){
+  Meteor.call('followUnfollow', initiative, function(err, result) {
+    if (err) {
+      sAlert.error(err.message);
+      return;
+    }
+    if (result) {
+      sAlert.info('You\'re now following ' + initiative.title);
+      return;
+    }
+    sAlert.info('You\'re no longer following ' + initiative.title);
+  });
+  return;
+}
