@@ -49,7 +49,6 @@ livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
 matb33:collection-hooks@0.7.13
-materialize:materialize@0.96.1
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:picker@1.0.2
@@ -91,4 +90,5 @@ underscorestring:underscore.string@3.1.1
 url@1.0.4
 webapp@1.2.0
 webapp-hashing@1.0.3
+yang2007chun:materialize-scss@1.1.0
 zeroasterisk:throttle@0.3.1
