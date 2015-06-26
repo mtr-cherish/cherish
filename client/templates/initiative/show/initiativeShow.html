@@ -28,7 +28,7 @@
     <ul class="collection">
       {{#each comments}}
         <li class="collection-item avatar">
-          <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
+          <img src="{{getCommentAuthorImage}}" alt="avatar" class="circle responsive-img user-photo">
           <p class="comment-message left">{{message}}</p>
           <span class="comment-time right">{{getPrettyDate createdAt}}</span>
         </li>

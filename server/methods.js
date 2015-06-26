@@ -62,7 +62,7 @@ Meteor.startup(function() {
           createdBy: Meteor.userId(),
           createdAt: new Date(),
           category: category,
-          imageUrl: 'images/placeholder-initiative.jpg',
+          imageUrl: '/images/placeholder-initiative.jpg',
           comments: [],
           slug: slug,
           categorySlug: categorySlug,
