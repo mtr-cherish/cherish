@@ -62,7 +62,7 @@ Meteor.startup(function() {
           createdBy: Meteor.userId(),
           createdAt: new Date(),
           category: category,
-          imageUrl: "https://placeimg.com/300/250/arch",
+          imageUrl: 'images/placeholder-initiative-header.jpg',
           comments: [],
           slug: slug,
           categorySlug: categorySlug,
