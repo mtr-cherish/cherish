@@ -98,14 +98,14 @@ if(Meteor.settings.mode === 'dev') {
         for(var i = 0; i <= count; i++){
           console.log('Adding comment');
           var user = _.random(0, users.length-1);
-          Initiatives.update(initiative, {$addToSet: {comments: {
+          Initiatives.direct.update(initiative, {$addToSet: {comments: {
               message: "This is a comment.",
               createdBy: users[user],
               createdAt: new Date().getTime()
             }}});
           var UpdateInitiative = Initiatives.findOne({_id: initiative});
           if(UpdateInitiative.createdBy !== users[user]){
-            Initiatives.update(UpdateInitiative._id, {$inc: {votes: 1}, $addToSet: {usersVoted: users[user]}});
+            Initiatives.direct.update(UpdateInitiative._id, {$inc: {votes: 1}, $addToSet: {usersVoted: users[user]}});
             // Remove once votes only stored on Initiative
             Meteor.users.update(users[user], {$addToSet: {votedOn: UpdateInitiative._id}});
           }
