@@ -1,10 +1,10 @@
 body:not(.home)
   nav
-    background: #1e88e5
+    background: transparent
 
 #logo-container
   height: 56px
-  border-bottom: 2px solid #1e88e5
+  border-bottom: 2px solid darken($primary-color, 20%)
   @media only screen and (min-width: 601px)
     height: 64px
 
@@ -25,10 +25,11 @@ nav
     z-index: 1
   .side-nav
     li:first-child
-      background-color: #1e88e5
+      background-color: $primary-color
     li:hover, li.active
-      background-color: #1e88e5
-      color: #FFF
+      background-color: $primary-color
+      a
+        color: #FFF
   .user-profile
     img
       margin-right: 10px
@@ -44,6 +45,7 @@ nav
   
   $read-bg-color: #fff
   $read-border-color: darken($read-bg-color, 20%)
+  $badge-bg-color: 
   
   padding: 0 
   .dropdown-button
@@ -51,6 +53,20 @@ nav
     i
       font-size: 120%
       float: left 
+      position: relative
+      top: 2px
+    &--badge
+      background: darken($primary-color, 30%)
+      position: relative
+      display: inline-block
+      height: 20px
+      width: 20px
+      border-radius: 100%
+      line-height: 20px
+      text-align: center
+      left: -9px
+      top: -7px
+      font-size: 80%
   ul.dropdown-content
     min-width: 400px
     max-height: 350px 
@@ -76,7 +92,7 @@ nav
       float: left
       margin-right: .5em
     .#{$notification-content}--body
-      display: inline-block
+      display: block
       
       a
         color: $notification-color
