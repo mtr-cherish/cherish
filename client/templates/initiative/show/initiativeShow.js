@@ -44,3 +44,14 @@ Template.initiativeCommenter.events({
     });
   }
 });
+
+Template.initiativeComments.helpers({
+  getCommentAuthorImage: function() {
+    var user = Users.findOne(this.createdBy);
+    if(user) {
+      return user.profile.avatarImg;
+    } else {
+      return '/images/placeholder-avatar.jpg';
+    }
+  }
+})

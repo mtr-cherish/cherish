@@ -3,21 +3,32 @@
     <form class="col s6 offset-s3 login-form">
       <h2>Login to Cherish</h2>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate email-address-input">
-          <label for="email">Email</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate email-address-input">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate password-input">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate password-input">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
-        </div>
+        {{#if currentUser}}
+          {{currentUser.services.facebook.name}} -
+          {{currentUser.services.facebook.gender}}
+          <button id="logout">Logout</button>
+        {{else}}
+          <button id="facebook-login" class="btn waves-effect waves-light">Login with Facebook</button>
+        {{/if}}
       </div>
     </form>
   </div>
