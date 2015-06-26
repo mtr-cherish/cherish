@@ -1,6 +1,6 @@
 if(Meteor.settings.mode === 'dev') {
   console.log("======> Staging mock data...");
-  var placeholderInitiativeHeaderImage = '/images/placeholder-initiative-header.jpg';
+  var placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg';
   var placeholderAvatarImage = "/images/placeholder-avatar.jpg";
 
   Meteor.startup(function() {
