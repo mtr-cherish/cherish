@@ -8,7 +8,7 @@ meteor-platform
 autopublish
 insecure
 iron:router
-fourseven:scss
+fourseven:scss@2.1.1
 accounts-base
 accounts-password
 juliancwirko:s-alert
