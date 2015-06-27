@@ -5,7 +5,7 @@ Template.nav.onRendered(function() {
 });
 
 Template.nav.events({
-  'click .logout': function(e, tpl){
+  'click .logout': function(e){
     e.preventDefault();
     Meteor.logout(function(){
       sAlert.info('Logged out succesfully');
