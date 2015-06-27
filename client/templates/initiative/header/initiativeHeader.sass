@@ -1,0 +1,66 @@
+.initiative-header
+  height: 400px
+  background-size: cover
+  position: relative
+  margin-top: -64px
+  transition: opacity .3s ease
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    width: 100%
+    height: 100%
+    background: transparentize($primary-color, .4)
+    
+  
+  &--content
+    z-index: 1
+    h2
+      color: #fff
+      font-weight: 100
+    &__meta
+      text-align: center
+      position: relative
+      padding: 1em 0
+      .votes-count, .comments-count
+        display: inline-block
+        & *
+          color: #fff
+      .votes-count
+        margin-left: 1em
+        .votes-number
+          font-size: 130%
+          display: inline-block;
+          top: -8px
+          margin-left: 8px
+          position: relative;
+      .comments-count
+        .comments-number
+          display: inline-block;
+          top: -8px
+          margin-left: 8px
+          position: relative
+          font-size: 130%
+      .follow-button
+        display: inline-block
+        margin-left: 1em
+        position: relative
+        top: -10px
+        button
+
+          border: none
+          border-radius:  6px
+          color: #FFF 
+          padding: .2em 1em 0
+          
+          &.unfollow
+            background: #666
+            border-bottom: 3px solid darken(#666, 30%)
+          &.follow
+            background: #1e88e5 
+            border-bottom: 3px solid darken(#1e88e5, 30%)
+          &:active
+            border-bottom: none

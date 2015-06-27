@@ -20,7 +20,7 @@
           {{{voteIcon}}} {{votes}}
         </div>
         <div class="comments-count">
-          <i class="mdi-editor-mode-comment"></i> {{zeroIfEmptyOrNotExists comments}}
+          <i class="material-icons tiny">comment</i> {{zeroIfEmptyOrNotExists comments}}
         </div>
         <a href="#" class="initiative-card--user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
@@ -30,7 +30,7 @@
             {{title}}
           </a>
         </h2>
-        <p>
+        <p class="truncate">
           {{description}}
         </p>
       </div>

@@ -1,18 +1,9 @@
 Template.initiativeCard.helpers({
-  isMine: function(){
-    return this.createdBy === Meteor.userId();
-  },
   showStatus: function(){
     return Router.current().route.path(this).match('/profile/');
   },
   status: function(){
     return this.active ? 'Active': 'Inactive';
-  },
-  canFollow: function(){
-    return !_.contains(this.usersFollowing, Meteor.userId());
-  },
-  getFollowClass: function(){
-    return _.contains(this.usersFollowing, Meteor.userId()) ? 'unfollow' : 'follow';
   }
 });
 
