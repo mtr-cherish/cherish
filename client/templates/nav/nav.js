@@ -31,7 +31,7 @@ Template.notificationsDropdown.onRendered(function() {
 
   Tracker.autorun(function () {
     if(instance.view.template.__helpers[" hasNotifications"]()){
-      this.$('.dropdown-button').dropdown({
+      instance.$('.dropdown-button').dropdown({
         beloworigin: true,
         constrainwidth: false
       });
@@ -54,13 +54,16 @@ Template.notificationsDropdown.helpers({
   getNotificationsIcon: function() {
     switch(this.type){
       case 'comment':
-      return  'mdi-editor-mode-comment';
+      return  'comment';
       break;
       case 'vote':
-      return 'mdi-action-favorite';
+      return 'favorite';
       break;
       case 'remove-vote':
-      return 'mdi-action-favorite-outline';
+      return 'favorite_border';
+      break;
+      case 'follow':
+      return 'directions_run';
       break;
     }
   },
