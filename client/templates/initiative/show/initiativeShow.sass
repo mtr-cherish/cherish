@@ -1,16 +1,16 @@
 // Note: Not responsive, only works in large and mobile
 
-$initiative: "initiative"
+$initiative-show: "initiative-show"
 
-.#{$initiative}
+.#{$initiative-show}
+  position: relative
   p
     padding: 0
     margin: 0
   &--user-image
     display: inline-block
-    position: relative
-    float: right
-    top: -30px
+    position: absolute
+    top: -57px
     right: 0
   
   &--content
@@ -18,7 +18,16 @@ $initiative: "initiative"
     .card-title
       color: #333
       margin: 0
-
+    &__username
+      display: block
+      text-align: center
+      position: absolute
+      width: 140px
+      left: 50%
+      transform: translateX(-50%)
+    &__description
+      p
+        font-size: 140%
 .collection-item
   img
     margin-top: 10px

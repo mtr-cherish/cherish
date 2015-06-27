@@ -1,6 +1,6 @@
-body:not(.home)
+body:not(.home), body:not(.show-initiative)
   nav
-    background: transparent
+    background: $navbar-bg-color-main
 
 #logo-container
   height: 56px
@@ -31,6 +31,15 @@ nav
       a
         color: #FFF
   .user-profile
+    li
+      a
+        line-height: 100%
+      a > i
+        display: inline-block
+        font-size: 100%
+        color: $primary-color 
+        position: relative
+        top: 2px
     img
       margin-right: 10px
       position: relative
