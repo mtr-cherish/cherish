@@ -30,3 +30,5 @@ zeroasterisk:throttle
 percolate:synced-cron
 accounts-facebook
 service-configuration
+cfs:standard-packages
+cfs:gridfs
