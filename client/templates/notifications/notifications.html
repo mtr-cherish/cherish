@@ -17,7 +17,7 @@
     <li class="view-all"><a href="{{pathFor 'profile.notifications'}}">View all <i class="material-icons tiny">arrow_forward</i></a></li>
     </ul>
     <a class="dropdown-button" href="#" data-activates="notifications-dropdown">
-      <i class="material-icons tiny center">notifications{{#unless hasNotifications}}_none{{/unless}}</i>
+      <i class="material-icons tiny center">{{#unless hasNotifications}}notifications_none{{else}}notifications{{/unless}}</i>
       {{#if hasNotifications}}<span class="dropdown-button--badge">{{getNotificationsCount}}</span>{{/if}}
     </a>
   </li>

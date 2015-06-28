@@ -11,6 +11,7 @@ Template.notificationsDropdown.onRendered(function() {
 
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
+    console.log(Meteor.user() && hasUnreadNotifications());
     return Meteor.user() && hasUnreadNotifications();
   },
   notifications: function() {
