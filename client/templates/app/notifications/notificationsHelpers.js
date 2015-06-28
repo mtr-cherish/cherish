@@ -52,6 +52,11 @@ Helpers = [
   name: 'getInitiativeSlug', helper: function(){
     return Initiatives.findOne({_id: this.initiativeId}).slug;
   }
+},
+{
+  name: 'getButtonState', helper: function(){
+    return getUnreadNotificationCount() > 0 ? '' : 'disabled';
+  }
 }
 ];
 
@@ -66,6 +71,10 @@ function getNotifications() {
 
 function getUnreadNotificationCount() {
   return _.where(getNotifications(), {isRead: false}).length;
+}
+
+function getUnreadNotifications() {
+  return _.where(getNotifications(), {isRead: false});
 }
 
 function getNotificationCount() {
@@ -160,13 +169,31 @@ function rollUpNotifications(notifications) {
   return rolledUpNotifications;
 }
 
-Template.notificationsDropdown.onRendered(function() {
-  Tracker.autorun(function () {
-    if(getNotificationCount()) {
-      this.$('.dropdown-button').dropdown({
-        beloworigin: true,
-        constrainwidth: false
-      });
-    }
-  });
+Template.notificationsModal.events({
+  'click .unread': function(e) {
+    e.preventDefault();
+
+    var initiative = Initiatives.findOne({_id: this.initiativeId});
+    // Router.go('initiative', {slug: initiative.slug});
+    Meteor.call('markNotificationsAsRead', this.ids, function(err, response) {
+      if(err){
+        sAlert.error('Something went wrong...');
+      }
+    });
+  },
+  'click .mark-all-read': function(e){
+    var notificationsToReadIds = [];
+    _.each(getUnreadNotifications(), function(notification){
+      notificationsToReadIds = notificationsToReadIds.concat(notification.ids)
+    });
+
+    Meteor.call('markNotificationsAsRead', notificationsToReadIds, function(err, response) {
+      if(err){
+        sAlert.error('Something went wrong...');
+      }
+    });
+  },
+  'click .title a': function(e){
+    $('#notifications_modal').closeModal();
+  }
 });

@@ -1,0 +1,8 @@
+<template name="notificationsButton">
+  <li class="notifications-button">
+    <a class="dropdown-button notifications-button--action open-notifications" href="#notifications_modal">
+      <i class="material-icons tiny center">{{#unless hasNotifications}}notifications_none{{else}}notifications{{/unless}}</i>
+      {{#if hasNotifications}}<span class="notifications-button--action__badge">{{getNotificationsCount}}</span>{{/if}}
+    </a>
+  </li>
+</template>

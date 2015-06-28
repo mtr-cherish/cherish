@@ -4,6 +4,7 @@
       "browsers": ["> 5%"],
       "cascade": false
   },
+  "sourceMap": true,
   "includePaths": [
   ".meteor/local/build/programs/server/assets/packages/yang2007chun_materialize-scss/bower_components/materialize/sass/*",
   "client/templates/*",

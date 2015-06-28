@@ -7,7 +7,7 @@
       </ul>
       <ul class="right">
         {{#if currentUser}}
-          {{> notificationsDropdown}}
+          {{> notificationsButton}}
           {{> userDropdown}}
         {{/if}}
       </ul>
@@ -42,7 +42,9 @@
     </ul>
     <a class="dropdown-button" href="#!" data-activates="profile-dropdown">
       <img src="{{avatar}}" class="circle responsive-img" alt="" width="30" height="30">
-      {{currentUser.profile.name}}
+      <span class="user-profile--name">
+        {{currentUser.profile.name}}
+      </span>
       <i class="material-icons tiny right">arrow_drop_down</i>
     </a>
   </li>

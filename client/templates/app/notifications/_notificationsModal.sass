@@ -1,0 +1,61 @@
+.notifications-modal
+  $notification-color: #1e88e5
+  $notification-text-color: #333
+  $unread-bg-color: lighten($notification-color, 40%)
+  $unread-border-color: darken($unread-bg-color, 10%)
+  
+  $read-bg-color: #fff
+  $read-border-color: darken($read-bg-color, 20%)
+  
+  .modal-content
+    // Mark all read button in header
+    .mark-all-read
+      font-size: 60%
+      float: right
+      background-color: $secondary-color
+      padding: 0 1em
+      border-radius: 6px
+      color: #fff
+      border: 1px solid $secondary-color
+      &:disabled
+        background: fade-out($secondary-color, .6)
+        border-color: fade-out($secondary-color, .8)
+
+    // ul.notifications
+    .notifications
+      // li.collection-item
+      .notification-item, .collection-item
+        span
+          padding: 0
+        &.avatar
+          min-height: 64px
+        &--content
+          font-size: 90%
+          img
+            margin: 0 
+          a
+            color: $notification-color 
+            padding: 0
+
+          .title
+            font-size: 100%
+          .date
+            display: block
+            padding: 0
+            color: lighten($notification-text-color, 40%)
+            i
+              display: inline
+              font-size: 100% 
+
+        // Notifiaction States
+        &.read
+          background: $read-bg-color 
+          border-bottom: 1px solid $read-border-color 
+          &:hover
+            background: darken($read-bg-color, 5%) 
+        
+        &.unread
+          background: $unread-bg-color
+          border-bottom: 1px solid $unread-border-color
+          &:hover
+            background: darken($unread-bg-color, 2%)
