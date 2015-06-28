@@ -4,10 +4,9 @@
       "browsers": ["> 5%"],
       "cascade": false
   },
-  "useIndex" : true,
-  "indexFilePath" : "client/style.sass",
   "includePaths": [
-  ".meteor/local/build/programs/server/assets/packages/yang2007chun_materialize-scss/bower_components/materialize/sass",
-  "client/templates/*"
+  ".meteor/local/build/programs/server/assets/packages/yang2007chun_materialize-scss/bower_components/materialize/sass/*",
+  "client/templates/*",
+  "client/"
   ]
 }
