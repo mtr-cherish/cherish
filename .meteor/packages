@@ -8,7 +8,6 @@ meteor-platform
 autopublish
 insecure
 iron:router
-materialize:materialize
 fourseven:scss
 accounts-base
 accounts-password
@@ -32,3 +31,4 @@ accounts-facebook
 service-configuration
 cfs:standard-packages
 cfs:gridfs
+yang2007chun:materialize-scss

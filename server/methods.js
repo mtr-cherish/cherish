@@ -25,7 +25,7 @@ Meteor.startup(function() {
 
       if (!user)
         throw new Meteor.Error(401, 'Can only vote as logged in user')
-      
+
       if(user._id === initiative.createdBy)
         throw new Meteor.Error(401, 'You can\'t vote on your own Initiatives')
 
@@ -87,19 +87,13 @@ Meteor.startup(function() {
         throw new Meteor.Error(500, 'Initiative could not be updated at current');
       }
     },
-    deleteNotification: function(notification){
-      check(notification, {
-        _id: String,
-        initiativeId: String,
-        userId: String,
-        ownerId: String,
-        type: String,
-        isRead: Boolean,
-        createdAt: Number
+    markNotificationsAsRead: function(notificationIds){
+      _.each(notificationIds, function(notificationId) {
+        check(notificationId, String);
       });
 
       if(Meteor.user()){
-        Notifications.update(notification._id, {$set: { isRead: true }});
+        Notifications.update({_id: {$in: notificationIds}}, {$set: {isRead: true}}, {multi: true});
       }
     }
   });

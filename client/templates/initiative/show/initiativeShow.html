@@ -1,14 +1,35 @@
 <template name='initiativeShow'>
+ <div class="initiative-show">
   {{#with initiative}}
-    {{> initiativeCard}}
+  <div class="col s12 m6 l4">
+    <div class="initiative-show--content">
+      <a href="#" class="initiative-show--user-image">
+        <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
+        <span class="initiative-show--content__username">
+          {{currentUser.profile.name}}
+        </span>
+      </a>
+      <div class="initiative-show--content__description">
+        <h3><i class="material-icons small">beenhere</i> The Story</h3>
+        <p >
+          {{description}}
+          <!-- TODO: This will become a more elaborate section soon -->
+        </p>
+      </div>
+      <div class="initiative-show--content__comments">
+        {{#if currentUser}}
+        {{> initiativeCommenter}}
+        {{else}}
+        <span class="not-logged-in">You must be logged in to comment.</span>
+        {{/if}}
+        {{> initiativeComments}}
+      </div>
+    </div>
+  </div>
 
-    {{#if currentUser}}
-      {{> initiativeCommenter}}
-    {{else}}
-      <span class="not-logged-in">You must be logged in to comment.</span>
-    {{/if}}
-    {{> initiativeComments}}
+
   {{/with}}
+</div>
 </template>
 
 <template name="initiativeCommenter">
@@ -27,11 +48,11 @@
   <div class="comments-container">
     <ul class="collection">
       {{#each comments}}
-        <li class="collection-item avatar">
-          <img src="{{getCommentAuthorImage}}" alt="avatar" class="circle responsive-img user-photo">
-          <p class="comment-message left">{{message}}</p>
-          <span class="comment-time right">{{getPrettyDate createdAt}}</span>
-        </li>
+      <li class="collection-item avatar">
+        <img src="{{getCommentAuthorImage}}" alt="avatar" class="circle responsive-img user-photo">
+        <p class="comment-message left">{{message}}</p>
+        <span class="comment-time right">{{getPrettyDate createdAt}}</span>
+      </li>
       {{/each}}
     </ul>
   </div>
