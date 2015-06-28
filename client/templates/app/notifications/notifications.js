@@ -11,6 +11,7 @@ Template.notificationsDropdown.onRendered(function() {
 
 Template.notificationsDropdown.helpers({
   hasNotifications: function(){
+    console.log(Meteor.user() && hasUnreadNotifications());
     return Meteor.user() && hasUnreadNotifications();
   },
   notifications: function() {
@@ -26,15 +27,18 @@ Template.notificationsDropdown.helpers({
     return _.where(getNotifications(), {isRead: false}).length;
   },
   getNotificationsIcon: function() {
-    switch(this.type){
-      case 'comment':
-      return  'mdi-editor-mode-comment';
+    switch(this.text){
+      case 'commented on':
+      return  'comment';
       break;
-      case 'vote':
-      return 'mdi-action-favorite';
+      case 'voted on':
+      return 'favorite';
       break;
-      case 'remove-vote':
-      return 'mdi-action-favorite-outline';
+      case 'removed vote':
+      return 'favorite_border';
+      break;
+      case 'followed':
+      return 'favorite_border';
       break;
     }
   },

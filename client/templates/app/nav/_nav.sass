@@ -1,0 +1,48 @@
+body:not(.home), body:not(.show-initiative)
+  nav
+    background: $navbar-bg-color-main
+
+#logo-container
+  height: 56px
+  border-bottom: 2px solid darken($primary-color, 20%)
+  @media only screen and (min-width: 601px)
+    height: 64px
+
+#logo
+  font-size: 25px
+  color: #fff
+  background-image: url('images/cherish-logo.png')
+  background-size: 30px
+  background-repeat: no-repeat
+  background-position: left center
+  padding-left: 2.5rem
+  display: block
+  width: 200px
+
+nav
+  background-color: transparent
+  .nav-wrapper
+    z-index: 1
+  .side-nav
+    li:first-child
+      background-color: $primary-color
+    li:hover, li.active
+      background-color: $primary-color
+      a
+        color: #FFF
+  .user-profile
+    li
+      a
+        line-height: 100%
+      a > i
+        display: inline-block
+        font-size: 100%
+        color: $primary-color 
+        position: relative
+        top: 2px
+    img
+      margin-right: 10px
+      position: relative
+      top: 10px
+
+

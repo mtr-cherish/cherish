@@ -3,7 +3,7 @@
     {{> sidenav}}
     <div class="nav-wrapper">
       <ul class="left">
-        <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a></li>
+        <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a></li>
       </ul>
       <ul class="right">
         {{#if currentUser}}
@@ -35,15 +35,15 @@
 <template name="userDropdown">
   <li class="user-profile">
     <ul id="profile-dropdown" class="dropdown-content">
-      <li><a href="{{pathFor 'profile'}}">My profile</a></li>
-      <li><a href="{{pathFor 'initiatives.mine'}}">My Initiatives</a></li>
+      <li><a href="{{pathFor 'profile'}}"><i class="material-icons tiny">account_circle</i> My profile</a></li>
+      <li><a href="{{pathFor 'initiatives.mine'}}"><i class="material-icons tiny">favorite</i> My Initiatives</a></li>
       <li class="divider"></li>
-      <li><a class="logout" href="#">Sign out</a></li>
+      <li><a class="logout" href="#"><i class="material-icons tiny">lock_open</i> Sign out</a></li>
     </ul>
     <a class="dropdown-button" href="#!" data-activates="profile-dropdown">
       <img src="{{avatar}}" class="circle responsive-img" alt="" width="30" height="30">
       {{currentUser.profile.name}}
-      <i class="mdi-navigation-arrow-drop-down right"></i>
+      <i class="material-icons tiny right">arrow_drop_down</i>
     </a>
   </li>
 </template>

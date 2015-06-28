@@ -17,6 +17,26 @@
   </footer>
 </template>
 
+<template name="_initiativeLayout">
+  <header>
+    {{> nav}}
+    {{> yield region="header"}}
+  </header>
+  <main>
+    <div class="container">
+      {{> sAlert}}
+      {{#if hasUpdates}}
+        {{> initiativesUpdate}}
+      {{/if}}
+      {{> yield}}
+     
+    </div>
+  </main>
+  <footer>
+    {{> footer}}
+  </footer>
+</template>
+
 <template name="_layout">
   <header>
     {{> nav}}
