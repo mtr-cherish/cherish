@@ -18,7 +18,6 @@ Template.profileNotifications.events({
     });
   },
   'click .title a': function(e){
-      console.log(this);
       $('#notifications_modal').closeModal();
   }
 });
