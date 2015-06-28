@@ -1,20 +1,19 @@
 <template name="notificationsDropdown">
   <li class="notifications">
-    <ul id="notifications-dropdown" class="dropdown-content">
-    {{#each notifications}}
-      <li class="notification {{getReadClass}}">
+    <ul id="notifications-dropdown" class="collection dropdown-content">
+      {{#each notifications}}
+      <li class="collection-item notification avatar {{getReadClass}}">
         <div class="notification-content">
-          <span class="notification-content--avatar"><img src="{{avatar}}" class="circle responsive-img" alt="" width="40" height="40"></span>
-          <div class="notification-content--body">
+          <img src="{{avatar}}" class="circle responsive-img" alt="" width="40" height="40">
+          <span class="title">
             <b>{{users}}{{othersText}}</b> {{text}} <a href="{{pathFor 'initiative' slug=getInitiativeSlug}}">{{getInitiativeTitle}}</a>
-            <span class="notification-content--date"><i class="material-icons tiny">{{getNotificationsIcon}}</i> {{getPrettyDate createdAt}}</span>
-          </div>
+          </span>
+          <span class="notification-content--date"><i class="material-icons tiny">{{getNotificationsIcon}}</i> {{getPrettyDate createdAt}}</span>
         </div>
       </li>
-    {{else}}
-      <li><a href="#"><em>No notifications</em></a></li>
-    {{/each}}
-    <li class="view-all"><a href="{{pathFor 'profile.notifications'}}">View all <i class="material-icons tiny">arrow_forward</i></a></li>
+      {{/each}}
+
+      <li class="view-all"><a href="{{pathFor 'profile.notifications'}}">View all <i class="material-icons tiny">arrow_forward</i></a></li>
     </ul>
     <a class="dropdown-button" href="#" data-activates="notifications-dropdown">
       <i class="material-icons tiny center">{{#unless hasNotifications}}notifications_none{{else}}notifications{{/unless}}</i>
