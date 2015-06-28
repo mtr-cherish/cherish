@@ -1,0 +1,26 @@
+<template name="initiativeHeader">
+  {{#with initiative}}
+  <div class="initiative-header valign-wrapper" style="background-image: url({{getInitiativeImage}})">
+    <div class="container initiative-header--content">
+      <h2 class="center-align valign">{{title}}</h2>
+      <div class="initiative-header--content__meta">
+        <div class="comments-count">
+          <i class="material-icons small">comment</i>
+          <span class="comments-number">{{zeroIfEmptyOrNotExists comments}}</span>
+        </div>
+        <div class="votes-count">
+          {{{voteIcon 'small'}}}
+          <span class="votes-number">{{votes}}</span>
+        </div>
+        {{#if currentUser}}
+        {{#unless isMine}}
+        <div class="follow-button">
+          <button class="{{getFollowClass}}">{{#if canFollow}}Follow{{else}}Unfollow{{/if}}</button>
+        </div>
+        {{/unless}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  {{/with}}
+</template>

@@ -8,7 +8,6 @@ meteor-platform
 autopublish
 insecure
 iron:router
-materialize:materialize
 fourseven:scss
 accounts-base
 accounts-password
@@ -30,3 +29,4 @@ zeroasterisk:throttle
 percolate:synced-cron
 accounts-facebook
 service-configuration
+yang2007chun:materialize-scss
