@@ -1,3 +1,23 @@
 <template name="profileNotifications">
-  <p>Placeholder</p>
+  <div class="profile-notifications">
+  <ul class="collection with-header notifications">
+      <li class="collection-header">
+        <h4>Notifications</h4>
+      </li>
+      {{#each notifications}}
+      <li class="collection-item notification avatar {{getReadClass}}">
+        <div class="notification-content">
+          <img src="{{avatar}}" class="circle responsive-img" alt="" width="40" height="40">
+          <span class="title">
+            <b>{{users}}{{othersText}}</b> {{text}} <a href="{{pathFor 'initiative' slug=getInitiativeSlug}}">{{getInitiativeTitle}}</a>
+          </span>
+          <span class="notification-content--date"><i class="material-icons tiny">{{getNotificationsIcon}}</i> {{getPrettyDate createdAt}}</span>
+        </div>
+        <a href="#" class="{{getReadClass}} secondary-content">
+          <i class="material-icons">{{#unless isRead}}star{{else}}star_border{{/unless}}</i>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
