@@ -91,7 +91,7 @@ function getAvatar(userId) {
 
 function getUserNameById(userId){
   var user = Meteor.users.findOne({_id: userId});
-  return user.profile.name.substring(0, user.profile.name.indexOf('@'));
+  return user.profile.name;
 }
 
 function edAWord(word) {
