@@ -33,7 +33,13 @@
     max-height: 350px 
     overflow-y: scroll 
     z-index: 3
+    .collection-item
+      &.avatar
+        .title, .title a
+          font-size: 100%
     li.view-all
+      a
+        font-size: 100%
       i
         display: inline-block
         font-size: 100%
@@ -43,10 +49,11 @@
     $notification-content: 'notification-content'
     border-bottom: 1px solid lighten(#333, 50%)
     line-height: 1.5rem !important 
+
     &.collection-item.avatar
       min-height: 64px;
     .#{$notification-content}
-      // padding: 1em 
+      font-size: 90%
       img
         margin: 0
         padding: 0
