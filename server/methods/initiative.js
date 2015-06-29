@@ -8,7 +8,7 @@ Meteor.methods({
     if(user._id === initiative.createdBy)
       throw new Meteor.Error(401, 'You can\'t follow your own Initiatives')
 
-    if (!Throttle.checkThenSet('vote', 1, 3000))
+    if (!Throttle.checkThenSet('follow', 10, 1000))
       throw new Meteor.Error(500, 'You can only do this every 3 seconds');
 
     if (_.contains(initiative.usersFollowing, user._id)) {
@@ -18,9 +18,9 @@ Meteor.methods({
       // Meteor.users.update(Meteor.userId(), {$pull: {'votedOn': initiative._id}});
       return false;
     }
-    
+
     Initiatives.update(initiative._id, {
-     
+
       $addToSet: { usersFollowing: user._id }
     });
     return true;
