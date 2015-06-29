@@ -9,7 +9,6 @@ Template.nav.events({
     e.preventDefault();
     Meteor.logout(function(){
       sAlert.info('Logged out succesfully');
-      Router.go('initiatives');
     });
   }
 })
