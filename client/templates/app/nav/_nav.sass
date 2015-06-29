@@ -7,6 +7,8 @@ body.home, body.show-initiative
     
 nav
   .nav-wrapper
+    .button-collapse
+      margin-left: 10px
     .brand-logo
       background-image: url('images/cherish-logo.png')
       background-size: 30px
@@ -50,6 +52,11 @@ nav
   .side-nav
     a
       position: relative
+      i
+        display: inline;
+        font-size: 170%;
+        position: relative
+        top: 3px
     a:hover
       color: #fff
       .notifications-button--action
@@ -59,6 +66,8 @@ nav
           top: 21px
           background-color: #333
           color: #fff
+      
+
     li:first-child
       background-color: $primary-color
     li:hover, li.active
