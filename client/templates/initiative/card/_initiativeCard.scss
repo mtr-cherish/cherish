@@ -1,0 +1,101 @@
+  // .card
+  //   transition: box-shadow 0.2s
+  //   .card-image
+  //     img
+  //       border-radius: 2px 2px 0 0
+  //       position: relative
+  //       left: 50%
+  //       width: 100%
+  //       min-height: 100%
+  //       height: 100px
+  //       transform: translateX(-50%)
+  // .card:hover
+  //   box-shadow: 0 0 1px 2px #FFF
+  // &--user-image
+  //   display: block
+  //   position: relative
+  //   float: right
+  //   top: -55px
+  //   right: 0
+  //   height: 60px
+  //   width: 60px
+  // &--content
+  //   padding: 0 1em
+  //   .card-title
+  //     margin: .5em 0 .2em 0 
+  //     a
+  //       color: $off-black
+
+
+  // Note: Not responsive, only works in large and mobile
+
+  $initiativeCard: "initiative-card";
+
+  .#{$initiativeCard}{
+    .edit-initiative {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      color: #333;
+      background-color: #fff;
+      transform: translateX(-50%);
+        padding: 0.2em .5em 0.2em .5em;
+      i.material-icons {
+        position: relative;
+        top: 2px;
+      }
+    }
+    p {
+      padding: 0;
+      margin: 0;
+    }
+    .card {
+      transition: box-shadow 0.2s;
+      .card-image {
+        img {
+          border-radius: 2px 2px 0 0;
+          position: relative;
+          left: 50%;
+          width: 100%;
+          min-height: 100%;
+          height: 100px;
+          transform: translateX(-50%);
+        }
+      }
+      .card-reveal {
+        display: block;
+      }
+    }
+    .card:hover {
+      box-shadow: 0 0 1px 2px #FFF;
+    }
+    .card-title:hover {
+    // text-decoration: underline
+  }
+  &--user-image {
+    display: inline-block;
+    position: relative;
+    float: right;
+    top: -30px;
+    right: 0;
+  }
+  &--content {
+    padding: 0 1em;
+    .card-title {
+      margin: .5em 0 .2em 0 ;
+      a {
+        color: $off-black;
+      }
+    }
+  }
+  .card-reveal {
+    transition: transform .3s ease, opacity .3s ease;
+    display: block;
+    opacity: 0;
+    transform: translateY(0%);
+    &.open {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
+  }
+}

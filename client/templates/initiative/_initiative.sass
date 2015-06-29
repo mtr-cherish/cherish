@@ -1,3 +1,22 @@
+$categories: event open-source non-profit charity
+$colors: #ffca28 #66BB6A #d4e157 #ff7043
+
+
+=category-badges
+  $color_pos: 1
+  @each $category in $categories
+    
+    $current-color: nth($colors, $color_pos)
+    $lightness: lightness($current-color)
+    
+    &.#{$category}
+      background: $current-color
+      @if $lightness < 50
+        color: lighten($current-color, 40%)
+      @else
+        color: darken($current-color, 40%)
+    $color_pos: $color_pos + 1
+ 
 .initiative
   .edit-initiative
     position: absolute

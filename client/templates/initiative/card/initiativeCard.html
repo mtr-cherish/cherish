@@ -2,13 +2,20 @@
   <div class="initiative initiative-card col s12 m6 l4">
     <div class="card small">
       <div class="card-image">
-        <a href="{{#unless isMine}}{{pathFor 'initiative'}}{{/unless}}"><img src="{{getInitiativeImage}}"></a>
+        <a href="{{#unless isMine}}{{pathFor 'initiative'}}{{/unless}}">
+          <img src="{{getInitiativeImage}}" />
+        </a>
       </div>
+      
       <div class="initiative-card--content">
         {{#if showStatus}}
           {{#if isMine}}
-            <a href="" class="badge status is-{{status}}">{{status}}</a>
-            <a href="#" class="edit-initiative"><i class="material-icons tiny">mode_edit</i> edit</a>
+            <a href="" class="badge status is-{{status}}">
+              {{status}}
+            </a>
+            <a href="#" class="edit-initiative">
+              <i class="material-icons tiny">mode_edit</i>
+            </a>
           {{/if}}
         {{/if}}
         <span class="badge type {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
@@ -25,9 +32,11 @@
         <div class="comments-count">
           <i class="material-icons tiny">comment</i> {{zeroIfEmptyOrNotExists comments}}
         </div>
+        {{#unless isMine}}
         <a href="#" class="initiative-card--user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
         </a>
+        {{/unless}}
         <h2 class="card-title truncate">
           <a href="{{pathFor 'initiative'}}">
             {{title}}
