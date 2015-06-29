@@ -1,19 +1,19 @@
 <template name="_initiativesLayout">
+  {{> sAlert}}
   <header>
     {{> nav}}
     {{> yield region="header"}}
+    {{#if hasUpdates}}
+        {{> initiativesUpdate}}
+    {{/if}}
   </header>
   <main>
     <div class="container">
-      {{> sAlert}}
-      {{#if hasUpdates}}
-        {{> initiativesUpdate}}
-      {{/if}}
-      {{> yield}}
-      {{> notificationsModal}}
+      {{> yield}}      
     </div>
   </main>
   <footer>
-    {{> yield region="footer"}}
+    {{> footer}}
   </footer>
+  {{> notificationsModal}}
 </template>
