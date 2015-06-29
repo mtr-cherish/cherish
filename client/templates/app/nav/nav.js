@@ -33,6 +33,6 @@ Template.sidenav.onRendered(function(){
 
 Template.sidenav.events({
   'click .open-notifications': function(){
-
+    $('#notifications_modal').openModal();
   }
 });
