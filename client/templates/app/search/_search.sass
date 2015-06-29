@@ -1,13 +1,28 @@
 .search
-  .input-field
-    margin-top: 60px
+  input
+    font-size: 2rem
+    border: none
+  label
+    position: relative
+    top: 3px
+    i
+      font-size: 3rem
   input, label
-    color: #fff
+    color: $primary-color !important
+    font-size: 1.6rem !important
     &:focus
       border: none
       color: #fff
  
   .close-button
     position: absolute
-    top: 0
-    right: 15px  
+    top: 5px
+    right: 15px
+    font-size: 1rem
+    background: fade-out($secondary-color, .2)
+    width: 28px
+    height: 28px
+    line-height: 37px
+    i
+      font-size: 1.2rem
+      line-height: 2rem
