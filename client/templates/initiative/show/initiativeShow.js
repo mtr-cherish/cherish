@@ -57,7 +57,6 @@ Template.initiativeComments.helpers({
   },
 
   comments: function(){
-    console.log('test');
     if(this && this.comments) {
       return this.comments.sort(function(a, b) {
         if(a && b && a.createdAt && b.createdAt) {
