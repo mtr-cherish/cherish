@@ -24,24 +24,27 @@
     background-color: rgba(0,0,0,.3)
   .container
     z-index: 1
+    height: 100%
+    // SHows on small screens
+    .brand-logo
+      background-image: url('images/cherish-logo.png')
+      background-size: 30px
+      background-repeat: no-repeat
+      background-position: left center
+      color: #fff
+      display: block
+      font-size: 25px
+      left: 50%
+      padding-left: 2.5rem
+      position: absolute
+      top: 80px
+      transform: translateX(-50%)
+      width: 130px
     h2
       color: #FFF
       font-weight: 100
-      margin-top: 70px
+      margin-top: 140px
       text-align: center
-      &:before
-        content: ''
-        background-color: #FFF
-        background-image: url('images/cherish-logo.png')
-        background-position: center
-        background-size: 80%
-        background-repeat: no-repeat
-        width: 5rem
-        height: 5rem
-        display: block
-        position: relative
-        margin: 0 auto 1rem auto
-        text-indent: -9999px
   .form-container
     background-color: #fff
     z-index: 1
@@ -59,4 +62,3 @@
     //   input[type="text"]:focus
     //     border-bottom: 1px solid #00A2E8
     //     box-shadow: none
-    

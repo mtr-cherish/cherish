@@ -1,20 +1,20 @@
 .notifications-button
   &--action
-    font-size: 100%  
+    position: relative
+    // font-size: 100%  
     i.material-icons
-      font-size: 120%
+      font-size: 140%
       position: relative
       top: 2px
-      display: inline
     &__badge
-      background: darken($primary-color, 30%)
-      position: relative
+      background: $secondary-color
+      position: absolute
       display: inline-block
       height: 20px
       width: 20px
       border-radius: 100%
       line-height: 20px
       text-align: center
-      left: -9px
-      top: -7px
+      right: 7px
+      top: 15px
       font-size: 80%

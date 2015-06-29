@@ -1,7 +1,8 @@
 <template name="_cherishLayout">
   {{> sAlert}}
+  {{> nav}}
   <header>
-    {{> nav}}
+    
     {{> yield region="header"}}
     {{#if hasUpdates}}
         {{> initiativesUpdate}}
