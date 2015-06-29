@@ -1,5 +1,6 @@
-Template.initiativeShow.helpers({
+/*Template.initiativeShow.helpers({
   comments: function(){
+    console.log('test');
     if(this && this.comments) {
       return this.comments.sort(function(a, b) {
         if(a && b && a.createdAt && b.createdAt) {
@@ -10,7 +11,7 @@ Template.initiativeShow.helpers({
       });
     }
   }
-});
+});*/
 
 Template.initiativeShow.events({
   'click .votes': function(e, tpl){
@@ -52,6 +53,19 @@ Template.initiativeComments.helpers({
       return user.profile.avatarImg;
     } else {
       return '/images/placeholder-avatar.jpg';
+    }
+  },
+
+  comments: function(){
+    console.log('test');
+    if(this && this.comments) {
+      return this.comments.sort(function(a, b) {
+        if(a && b && a.createdAt && b.createdAt) {
+          return b.createdAt - a.createdAt;
+        } else {
+          return 1;
+        }
+      });
     }
   }
 })
