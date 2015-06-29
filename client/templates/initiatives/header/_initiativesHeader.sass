@@ -1,4 +1,4 @@
-.initiatives--header
+.initiatives-header
   background-image: url('images/ngo.png')
   background-repeat: no-repeat
   background-size: cover
@@ -8,11 +8,11 @@
   flex-direction: column
   flex-flow: center
   width: 100%
-  position: absolute
-  top: 0
+  position: relative
+  top: -67px
   left: 0
   right: 0
-  height: 360px
+  height: 400px
   z-index: 0
   &:before
     content: ''
@@ -42,18 +42,21 @@
         position: relative
         margin: 0 auto 1rem auto
         text-indent: -9999px
-    .form-container
-      background-color: rgba(0,0,0, .5)
-      bottom: 0
-      height: 90px
-      left: 0
-      right: 0
-      padding: 1.5em 1em 1.5em 1em
-      position: absolute
-    form
-      input[type="text"]:focus:not([readonly]) + label
-        color: #00A2E8
-      input[type="text"]:focus
-        border-bottom: 1px solid #00A2E8
-        box-shadow: none
-      
+  .form-container
+    background-color: #fff
+    z-index: 1
+    height: 70px
+    padding: 1em
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    .row
+      position: relative
+    // form
+    //   input[type="text"]:focus:not([readonly]) + label
+    //     color: #00A2E8
+    //   input[type="text"]:focus
+    //     border-bottom: 1px solid #00A2E8
+    //     box-shadow: none
+    

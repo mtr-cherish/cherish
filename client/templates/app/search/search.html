@@ -2,15 +2,17 @@
   <div class="search">
     <form action="search" id="initiative_search_form" class="row">
       <div class="row">
-        <div class="input-field col s12">
-          <input id="search_initiatives" type="text" class="validate">
-          {{#if isSearching}}
-            <span class="btn-small btn-floating close-button"><i class="mdi-content-clear"></i></span>
-          {{/if}}
+      <div class="col s2 m1">
           <label for="search_initiatives">
-            <i class="material-icons">search</i> Start exploring ...
+            <i class="material-icons">search</i>
           </label>
         </div>
+        <div class="col s10 m11">
+          <input id="search_initiatives" placeholder="Find inspiring projects" type="text" class="">
+          {{#if isSearching}}
+            <span class="btn-small btn-floating close-button"><i class="material-icons">clear</i></span>
+          {{/if}}
+        </div> 
       </div>
     </form>
   </div>
