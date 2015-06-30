@@ -1,0 +1,47 @@
+<template name="initiativeMine">
+  <div class="initiative-mine">
+    {{#with initiative}}
+    <div class="row">
+      <div class="col s12 m9">
+        <div class="initiative-show--content">
+          <div class="initiative-show--content__description">
+            <h3><i class="material-icons small">beenhere</i> The Story</h3>
+            <p >
+              {{description}}
+              <!-- TODO: This will become a more elaborate section soon -->
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="initiative-meta">
+        <h5>Initiaitive meta...</h5>
+        <ul>
+          <li>Something cool here</li>
+          <li>Maybe goals and what not</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <div class="initiative-items row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s3"><a href="#comments">Comments</a></li>
+          <li class="tab col s3 disabled"><a href="#test3">N/A</a></li>
+        </ul>
+      </div>
+      <div id="comments" class="col s12">
+        <div class="initiative-mine--comments">
+          {{#if currentUser}}
+          {{> initiativeCommenter}}
+          {{else}}
+          <span class="not-logged-in">You must be logged in to comment.</span>
+          {{/if}}
+          {{> initiativeComments}}
+        </div>
+      </div>
+    </div>
+    <div id="test3" class="col s12">Test 2</div>
+    {{/with}}
+  </div>
+</template>

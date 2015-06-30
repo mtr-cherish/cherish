@@ -26,7 +26,7 @@
     <!--<li><a href="{{pathFor 'about'}}">About</a></li>-->
     {{#if currentUser }}
       <li><a href="{{pathFor 'profile'}}"><i class="material-icons tiny">account_circle</i> My Profile</a></li>
-      <li><a href="{{pathFor 'initiatives.mine'}}"><i class="material-icons tiny">favorite</i> My Initiatives</a></li>
+      <li><a href="{{pathFor 'initiative.mine'}}"><i class="material-icons tiny">favorite</i> My Initiative</a></li>
       <li class="divider"></li>
       <li>
         <a class="notifications-button--action open-notifications" href="#notifications_modal">
@@ -46,7 +46,7 @@
 <template name="userDropdown">
   <ul id="profile-dropdown" class="dropdown-content user-dropdown">
     <li><a href="{{pathFor 'profile'}}"><i class="material-icons tiny">account_circle</i> My profile</a></li>
-    <li><a href="{{pathFor 'initiatives.mine'}}"><i class="material-icons tiny">favorite</i> My Initiatives</a></li>
+    <li><a href="{{pathFor 'initiative.mine'}}"><i class="material-icons tiny">favorite</i> My Initiative</a></li>
     <li class="divider"></li>
     <li><a class="logout" href="#"><i class="material-icons tiny">lock_open</i> Sign out</a></li>
   </ul>
