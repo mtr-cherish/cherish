@@ -10,7 +10,11 @@
           </div>
           <div class="col s12 m10 profile-self--body">
             <h4>{{name}}</h4>
-            <a class="button btn waves-effect waves-light new-initiative" href="{{pathFor 'initiatives.create'}}">New Initiative</a>
+            {{#if hasInitiative}}
+              <a class="button btn waves-effect waves-light new-initiative" href="{{pathFor 'initiative.mine'}}">My Initiative</a>
+              {{else}}
+              <a class="button btn waves-effect waves-light new-initiative" href="{{pathFor 'initiative.create'}}">Start Your Initiative</a>
+            {{/if}}
           </div>
         {{/with}}
       </div>
@@ -24,12 +28,12 @@
             <p>Votes</p>
           </li>
           <li class="align-center col m4 s4">
-            <h4>{{initiativesCount}}</h4>
-            <p>Active initiatives</p>
-          </li>
-          <li class="align-center col m4 s4">
             <h4>{{followerCount}}</h4>
             <p>Followers</p>
+          </li>
+          <li class="align-center col m4 s4">
+            <h4>0</h4>
+            <p>Stats?</p>
           </li>
         </ul>
       </div>
