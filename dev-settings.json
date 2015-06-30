@@ -1,6 +1,16 @@
 {
   "mode": "dev",
   "public": {
-    "initiativeLimit": 5
+    "initiativeLimit": 5,
+    "analyticsSettings": {
+      "Segment.io"       : {"apiKey": "dzvc5pzv28"},
+      "KISSmetrics": {
+        "apiKey": "f0488f56e60e881012b573102b0aa036b4f3a1a3"
+        },
+        "Keen IO": {
+          "projectId" : "55921a95e08557381295f7b6",
+          "writeKey"  : "2125a0509a770c2dd6c2d28ef66f5b3a742612e326e0d9b0fb36f03d0511342e536d706b9757a78dd0d9081abe1552b1727d29b43f8ebcb81cdb1eeb327b6b64edab5ac32f9f8c57c0d0dd26ce613b85c530883786fa35c9c53d2e1fbe989504e9caa0ae2d7a4070c3868ab7194d7e33" 
+        }
+      }
+    }
   }
-}

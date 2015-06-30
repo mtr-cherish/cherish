@@ -172,7 +172,10 @@ function rollUpNotifications(notifications) {
 Template.notificationsModal.events({
   'click .unread': function(e) {
     e.preventDefault();
-
+      analytics.track("Read Notifcation", {
+        eventName: "Notifications",
+        type: this.type
+      });
     var initiative = Initiatives.findOne({_id: this.initiativeId});
     // Router.go('initiative', {slug: initiative.slug});
     Meteor.call('markNotificationsAsRead', this.ids, function(err, response) {
