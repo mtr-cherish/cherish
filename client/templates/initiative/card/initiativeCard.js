@@ -11,22 +11,21 @@ Template.initiativeCard.events({
   'click .votes': function(e, tpl){
     // TODO: restrict votes to 1 pr initiative
     var initiative = this;
-    addOrRemoveVote(initiative); 
+    addOrRemoveVote(initiative);
 
   },
   'dblclick .touch .card-image a': function(e, tpl){
     console.log('double click initiative');
     e.preventDefault();
     var initiative = this;
-    addOrRemoveVote(initiative); 
+    addOrRemoveVote(initiative);
   },
   'click .status': function(e, tpl){
-    Meteor.call('setInactiveActive', this, function(err, res){
-      if(err){
-        sAlert.error(err.message);
-      } else {
-        sAlert.info('initiative updated');
+    Meteor.call('setInactiveActive', this, function(err, res) {
+      if (!err) {
+        return;
       }
+      sAlert.error(err.message);
     });
   },
   'click .follow-button': function(e, tpl){
