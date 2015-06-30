@@ -47,7 +47,7 @@ Template.initiativeCreate.events({
     });
   },
 
-  'click input[type=checkbox]': function(event, template) {
+  'click input[type=checkbox]': function(event) {
     $('.checkboxes').find('input[type=checkbox]:checked').each(function() {
       if($(this).val() == event.target.value) {
         $(this).attr('checked', true);

@@ -27,7 +27,7 @@ Template.initiativeCard.events({
       }
     });
   },
-  'click .follow-button': function(e, tpl){
+  'click .follow-button': function(e){
     e.preventDefault();
     followUnfollow(this);
   }
