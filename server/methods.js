@@ -9,7 +9,7 @@ Meteor.startup(function() {
         throw new Meteor.Error(401, 'Can only comment as logged in user')
       }
 
-      if (!Throttle.checkThenSet('addcomment', 1, 3000)) {
+      if (!Throttle.checkThenSet('addcomment', 5, 30000)) {
         throw new Meteor.Error(500, 'You can only comment every 3 seconds');
       }
       Meteor.users.update(userId, { $addToSet: { commentedOn: initiativeId } });
@@ -29,7 +29,7 @@ Meteor.startup(function() {
       if(user._id === initiative.createdBy)
         throw new Meteor.Error(401, 'You can\'t vote on your own Initiatives')
 
-      if (!Throttle.checkThenSet('vote', 1, 3000))
+      if (!Throttle.checkThenSet('vote', 10, 1000))
         throw new Meteor.Error(500, 'You can only vote every 3 seconds');
 
       if (_.contains(user.votedOn, initiative._id)) {
