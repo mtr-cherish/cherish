@@ -45,32 +45,22 @@ Template.registerHelper('isMine', function(){
 });
 
 // Helper functions
-addOrRemoveVote = function(initiative){
-  Meteor.call('addOrRemoveVote', initiative, function(err, result) {
-    if (err) {
-      sAlert.error(err.message);
+addOrRemoveVote = function(initiative) {
+  Meteor.call('addOrRemoveVote', initiative, function(err) {
+    if (!err) {
       return;
     }
-    if (result) {
-      sAlert.info('Thanks for voting on: ' + initiative.title);
-      return;
-    }
-    sAlert.error('Ok, we removed your vote...');
+    sAlert.error(err.message);
   });
   return;
 }
 
 followUnfollow = function(initiative){
-  Meteor.call('followUnfollow', initiative, function(err, result) {
-    if (err) {
-      sAlert.error(err.message);
+  Meteor.call('followUnfollow', initiative, function(err) {
+    if (!err) {
       return;
     }
-    if (result) {
-      sAlert.info('You\'re now following ' + initiative.title);
-      return;
-    }
-    sAlert.info('You\'re no longer following ' + initiative.title);
+    sAlert.error(err.message);
   });
   return;
 }

@@ -5,13 +5,16 @@ Template.nav.onRendered(function() {
 });
 
 Template.nav.events({
-  'click .logout': function(e){
+  'click .logout': function(e) {
     e.preventDefault();
-    Meteor.logout(function(){
-      sAlert.info('Logged out succesfully');
+    Meteor.logout(function(err) {
+      if (!err) {
+        return;
+      }
+      sAlert.error('Sorry, we were unable to log you out');
     });
   }
-})
+});
 
 Template.userDropdown.onRendered(function() {
   this.$('.dropdown-button').dropdown({
