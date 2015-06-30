@@ -8,5 +8,8 @@ Template.profileSelf.helpers({
     return Initiatives.find({
       'comments.createdBy': Meteor.userId()
     });
+  },
+  hasInitiative: function(){
+    return Meteor.user().hasInitiative();
   }
 })
