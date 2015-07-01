@@ -22,10 +22,9 @@ Template.initiativeCard.events({
   },
   'click .status': function(e, tpl){
     Meteor.call('setInactiveActive', this, function(err, res) {
-      if (!err) {
-        return;
+      if (err) {
+        sAlert.error(err.message);
       }
-      sAlert.error(err.message);
     });
   },
   'click .follow-button': function(e, tpl){

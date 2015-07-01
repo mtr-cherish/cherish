@@ -39,11 +39,11 @@ Template.initiativeCreate.events({
     }
 
     Meteor.call('createInitiative', title, summary, category, function(err, response) {
-      if (!err) {
-        Router.go('initiative', {slug: response});
+      if (err) {
+        sAlert.error(err.reason);
         return;
       }
-      sAlert.error(err.reason);
+      Router.go('initiative', {slug: response});
     });
   },
 

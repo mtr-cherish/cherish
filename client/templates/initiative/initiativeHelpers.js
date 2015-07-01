@@ -47,20 +47,16 @@ Template.registerHelper('isMine', function(){
 // Helper functions
 addOrRemoveVote = function(initiative) {
   Meteor.call('addOrRemoveVote', initiative, function(err) {
-    if (!err) {
-      return;
+    if (err) {
+      sAlert.error(err.message);
     }
-    sAlert.error(err.message);
   });
-  return;
 }
 
 followUnfollow = function(initiative){
   Meteor.call('followUnfollow', initiative, function(err) {
-    if (!err) {
-      return;
+    if (err) {
+      sAlert.error(err.message);
     }
-    sAlert.error(err.message);
   });
-  return;
 }

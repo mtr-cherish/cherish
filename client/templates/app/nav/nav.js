@@ -8,10 +8,9 @@ Template.nav.events({
   'click .logout': function(e) {
     e.preventDefault();
     Meteor.logout(function(err) {
-      if (!err) {
-        return;
+      if (err) {
+        sAlert.error('Sorry, we were unable to log you out');
       }
-      sAlert.error('Sorry, we were unable to log you out');
     });
   }
 });
