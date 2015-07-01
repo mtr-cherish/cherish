@@ -1,9 +1,9 @@
-function checkEmailIsValid(aString) {
+checkEmailIsValid = function checkEmailIsValid(aString) {
   aString = aString || '';
   return aString.length > 1 && aString.indexOf('@') > -1;
 }
 
-function checkPasswordIsValid(aString) {
+checkPasswordIsValid = function checkPasswordIsValid(aString) {
   aString = aString || '';
   return aString.length > 7;
 }

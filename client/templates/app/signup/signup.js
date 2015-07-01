@@ -19,11 +19,11 @@ Template.publicSignup.events({
     }
 
     Accounts.createUser({
-      username: emailAddress,
-      email: emailAddress,
+      username: email,
+      email: email,
       password: password,
       profile: {
-        name: emailAddress
+        name: email
       },
       votedOn: [],
       commentedOn: []
