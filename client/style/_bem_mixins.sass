@@ -1,0 +1,15 @@
+=element($el)
+  &__#{$el}
+    @content
+
+=modifier($mod)
+  &--#{$mod}
+    @content
+
+=e($el)
+  +element($el)
+    @content
+
+=m($mod)
+  +modifier($mod)
+    @content

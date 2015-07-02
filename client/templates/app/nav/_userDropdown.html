@@ -1,0 +1,16 @@
+<template name="userDropdown">
+  <ul id="profile-dropdown" class="dropdown-content user-dropdown">
+    <li><a href="{{pathFor 'profile'}}"><i class="material-icons tiny">account_circle</i> My profile</a></li>
+    <li><a href="{{pathFor 'initiatives.mine'}}"><i class="material-icons tiny">favorite</i> My Initiatives</a></li>
+    <li class="divider"></li>
+    <li><a class="logout" href="#"><i class="material-icons tiny">lock_open</i> Sign out</a></li>
+  </ul>
+  <li class="user-profile">
+    <a class="dropdown-button" href="#" data-activates="profile-dropdown">
+      <img src="{{avatar}}" class="circle responsive-img" alt="" width="30" height="30">
+      <span class="user-profile--name">
+        {{currentUser.profile.name}}
+      </span><i class="material-icons right">arrow_drop_down</i>
+    </a>
+  </li>
+</template>

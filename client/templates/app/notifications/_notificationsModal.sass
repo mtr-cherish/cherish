@@ -1,4 +1,4 @@
-.notifications-modal
+.modal--notifications
   $notification-color: #1e88e5
   $notification-text-color: #333
   $unread-bg-color: lighten($notification-color, 40%)
@@ -29,7 +29,7 @@
           padding: 0
         &.avatar
           min-height: 64px
-        &--content
+        +e('content')
           font-size: 90%
           img
             margin: 0 

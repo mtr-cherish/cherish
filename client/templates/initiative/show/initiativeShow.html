@@ -2,21 +2,21 @@
  <div class="initiative-show">
   {{#with initiative}}
   <div class="col s12 m6 l4">
-    <div class="initiative-show--content">
-      <a href="#" class="initiative-show--user-image">
+    <div class="initiative-show__content">
+      <a href="#" class="user-image">
         <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
-        <span class="initiative-show--content__username">
+        <span class="initiative-show__content user-name">
           {{creator}}
         </span>
       </a>
-      <div class="initiative-show--content__description">
+      <div class="initiative-show__content description">
         <h3><i class="material-icons small">beenhere</i> The Story</h3>
         <p >
           {{description}}
           <!-- TODO: This will become a more elaborate section soon -->
         </p>
       </div>
-      <div class="initiative-show--content__comments">
+      <div class="initiative-show__content comments">
         {{#if currentUser}}
         {{> initiativeCommenter}}
         {{else}}
@@ -33,7 +33,7 @@
 </template>
 
 <template name="initiativeCommenter">
-  <div class="commenter-container row">
+  <div class="commenter-container row initiative-commenter">
     <form class="col s12 commenter-form">
       <div class="input-field col s12">
         <input id="comment" type="text" name="comment" required>
@@ -45,7 +45,7 @@
 </template>
 
 <template name="initiativeComments">
-  <div class="comments-container">
+  <div class="comments-container initiative-comments">
     <ul class="collection">
       {{#each comments}}
       <li class="collection-item avatar">
