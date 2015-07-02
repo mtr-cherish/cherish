@@ -50,8 +50,8 @@
       {{#each comments}}
       <li class="collection-item avatar">
         <img src="{{getCommentAuthorImage}}" alt="avatar" class="circle responsive-img user-photo">
+        <p class="comment-details"><strong>{{getCommentAuthorName}}</strong> <time class="comment-time right"><i class="tiny material-icons">query_builder</i>{{getPrettyDate createdAt}}</time></p>
         <p class="comment-message left">{{message}}</p>
-        <span class="comment-time right">{{getPrettyDate createdAt}}</span>
       </li>
       {{/each}}
     </ul>

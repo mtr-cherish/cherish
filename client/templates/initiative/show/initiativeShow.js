@@ -38,6 +38,15 @@ Template.initiativeCommenter.events({
 });
 
 Template.initiativeComments.helpers({
+  getCommentAuthorName: function() {
+    var user = Users.findOne(this.createdBy);
+    if(user) {
+      return user.profile.name;
+    } else {
+      return 'Not Available';
+    }
+  },
+
   getCommentAuthorImage: function() {
     var user = Users.findOne(this.createdBy);
     if(user) {
