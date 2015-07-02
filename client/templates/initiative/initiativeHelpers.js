@@ -7,7 +7,7 @@ Template.registerHelper('hasUpdates', function() {
 });
 
 Template.registerHelper('getPrettyDate', function(timestamp) {
-  return moment(new Date(timestamp)).format("HH:MM a");
+  return moment(new Date(timestamp)).fromNow();
 });
 
 Template.registerHelper("voteIcon", function(size){
