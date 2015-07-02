@@ -5,8 +5,14 @@
          {{#with profile}}
            <div class="col s12 m2">
              <a href="#" class="profile-self--user-image">
-              <img src="{{avatarImg}}" wiidth="100%" height="auto" alt="" class="circle responsive-img photo">
+              <img src="{{avatarImg}}" width="100%" height="auto" alt="" class="circle responsive-img photo">
             </a>
+            {{#if editingPicture}}
+              <input type="file" class="file fileInput">
+              <button id="upload">Upload</button>
+            {{else}}
+              <button id="editPicture">Edit</button>
+            {{/if}}
           </div>
           <div class="col s12 m10 profile-self--body">
             <h4>{{name}}</h4>
