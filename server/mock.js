@@ -12,13 +12,13 @@ if(Meteor.settings.mode === 'dev') {
     }
   });
 
-  
+
 
 
   Meteor.startup(function() {
 
-    var getWord = function(){ 
-      var word = faker.lorem.words(1); 
+    var getWord = function(){
+      var word = faker.lorem.words(1);
       return _(word[0]).capitalize();
     };
 
@@ -29,7 +29,7 @@ if(Meteor.settings.mode === 'dev') {
         randomName = faker.name.findName(),
         userName = 'cherishuser'+ number,
         password = 'password';
-        
+
 
         var userId = Accounts.createUser({
           username: userName,
@@ -38,13 +38,13 @@ if(Meteor.settings.mode === 'dev') {
           },
           email: 'cherishuser'+number +'@cherish.com',
           password: password
-        });  
+        });
 
         users.push(userId);
 
         var initiative = {
           title: getWord() + ' ' + faker.lorem.sentence(5),
-          description:  getWord() + ' ' + faker.lorem.paragraph(),
+          summary:  getWord() + ' ' + faker.lorem.paragraph(),
           votes: faker.random.number(200),
           category: faker.random.array_element(InitiativeCategories),
           imageUrl: placeholderInitiativeHeaderImage,
@@ -56,7 +56,7 @@ if(Meteor.settings.mode === 'dev') {
 
         // Add to initiative list
         initiatives.push(initiativeId);
-        
+
       });
 
 

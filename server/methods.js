@@ -48,7 +48,7 @@ Meteor.startup(function() {
       return true;
     },
 
-    createInitiative: function(title, description, category) {
+    createInitiative: function(title, summary, category) {
       var initiativeLimit = Meteor.settings.public.initiativeLimit;
       var existingInitiatives = Initiatives.find({createdBy: Meteor.userId(), active: {"$exists": true}, active: true});
       if(existingInitiatives && existingInitiatives.count() < initiativeLimit) {
@@ -57,7 +57,7 @@ Meteor.startup(function() {
         var initiative =
         {
           title: title,
-          description: description,
+          summary: summary,
           votes: 0,
           createdBy: Meteor.userId(),
           createdAt: new Date(),

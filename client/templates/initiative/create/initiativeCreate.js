@@ -5,7 +5,7 @@ Template.initiativeCreate.onRendered(function() {
 Template.initiativeCreate.helpers({
   overLimit: function(){
     var initiativeCount = Initiatives.find({
-      createdBy: Meteor.userId(), 
+      createdBy: Meteor.userId(),
       active: {
         "$exists": true
       },
@@ -20,25 +20,25 @@ Template.initiativeCreate.events({
     event.preventDefault();
 
     var title = template.find('input[name=name]').value || undefined,
-        description = template.find('input[name=description]').value || undefined,
+        summary = template.find('input[name=summary]').value || undefined,
         category = template.find('select').value || undefined;
-    
+
 
     if(!title) {
       sAlert.error('You must enter a name for your Initiative.');
     }
-    if(!description) {
-      sAlert.error('You must enter a description for your Initiative.');
+    if(!summary) {
+      sAlert.error('You must enter a summary for your Initiative.');
     }
     if(!category) {
       sAlert.error('You must select a category for your Initiative.');
     }
 
-    if(!title || !description || !category) {
+    if(!title || !summary || !category) {
       return;
     }
 
-    Meteor.call('createInitiative', title, description, category, function(err, response) {
+    Meteor.call('createInitiative', title, summary, category, function(err, response) {
       if(err) {
         if(err.error ==  403) {
           sAlert.error(err.reason);
