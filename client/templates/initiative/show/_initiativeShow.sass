@@ -1,13 +1,14 @@
 // Note: Not responsive, only works in large and mobile
 
-.initiative-show
+.initiative-page--show
+  @extend .initiative-page;
   position: relative
   top: -64px
   p
     padding: 0
     margin: 0
   
-  &__content
+  .content
     padding: 0 1em
     .user-image
       display: inline-block
@@ -25,7 +26,7 @@
       width: 140px
       left: 50%
       transform: translateX(-50%)
-    .description
+    .initiative-description
       p
         font-size: 140%
 .collection-item

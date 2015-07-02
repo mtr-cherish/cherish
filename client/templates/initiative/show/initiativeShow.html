@@ -1,22 +1,22 @@
 <template name='initiativeShow'>
- <div class="initiative-show">
+ <div class="initiative-page--show">
   {{#with initiative}}
   <div class="col s12 m6 l4">
-    <div class="initiative-show__content">
+    <div class="content">
       <a href="#" class="user-image">
         <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
-        <span class="initiative-show__content user-name">
+        <span class="user-name">
           {{creator}}
         </span>
       </a>
-      <div class="initiative-show__content description">
+      <div class="initiative-description">
         <h3><i class="material-icons small">beenhere</i> The Story</h3>
         <p >
           {{description}}
           <!-- TODO: This will become a more elaborate section soon -->
         </p>
       </div>
-      <div class="initiative-show__content comments">
+      <div class="initiative-comments">
         {{#if currentUser}}
         {{> initiativeCommenter}}
         {{else}}
