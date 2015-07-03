@@ -9,6 +9,9 @@ Template.profileSelf.helpers({
       'comments.createdBy': Meteor.userId()
     });
   },
+  userInitiatives: function(){
+    return Initiatives.find({'createdBy': Meteor.userId()});
+  },
   hasInitiative: function(){
     return Meteor.user().hasInitiative();
   }

@@ -66,6 +66,20 @@
         {{/each}}
       </ul>
     </div>
+    <div class="row">
+      <h4>You're initiative(s):</h4>
+      <ul>
+        {{#each userInitiatives}}
+        <li>
+          <a href="{{pathFor 'initiative' slug}}">{{title}}</a>
+        </li>
+        {{else}}
+        <li>
+          <p>You have no initiatives... <a href="{{pathFor 'initiatives'}}">Create your first initiative!</a></p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
     {{/with}}
   </div>
 </template>
