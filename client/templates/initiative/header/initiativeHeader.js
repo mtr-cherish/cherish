@@ -3,4 +3,8 @@ Template.initiativeHeader.events({
     e.preventDefault();
     followUnfollow(this);
   }
-})
+});
+
+Template.registerHelper('getCurrentUrl', function() {
+  return window.location.href;
+});
