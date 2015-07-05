@@ -14,6 +14,7 @@ Template.initiativeShow.events({
 
 Template.initiativeShow.onRendered(function(){
     $('body').addClass('show-initiative');
+    window.scrollTo(0,0);
 });
 
 Template.initiativeShow.onDestroyed(function(){
