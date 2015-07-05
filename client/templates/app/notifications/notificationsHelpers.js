@@ -1,101 +1,14 @@
-Helpers = [
-{
-  name: 'hasNotifications', helper: function(){
-    return Meteor.user() && hasUnreadNotifications();
-  }
-},
-{
-  name: 'notifications', helper: function() {
-    if (!Meteor.user()) {
-      return undefined;
-    }
-    return getNotifications();
-  }
-},
-{
-  name: 'getNotificationsCount', helper: function() {
-    if (!Meteor.user()) {
-      return undefined;
-    }
-    return _.where(getNotifications(), {isRead: false}).length;
-  }
-},
-{
-  name: 'getNotificationsIcon', helper: function() {
-    switch(this.text){
-      case 'commented on':
-      return  'comment';
-      break;
-      case 'voted on':
-      return 'favorite';
-      break;
-      case 'removed vote':
-      return 'favorite_border';
-      break;
-      case 'followed':
-      return 'favorite_border';
-      break;
-    }
-  }
-},
-{
-  name: 'getReadClass', helper: function() {
-    return this.isRead ? 'read' : 'unread';
-  }
-},
-{
-  name: 'getInitiativeTitle', helper: function(){
-    return Initiatives.findOne({_id: this.initiativeId}).title;
-  }
-},
-{
-  name: 'getInitiativeSlug', helper: function(){
-    return Initiatives.findOne({_id: this.initiativeId}).slug;
-  }
-},
-{
-  name: 'getButtonState', helper: function(){
-    return getUnreadNotificationCount() > 0 ? '' : 'disabled';
-  }
-}
-];
-
-_.each(Helpers, function(helper){
-  Template.registerHelper(helper.name, helper.helper);
-})
-
-function getNotifications() {
-  var notifications = Notifications.find({ownerId: Meteor.userId()}, {sort: {createdAt: -1}});
-  return rollUpNotifications(notifications);
-}
-
-function getUnreadNotificationCount() {
-  return _.where(getNotifications(), {isRead: false}).length;
-}
-
-function getUnreadNotifications() {
-  return _.where(getNotifications(), {isRead: false});
-}
-
-function getNotificationCount() {
-  return getNotifications().length;
-}
-
-function hasUnreadNotifications() {
-  return getUnreadNotificationCount() > 0;
-}
-
-function getAvatar(userId) {
+var getAvatar = function getAvatar(userId) {
   return Meteor.users.findOne({_id: userId}).profile.avatarImg;
-}
+};
 
-function getUserNameById(userId){
-  var user = Meteor.users.findOne({_id: userId});
-  return user.profile.name;
-}
+var getUserNameById = function getUserNameById(userId) {
+  return Meteor.users.findOne({_id: userId}).profile.name;
+};
 
-function edAWord(word) {
+var edAWord = function edAWord(word) {
   var suffix = 'ed';
+
   if (word[word.length - 1] === 'e') {
     suffix = 'd';
   }
@@ -103,19 +16,30 @@ function edAWord(word) {
     return word + suffix + ' on';
   }
   return word + suffix;
-}
+};
 
-function rollUpNotifications(notifications) {
+var userArrayMap = function userArrayMap(userId) {
+  return getUserNameById(userId);
+};
+
+var rollUpNotifications = function rollUpNotifications(notifications) {
   var rolledUpNotifications = [];
   var unreadNotifications = [];
   var notificationDates = {};
   var notificationIds = {};
   var notificationsObj = {};
-  var userArray, users, userText, othersText, lastUser, initiativeId, type;
+  var userArray;
+  var users;
+  var userText;
+  var othersText;
+  var lastUser;
+  var initiativeId;
+  var type;
 
-  notifications.forEach(function(notification) {
-    var initiativeId = notification.initiativeId;
-    var type = notification.type;
+  notifications.forEach(function forEachNotification(notification) {
+    initiativeId = notification.initiativeId;
+    type = notification.type;
+
     if (!notificationsObj[initiativeId]) {
       notificationsObj[initiativeId] = {};
     }
@@ -143,9 +67,7 @@ function rollUpNotifications(notifications) {
   for (initiativeId in notificationsObj) {
     for (type in notificationsObj[initiativeId]) {
       userArray = notificationsObj[initiativeId][type];
-      users = userArray.slice(0, 3).map(function(userId) {
-        return getUserNameById(userId);
-      });
+      users = userArray.slice(0, 3).map(userArrayMap);
       userText = users.join(', ') + ' ';
       lastUser = othersText = '';
       if (userArray.length > 3) {
@@ -167,33 +89,108 @@ function rollUpNotifications(notifications) {
     }
   }
   return rolledUpNotifications;
-}
+};
+
+var getNotifications = function getNotifications() {
+  var notifications = Notifications.find({ownerId: Meteor.userId()}, {sort: {createdAt: -1}});
+
+  return rollUpNotifications(notifications);
+};
+
+var getUnreadNotificationCount = function getUnreadNotificationCount() {
+  return _.where(getNotifications(), {isRead: false}).length;
+};
+
+var getUnreadNotifications = function getUnreadNotifications() {
+  return _.where(getNotifications(), {isRead: false});
+};
+
+var hasUnreadNotifications = function hasUnreadNotifications() {
+  return getUnreadNotificationCount() > 0;
+};
+
+var Helpers = [{
+  name: 'hasNotifications', helper: function hasNotificationsHelper() {
+    return Meteor.user() && hasUnreadNotifications();
+  }
+}, {
+  name: 'notifications', helper: function notificationsHelper() {
+    if (!Meteor.user()) {
+      return undefined;
+    }
+    return getNotifications();
+  }
+}, {
+  name: 'getNotificationsCount', helper: function getNotificationsCountHelper() {
+    if (!Meteor.user()) {
+      return undefined;
+    }
+    return _.where(getNotifications(), {isRead: false}).length;
+  }
+}, {
+  name: 'getNotificationsIcon', helper: function getNotificationsIconHelper() {
+    switch (this.text) {
+      case 'commented on':
+        return 'comment';
+      case 'voted on':
+        return 'favorite';
+      case 'removed vote':
+        return 'favorite_border';
+      case 'followed':
+        return 'favorite_border';
+      default:
+        return '';
+    }
+  }
+}, {
+  name: 'getReadClass', helper: function getReadClassHelper() {
+    return this.isRead ? 'read' : 'unread';
+  }
+}, {
+  name: 'getInitiativeTitle', helper: function getInitiativeTitleHelper() {
+    return Initiatives.findOne({_id: this.initiativeId}).title;
+  }
+}, {
+  name: 'getInitiativeSlug', helper: function getInitiativeSlugHelper() {
+    return Initiatives.findOne({_id: this.initiativeId}).slug;
+  }
+}, {
+  name: 'getButtonState', helper: function getButtonStateHelper() {
+    return getUnreadNotificationCount() > 0 ? '' : 'disabled';
+  }
+}];
+
+_.each(Helpers, function eachHelpers(helper) {
+  Template.registerHelper(helper.name, helper.helper);
+});
 
 Template.notificationsModal.events({
-  'click .unread': function(e) {
+  'click .unread': function clickUnread(e) {
+    // var initiative = Initiatives.findOne({_id: this.initiativeId});
+
     e.preventDefault();
 
-    var initiative = Initiatives.findOne({_id: this.initiativeId});
     // Router.go('initiative', {slug: initiative.slug});
-    Meteor.call('markNotificationsAsRead', this.ids, function(err, response) {
-      if(err){
+    Meteor.call('markNotificationsAsRead', this.ids, function markNotificationsAsReadCallback(err) {
+      if (err) {
         sAlert.error('Something went wrong...');
       }
     });
   },
-  'click .mark-all-read': function(e){
+  'click .mark-all-read': function clickMarkAllReady() {
     var notificationsToReadIds = [];
-    _.each(getUnreadNotifications(), function(notification){
-      notificationsToReadIds = notificationsToReadIds.concat(notification.ids)
+
+    _.each(getUnreadNotifications(), function eachUnreadNotification(notification) {
+      notificationsToReadIds = notificationsToReadIds.concat(notification.ids);
     });
 
-    Meteor.call('markNotificationsAsRead', notificationsToReadIds, function(err, response) {
-      if(err){
+    Meteor.call('markNotificationsAsRead', notificationsToReadIds, function markNotificationsAsReadCallback(err) {
+      if (err) {
         sAlert.error('Something went wrong...');
       }
     });
   },
-  'click .title a': function(e){
+  'click .title a': function clickTitle() {
     $('#notifications_modal').closeModal();
   }
 });

@@ -1,4 +1,6 @@
-configureFacebook = function(config) {
+var facebookConfig = Meteor.settings.facebook;
+
+configureFacebook = function configureFacebook(config) {
   ServiceConfiguration.configurations.remove({
     service: 'facebook'
   });
@@ -10,8 +12,7 @@ configureFacebook = function(config) {
   });
 };
 
-var facebookConfig = Meteor.settings.facebook;
-if(facebookConfig) {
+if (facebookConfig) {
   console.log('Facebook settings received', facebookConfig);
   configureFacebook(facebookConfig);
 }

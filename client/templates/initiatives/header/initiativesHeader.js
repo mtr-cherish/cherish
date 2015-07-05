@@ -1,5 +1,5 @@
 Template.initiativesHeader.events({
-  'submit form': function(e, tpl) {
+  'submit form': function submitForm(e) {
     e.preventDefault();
   }
-})
+});

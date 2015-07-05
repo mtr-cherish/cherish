@@ -9,6 +9,9 @@
     "Accounts": false,
     "Template": false,
     "Session": false,
+    "Assets": false,
+    "Email": false,
+    "check": false,
 
     "Initiatives": true,
     "Notifications": true,
@@ -18,8 +21,16 @@
     "InitiativeCategorySlugs": true,
     "InitiativeSearch": true,
     "SearchSource": false,
+    "ServiceConfiguration": false,
+    "SSR": false,
+
     "checkEmailIsValid": true,
     "checkPasswordIsValid": true,
+    "addOrRemoveVote": true,
+    "followUnfollow": true,
+    "configureFacebook": true,
+    "sendWelcomeEmail": true,
+    "smtp": true,
 
     "SyncedCron": false,
 
@@ -29,7 +40,9 @@
     "$": false,
     "_": false,
     "sAlert": false,
-    "s": false
+    "s": false,
+    "moment": false,
+    "faker": false
   },
   "rules": {
     "strict": [2, "never"],

@@ -1,12 +1,12 @@
 Template.publicSignup.events({
-  'submit .signup-form': function (event, template) {
-    event.preventDefault();
-
+  'submit .signup-form': function submitSignupForm(event, template) {
     var email = template.find('.email-address-input').value.replace(/^\s*|\s*$/g, '');
     var password = template.find('.password-input').value.replace(/^\s*|\s*$/g, '');
 
     var isValidEmail = checkEmailIsValid(email);
     var isValidPassword = checkPasswordIsValid(password);
+
+    event.preventDefault();
 
     if (!isValidEmail) {
       sAlert.error('Please enter a valid email address');
@@ -27,13 +27,13 @@ Template.publicSignup.events({
       },
       votedOn: [],
       commentedOn: []
-    }, function(err) {
-        if(err) {
-          sAlert.error(err.reason);
-          return;
-        }
-        Session.set('accountCreated', true);
-        Router.go('initiatives');
+    }, function onCreateUserError(err) {
+      if (err) {
+        sAlert.error(err.reason);
+        return;
+      }
+      Session.set('accountCreated', true);
+      Router.go('initiatives');
     });
   }
 });
