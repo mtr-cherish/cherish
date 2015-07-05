@@ -2,17 +2,6 @@ Template.initiativeCreate.onRendered(function initiativeCreateOnRendered() {
   $('select').material_select();
 });
 
-Template.initiativeCreate.helpers({
-  overLimit: function overLimitHelper() {
-    var initiativeCount = Initiatives.find({
-      createdBy: Meteor.userId(),
-      active: true
-    }).count();
-
-    return initiativeCount >= Meteor.settings.public.initiativeLimit;
-  }
-});
-
 Template.initiativeCreate.events({
   'submit .form-create': function submitCreateForm(event, template) {
     var title = template.find('input[name=name]').value || undefined;

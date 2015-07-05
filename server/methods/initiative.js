@@ -89,16 +89,13 @@ Meteor.methods({
     }}});
   },
 
-  createInitiative: function(title, description, category) {
-    var initiativeLimit = Meteor.settings.public.initiativeLimit;
-    var existingInitiatives = Initiatives.find({createdBy: Meteor.userId(), active: {"$exists": true}, active: true});
-    if(existingInitiatives && existingInitiatives.count() < initiativeLimit) {
+  createInitiative: function(title, summary, category) {
       var slug = s.slugify(title);
       var categorySlug = s.slugify(category);
       var initiative =
       {
         title: title,
-        description: description,
+        summary: summary,
         votes: 0,
         createdBy: Meteor.userId(),
         createdAt: new Date(),
@@ -112,9 +109,6 @@ Meteor.methods({
 
       Initiatives.insert(initiative);
       return slug;
-    } else {
-      throw new Meteor.Error(403, "You have reached the limit of " + initiativeLimit + " initiatives.");
-    }
   },
 
   updateInitiative: function(initiative, props){
@@ -123,7 +117,7 @@ Meteor.methods({
 
     check(props, {
       title: String,
-      description: String,
+      summary: String,
       category: String
     });
 

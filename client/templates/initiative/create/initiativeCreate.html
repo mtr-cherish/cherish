@@ -1,7 +1,6 @@
 <template name="initiativeCreate">
   <div class="initiative-create row">
-    <div class="col s12 m6 offset-m3">
-      {{#unless overLimit}}
+    <div class="col s12 m6 offset-m3">  
         <form class="form-create">
         <h2 class="center">Begin Your Initiative</h2>
         <div class="input-field col s12">
@@ -20,32 +19,12 @@
           <option value="Event">Event</option>
           <option value="Charity">Charity</option>
         </select>
-          <!-- <span class="checkbox">
-            <input type="checkbox" id="event" value="Event"/>
-            <label for="event">Event</label>
-          </span>
-          <span class="checkbox">
-            <input type="checkbox" id="charity" value="Charity"/>
-            <label for="charity">Charity</label>
-          </span>
-          <span class="checkbox">
-            <input type="checkbox" id="nonprofit" value="Non Profit"/>
-            <label for="nonprofit">Non Profit</label>
-          </span>
-          <span class="checkbox">
-            <input type="checkbox" id="opensource" value="Open Source"/>
-            <label for="opensource">Open Source</label>
-          </span> -->
         </div>
 
         <div class="col s12 center">
           <button class="btn waves-effect waves-light blue darken-1" type="submit">Create Your Initiative</button>
         </div>
       </form>
-      {{else}}
-      <h3>You have too many active initiatives, remove or deactivate some to create new.</h3>
-      <a href="{{pathFor 'initiatives.mine'}}">My Initiatives</a>
-      {{/unless}}
     </div>
   </div>
 </template>

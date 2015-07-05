@@ -1,11 +1,14 @@
+
 var placeholderInitiativeHeaderImage;
+var placeholderAvatarImage;
 var users;
 var initiatives;
 
 if (Meteor.settings.mode === 'dev') {
   console.log('======> Staging mock data...');
-  placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg';
-  users = [];
+  placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg',
+  placeholderAvatarImage = "/images/placeholder-avatar.jpg",
+  users = [],
   initiatives = [];
 
   _.mixin({
@@ -40,7 +43,7 @@ if (Meteor.settings.mode === 'dev') {
           title: getWord() + ' ' + faker.lorem.sentence(5),
           summary: getWord() + ' ' + faker.lorem.paragraph(),
           votes: faker.random.number(200),
-          category: faker.random.array_element(InitiativeCategories),
+          category: faker.random.array_element(Initiatives.InitiativeCategories),
           imageUrl: placeholderInitiativeHeaderImage,
           createdBy: userId,
           active: true
@@ -54,7 +57,7 @@ if (Meteor.settings.mode === 'dev') {
         initiatives.push(initiativeId);
       });
 
-      _.each(initiatives, function eachInitiative(initiative) {
+      _.each(initiatives, function eachInitiatives(initiative) {
         var commentsNumber = faker.random.number(10);
 
         _(commentsNumber).times(function times() {
