@@ -31,7 +31,11 @@
           <div class="switch">
             <label>
               Hidden
+              {{#if active}}
+              <input type="checkbox" checked>
+              {{else}}
               <input type="checkbox">
+              {{/if}}
               <span class="lever"></span>
               Visible
             </label>

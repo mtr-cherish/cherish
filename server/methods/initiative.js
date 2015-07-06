@@ -128,11 +128,12 @@ Meteor.methods({
   updateInitiative: function(initiative, props){
     if(!initiative._id)
       throw new Meteor.Error(302, 'Can only edit initiatives with ID');
-
+    
     check(props, {
       title: String,
       summary: String,
-      category: String
+      category: String,
+      active: Boolean
     });
 
     return Initiatives.update(initiative._id, {$set: props });
