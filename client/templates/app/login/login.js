@@ -56,8 +56,9 @@ Template.publicLogin.events({
   }
 });
 
-Template.publicLogin.onRendered(function() {
+Template.publicLogin.onRendered(function publicLoginOnRendered() {
   var input = this.find('.email-address-input');
+
   if (!input) {
     return;
   }

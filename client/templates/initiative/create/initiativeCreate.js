@@ -55,8 +55,9 @@ Template.initiativeCreate.events({
   }
 });
 
-Template.initiativeCreate.onRendered(function() {
+Template.initiativeCreate.onRendered(function initiativeCreateOnRendered() {
   var input = this.find('#name');
+
   if (!input) {
     return;
   }

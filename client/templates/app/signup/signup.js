@@ -38,8 +38,9 @@ Template.publicSignup.events({
   }
 });
 
-Template.publicSignup.onRendered(function() {
+Template.publicSignup.onRendered(function publicSignupOnRendered() {
   var input = this.find('.email-address-input');
+
   if (!input) {
     return;
   }
