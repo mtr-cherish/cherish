@@ -14,9 +14,9 @@
       {{/if}}
       <li class="divider"></li>
       <li>
-
         <a class="notifications-button--action open-notifications" href="#modal_notifications">
-          <i class="material-icons tiny">{{#unless hasNotifications}}notifications_none{{else}}notifications{{/unless}}</i>{{#if hasNotifications}}<span class="notifications-button--action__badge">{{getNotificationsCount}}</span>{{/if}} <span>My Notifications</span>
+          <i class="material-icons tiny">{{#unless hasNotifications}}notifications_none{{else}}notifications{{/unless}}</i>
+          {{#if hasNotifications}}<span class="notifications-button--action__badge">{{getNotificationsCount}}</span>{{/if}} <span>My Notifications</span>
         </a>
       </li>
       <li class="divider"></li>

@@ -1,3 +1,12 @@
+Template.initiativeEditFull.onCreated(function(){
+  Session.set('initiativeActive', this.active);
+});
+
+Template.initiativeEditFull.onRendered(function(){
+  this.$('textarea#summary').characterCounter();
+});
+
+
 // initiativeEditFull Helpers
 Template.initiativeEditFull.helpers({
   getCategories: function(){
@@ -13,6 +22,9 @@ Template.initiativeEditFull.events({
   'submit form': function(e, tpl){
     e.preventDefault();
     updateInitiative(this, tpl);
+  },
+  'click .lever': function(){
+    Session.set('initiativeActive', !Session.get('initiativeActive'));
   }
 });
 
@@ -44,6 +56,7 @@ function updateInitiative(initiative, tpl){
         Session.set('editing', null);
         sAlert.success("Initiaitve updated!");
         Router.go('initiative.mine');
+        Session.set('initiativeActive', null);
       }
     });
   }

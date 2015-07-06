@@ -1,11 +1,7 @@
-.initiative-header
-  width: 100%
+.initiatives-header--mine
+  @extend .initiatives-header
   height: 400px
-  background-size: cover
   position: relative
-  top: -67px
-  transition: opacity .3s ease
-  z-index: 0
   &:after
     content: ''
     position: absolute
@@ -18,12 +14,12 @@
     background: transparentize($primary-color, .4)
     
   
-  &--content
+  .header-content
     z-index: 1
     h2
       color: #fff
       font-weight: 100
-    &__meta
+    +e('meta')
       text-align: center
       position: relative
       padding: 1em 0
@@ -66,3 +62,4 @@
             border-bottom: 3px solid darken(#1e88e5, 30%)
           &:active
             border-bottom: none
+

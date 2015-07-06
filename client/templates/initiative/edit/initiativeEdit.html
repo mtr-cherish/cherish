@@ -4,27 +4,48 @@
       <div class="initiative-edit">
         <h3 class="edit-title grey-text text-darken-4">Edit initiative</h3>
         <form class="form-edit">
+         <div class="row">
           <div class="input-field col s12">
             <input id="title" name="title" type="text" class="validate" placeholder="{{title}}" value="{{title}}">
             <label for="name" class="active">Initiative Title</label>
           </div>
+        </div>
+        <div class="row">
           <div class="input-field col s12">
-            <textarea id="summary" name="summary" type="text" class="validate valid materialize-textarea">{{summary}}</textarea>
+            <textarea id="summary" name="summary" type="text" class="validate materialize-textarea summary" length="140">{{summary}}</textarea>
             <label for="summary" class="active">Enter a summary for your Initiative.</label>
           </div>
+        </div>
+        <div class="row">
           <div class="input-field col s12 center select-type">
            <select name="category" class="browser-default" id="category_select">
             {{#each getCategories}}
-              <option {{getSelected . ../category}} value="{{.}}">{{.}}</option>
+            <option {{getSelected . ../category}} value="{{.}}">{{.}}</option>
             {{/each}}
           </select>
           <label for="category" class="active">Select a category</label>
         </div>
-        <div class="col s12 center">
-          <button class="btn waves-effect waves-light save" type="submit">Save Initiative</button>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <div class="switch">
+            <label>
+              Hidden
+              <input type="checkbox">
+              <span class="lever"></span>
+              Visible
+            </label>
+          </div>
         </div>
-      </form>
-    </div>
-  {{/with}}
+      </div>
+
+      <div class="row">
+        <div class="col s12 center">
+        <button class="btn waves-effect waves-light save" type="submit">Save Initiative</button> <span class="cancel">or <a href="{{pathFor 'initiative.mine' slug}}">Cancel</a> </span>
+      </div>
+      </div>
+    </form>
+  </div>
+{{/with}}
 </div>
 </template>

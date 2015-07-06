@@ -8,16 +8,16 @@
       </div>
       
       <div class="initiative-card--content">
-        {{#if showStatus}}
+        
           {{#if isMine}}
             <a href="" class="badge status is-{{status}}">
               {{status}}
             </a>
-            <a href="#" class="edit-initiative">
+            <a href="{{pathFor 'initiative.edit' slug}}" class="edit-initiative">
               <i class="material-icons tiny">mode_edit</i>
             </a>
           {{/if}}
-        {{/if}}
+        
         <span class="badge type {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
         {{#if currentUser}}
           {{#unless isMine}}
