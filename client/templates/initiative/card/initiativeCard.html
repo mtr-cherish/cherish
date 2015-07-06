@@ -7,7 +7,7 @@
         </a>
       </div>
       
-      <div class="initiative-card--content">
+      <div class="content">
         
           {{#if isMine}}
             <a href="" class="badge status is-{{status}}">
@@ -33,7 +33,7 @@
           <i class="material-icons tiny">comment</i> {{zeroIfEmptyOrNotExists comments}}
         </div>
         {{#unless isMine}}
-        <a href="#" class="initiative-card--user-image">
+        <a href="#" class="user-image">
           <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
         </a>
         {{/unless}}
