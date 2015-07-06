@@ -38,9 +38,9 @@ Template.publicSignup.events({
   }
 });
 
-Template.publicSignup.onRendered(function(){
+Template.publicSignup.onRendered(function() {
     var input = this.find('.email-address-input');
-    if(input){
+    if (input) {
         input.focus();
     }
 });

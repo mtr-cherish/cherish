@@ -18,9 +18,9 @@ Template.search.helpers({
   }
 });
 
-Template.search.onRendered(function(){
+Template.search.onRendered(function() {
     var input = this.find('#search_initiatives');
-    if(input){
+    if (input) {
         input.focus();
     }
 });
