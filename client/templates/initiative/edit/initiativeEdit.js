@@ -1,29 +1,29 @@
-Template.initiativeEditFull.onCreated(function onCreatedFunction(){
+Template.initiativeEditFull.onCreated(function initiativeEditFullonCreated(){
   Session.set('initiativeActive', Template.currentData().initiative.active);
 });
 
-Template.initiativeEditFull.onRendered(function onRenderedFunction(){
+Template.initiativeEditFull.onRendered(function initiativeEditFullonRendered(){
   this.$('textarea#summary').characterCounter();
 });
 
 
 // initiativeEditFull Helpers
 Template.initiativeEditFull.helpers({
-  getCategories: function(){
+  getCategories: function getCategories(){
     return InitiativeCategories;
   },
-  getSelected: function(category, compare){
+  getSelected: function getSelected(category, compare){
     return category === compare ? 'selected' : '';
   }
 });
 
 // initiativeEditFull events
 Template.initiativeEditFull.events({
-  'submit form': function(e, tpl){
+  'submit form': function submitEditForm(e, tpl){
     e.preventDefault();
     updateInitiative(this, tpl);
   },
-  'click .switch label, click .switch input': function(){
+  'click .switch label, click .switch input': function clickActiveInactive(){
     Session.set('initiativeActive', !Session.get('initiativeActive'));
   }
 });
@@ -51,7 +51,7 @@ function updateInitiative(initiative, tpl){
       active: active
     };
 
-    Meteor.call('updateInitiative', initiative, props, function (err, result) {
+    Meteor.call('updateInitiative', initiative, props, function updateInitiativeCallback(err, result) {
       if(err){
         sAlert.error(err.message);
       } else {
