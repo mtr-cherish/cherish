@@ -14,6 +14,6 @@ Template.search.events({
 
 Template.search.helpers({
   isSearching: function isSearching() {
-    return Session.get('searchTerm') === '';
+    return Session.get('searchTerm') !== '';
   }
 });

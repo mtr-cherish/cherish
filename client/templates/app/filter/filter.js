@@ -6,8 +6,8 @@ Template.filter.helpers({
 
 Template.filter.events({
   'click input[type=checkbox]': function clickCheckbox(event, tpl) {
-    var categories = tpl.$('input:checked').toArray().map(function checkedInputMap() {
-      return $(this).val();
+    var categories = tpl.$('input:checked').toArray().map(function checkedInputMap(item) {
+      return $(item).val();
     });
 
     Session.set('categories', undefined);
