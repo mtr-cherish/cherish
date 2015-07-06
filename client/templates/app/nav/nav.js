@@ -25,5 +25,4 @@ Template.userDropdown.helpers({
   avatar: function avatar() {
     return Meteor.user().profile.avatarImg;
   }
-
 });

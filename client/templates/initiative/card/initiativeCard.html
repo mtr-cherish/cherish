@@ -7,16 +7,15 @@
         </a>
       </div>
       
-      <div class="content">
-        
-          {{#if isMine}}
-            <a href="" class="badge status is-{{status}}">
-              {{status}}
-            </a>
-            <a href="{{pathFor 'initiative.edit' slug}}" class="edit-initiative">
-              <i class="material-icons tiny">mode_edit</i>
-            </a>
-          {{/if}}
+      <div class="content">       
+        {{#if isMine}}
+          <a href="" class="badge status is-{{status}}">
+            {{status}}
+          </a>
+          <a href="{{pathFor 'initiative.edit' slug}}" class="edit-initiative">
+            <i class="material-icons tiny">mode_edit</i>
+          </a>
+        {{/if}}
         
         <span class="badge type {{getInitiativeCategoryClass}}">{{getInitiativeCategory}}</span>
         {{#if currentUser}}
@@ -33,9 +32,9 @@
           <i class="material-icons tiny">comment</i> {{zeroIfEmptyOrNotExists comments}}
         </div>
         {{#unless isMine}}
-        <a href="#" class="user-image">
-          <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
-        </a>
+          <a href="#" class="user-image">
+            <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
+          </a>
         {{/unless}}
         <h2 class="card-title truncate">
           <a href="{{pathFor 'initiative'}}">
