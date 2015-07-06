@@ -1,34 +1,30 @@
 Template.initiativeCard.helpers({
-  showStatus: function(){
+  showStatus: function showStatus() {
     return Router.current().route.path(this).match('/profile/');
   },
-  status: function(){
-    return this.active ? 'Active': 'Inactive';
+  status: function status() {
+    return this.active ? 'Active' : 'Inactive';
   }
 });
 
 Template.initiativeCard.events({
-  'click .votes': function(e, tpl){
+  'click .votes': function clickVotes() {
     // TODO: restrict votes to 1 pr initiative
-    var initiative = this;
-    addOrRemoveVote(initiative);
-
+    addOrRemoveVote(this);
   },
-  'dblclick .touch .card-image a': function(e, tpl){
-    console.log('double click initiative');
-    e.preventDefault();
-    var initiative = this;
-    addOrRemoveVote(initiative);
+  'dblclick .touch .card-image a': function doubleClickCard(ev) {
+    ev.preventDefault();
+    addOrRemoveVote(this);
   },
-  'click .status': function(e, tpl){
-    Meteor.call('setInactiveActive', this, function(err, res) {
+  'click .status': function clickStatus() {
+    Meteor.call('setInactiveActive', this, function setInactiveActiveCallback(err) {
       if (err) {
         sAlert.error(err.message);
       }
     });
   },
-  'click .follow-button': function(e){
-    e.preventDefault();
+  'click .follow-button': function clickFollowButton(ev) {
+    ev.preventDefault();
     followUnfollow(this);
   }
 });

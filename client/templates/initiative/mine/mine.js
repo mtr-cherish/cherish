@@ -1,3 +1,3 @@
-Template.initiativeMine.onRendered(function(){
+Template.initiativeMine.onRendered(function initiativeMineOnRendered() {
   this.$('ul.tabs').tabs();
-})
+});

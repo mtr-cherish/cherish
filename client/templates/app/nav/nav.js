@@ -1,13 +1,13 @@
-Template.nav.onRendered(function() {
+Template.nav.onRendered(function navOnRendered() {
   this.$('.button-collapse').sideNav({
     closeOnClick: true
   });
 });
 
 Template.nav.events({
-  'click .logout': function(e) {
+  'click .logout': function clickLogout(e) {
     e.preventDefault();
-    Meteor.logout(function(err) {
+    Meteor.logout(function meteorLogout(err) {
       if (err) {
         sAlert.error('Sorry, we were unable to log you out');
       }
@@ -15,26 +15,26 @@ Template.nav.events({
   }
 });
 
-Template.userDropdown.onRendered(function() {
+Template.userDropdown.onRendered(function userDropdownOnRendered() {
   this.$('.dropdown-button').dropdown({
     beloworigin: true
   });
 });
 
 Template.userDropdown.helpers({
-  avatar: function(){
+  avatar: function avatar() {
     return Meteor.user().profile.avatarImg;
   }
 });
 
 
-Template.sidenav.onRendered(function(){
+Template.sidenav.onRendered(function sidenavOnRendered() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    this.$('.open-notifications').leanModal();
+  this.$('.open-notifications').leanModal();
 });
 
 Template.sidenav.events({
-  'click .open-notifications': function(){
+  'click .open-notifications': function clickOpenNotifications() {
     $('#notifications_modal').openModal();
   }
 });

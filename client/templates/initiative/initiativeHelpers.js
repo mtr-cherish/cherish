@@ -1,62 +1,60 @@
-Template.registerHelper('getInitiativeCategoryClass', function() {
+Template.registerHelper('getInitiativeCategoryClass', function getInitiativeCategoryClassHelper() {
   return s.slugify(this.category);
 });
 
-Template.registerHelper('hasUpdates', function() {
-  return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}, active: {"$exists": true}, active: true}).count() > 0;
+Template.registerHelper('hasUpdates', function hasUpdatesHelper() {
+  return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}, active: true}).count() > 0;
 });
 
-Template.registerHelper('getPrettyDate', function(timestamp) {
+Template.registerHelper('getPrettyDate', function getPrettyDateHelper(timestamp) {
   return moment(new Date(timestamp)).fromNow();
 });
 
-Template.registerHelper("voteIcon", function(size){
-
-  if(!size){
+Template.registerHelper('voteIcon', function voteIconHelper(size) {
+  if (!size) {
     size = 'tiny';
   } else {
     size = 'small';
   }
 
   if (!Meteor.user() || Meteor.user().canVote(this._id)) {
-    return '<i class="material-icons '+size+'">favorite_border</i>';
+    return '<i class="material-icons ' + size + '">favorite_border</i>';
   }
-  return '<i class="material-icons '+size+'">favorite</i>';
+  return '<i class="material-icons ' + size + '">favorite</i>';
 });
 
-Template.registerHelper('zeroIfEmptyOrNotExists', function(context) {
-  if(!context || Object.keys(context).length == 0) {
+Template.registerHelper('zeroIfEmptyOrNotExists', function zeroIfEmptyOrNotExistsHelper(context) {
+  if (!context || Object.keys(context).length === 0) {
     return 0;
-  } else {
-    return Object.keys(context).length;
   }
+  return Object.keys(context).length;
 });
 
-Template.registerHelper('canFollow', function(){
+Template.registerHelper('canFollow', function canFollowHelper() {
   return !_.contains(this.usersFollowing, Meteor.userId());
 });
 
-Template.registerHelper('getFollowClass', function(){
+Template.registerHelper('getFollowClass', function getFollowClassHelper() {
   return _.contains(this.usersFollowing, Meteor.userId()) ? 'unfollow' : 'follow';
 });
 
-Template.registerHelper('isMine', function(){
-    return this.createdBy === Meteor.userId();
+Template.registerHelper('isMine', function isMineHelper() {
+  return this.createdBy === Meteor.userId();
 });
 
 // Helper functions
-addOrRemoveVote = function(initiative) {
-  Meteor.call('addOrRemoveVote', initiative, function(err) {
+addOrRemoveVote = function addOrRemoveVote(initiative) {
+  Meteor.call('addOrRemoveVote', initiative, function addOrRemoveVoteCallback(err) {
     if (err) {
       sAlert.error(err.message);
     }
   });
-}
+};
 
-followUnfollow = function(initiative){
-  Meteor.call('followUnfollow', initiative, function(err) {
+followUnfollow = function followUnfollow(initiative) {
+  Meteor.call('followUnfollow', initiative, function followUnfollowCallback(err) {
     if (err) {
       sAlert.error(err.message);
     }
   });
-}
+};

@@ -1,19 +1,23 @@
-Meteor.startup(function () {
+Meteor.startup(function meteorStartup() {
   smtp = {
-    username: 'foo@gmail.com',   // gmail address
-    password: 'password',   // password 
-    server:   'smtp.gmail.com',  // eg: mail.gandi.net
+    // gmail address
+    username: 'foo@gmail.com',
+    // password
+    password: 'password',
+    // eg: mail.gandi.net
+    server: 'smtp.gmail.com',
     port: 25
-  }
+  };
 
-  //process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+  // process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 });
 
 // Compile the welcome_user.html template into blaze
 SSR.compileTemplate('welcomeUser', Assets.getText('email/welcome_user.html'));
-sendWelcomeEmail = function (to, from, userEmail) {
+sendWelcomeEmail = function sendWelcomeEmail(to, from, userEmail) {
   // render the compiled template
-  data = SSR.render('welcomeUser', {email: userEmail});
+  var data = SSR.render('welcomeUser', {email: userEmail});
+
   // send the email
   Email.send({
     to: to,
@@ -22,4 +26,3 @@ sendWelcomeEmail = function (to, from, userEmail) {
     html: data
   });
 };
-
