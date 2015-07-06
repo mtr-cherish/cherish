@@ -55,3 +55,10 @@ Template.publicLogin.events({
     });
   }
 });
+
+Template.publicLogin.onRendered(function(){
+    var input = this.find('.email-address-input');
+    if(input){
+        input.focus();
+    }
+});

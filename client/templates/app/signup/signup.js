@@ -37,3 +37,10 @@ Template.publicSignup.events({
     });
   }
 });
+
+Template.publicSignup.onRendered(function(){
+    var input = this.find('.email-address-input');
+    if(input){
+        input.focus();
+    }
+});

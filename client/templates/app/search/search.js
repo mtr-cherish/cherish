@@ -17,3 +17,10 @@ Template.search.helpers({
     return Session.get('searchTerm') !== '';
   }
 });
+
+Template.search.onRendered(function(){
+    var input = this.find('#search_initiatives');
+    if(input){
+        input.focus();
+    }
+});

@@ -54,3 +54,10 @@ Template.initiativeCreate.events({
     });
   }
 });
+
+Template.initiativeCreate.onRendered(function(){
+    var input = this.find('#name');
+    if(input){
+        input.focus();
+    }
+});
