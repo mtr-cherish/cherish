@@ -1,13 +1,11 @@
 
 var placeholderInitiativeHeaderImage;
-var placeholderAvatarImage;
 var users;
 var initiatives;
 
 if (Meteor.settings.mode === 'dev') {
   console.log('======> Staging mock data...');
   placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg',
-  placeholderAvatarImage = "/images/placeholder-avatar.jpg",
   users = [],
   initiatives = [];
 

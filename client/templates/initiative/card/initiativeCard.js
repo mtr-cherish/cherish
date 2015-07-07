@@ -5,14 +5,13 @@ Template.initiativeCard.helpers({
   status: function status() {
     return this.active ? 'Active' : 'Inactive';
   },
-  getEditingClass: function getEditingClass(){
+  getEditingClass: function getEditingClass() {
     return Session.get('editing') === this._id ? 'open' : '';
   }
 });
 
 Template.initiativeCard.events({
   'click .votes': function clickVotes() {
-    // TODO: restrict votes to 1 pr initiative
     addOrRemoveVote(this);
   },
   'dblclick .touch .card-image a': function doubleClickCard(ev) {
@@ -30,7 +29,7 @@ Template.initiativeCard.events({
     ev.preventDefault();
     followUnfollow(this);
   },
-  'click .edit-initiative': function(e, tpl){
+  'click .edit-initiative': function() {
     Session.set('editing', this._id);
   }
 });

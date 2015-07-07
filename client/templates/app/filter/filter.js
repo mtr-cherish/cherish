@@ -9,6 +9,7 @@ Template.filter.events({
     var categories = tpl.$('input:checked').toArray().map(function checkedInputMap(item) {
       return $(item).val();
     });
+    
     Session.set('categories', undefined);
     delete Session.keys.categories;
 

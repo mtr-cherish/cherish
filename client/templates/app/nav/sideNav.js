@@ -1,4 +1,4 @@
-Template.sideNav.onRendered(function sideNavOnRendered(){
+Template.sideNav.onRendered(function sideNavOnRendered() {
   this.$('.open-notifications').leanModal();
 });
 
