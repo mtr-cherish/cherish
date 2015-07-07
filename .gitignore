@@ -3,3 +3,4 @@
 .meteor/meteorite
 private/local-settings.json
 client/style.sass
+.idea
