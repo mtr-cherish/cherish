@@ -24,9 +24,9 @@ Template.initiativeCommenter.events({
     var input = template.find('input[name="comment"]');
 
     event.preventDefault();
-    Meteor.call('addComment', this._id, input.value, function addCommentCallback(err) {
-      if (err) {
-        sAlert.error(err.message);
+    Meteor.call('addComment', this._id, input.value, function addCommentCallback(error) {
+      if (error) {
+        sAlert.error(error.message);
         return;
       }
       input.value = '';

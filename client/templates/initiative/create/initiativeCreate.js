@@ -24,9 +24,9 @@ Template.initiativeCreate.events({
       return;
     }
 
-    Meteor.call('createInitiative', title, summary, category, function createInitiativeCallback(err, response) {
-      if (err) {
-        sAlert.error(err.reason);
+    Meteor.call('createInitiative', title, summary, category, function createInitiativeCallback(error, response) {
+      if (error) {
+        sAlert.error(error.reason);
         return;
       }
       Router.go('initiative', {slug: response});

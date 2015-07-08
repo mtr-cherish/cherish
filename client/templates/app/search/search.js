@@ -4,8 +4,8 @@ Template.search.events({
     $('#search_initiatives').val('').blur();
   },
 
-  'keyup #search_initiatives': _.throttle(function keyupSearchInitiative(e) {
-      var text = $(e.target).val().trim();
+  'keyup #search_initiatives': _.throttle(function keyupSearchInitiative(event) {
+      var text = $(event.target).val().trim();
 
       Session.set('searchTerm', text);
       InitiativeSearch.search(text);

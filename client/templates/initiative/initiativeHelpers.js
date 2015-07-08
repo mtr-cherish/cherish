@@ -1,3 +1,20 @@
+// Helper functions
+addOrRemoveVote = function addOrRemoveVote(initiative) {
+  Meteor.call('addOrRemoveVote', initiative, function addOrRemoveVoteCallback(error) {
+    if (error) {
+      sAlert.error(error.message);
+    }
+  });
+};
+
+followUnfollow = function followUnfollow(initiative) {
+  Meteor.call('followUnfollow', initiative, function followUnfollowCallback(error) {
+    if (error) {
+      sAlert.error(error.message);
+    }
+  });
+};
+
 Template.registerHelper('getInitiativeCategoryClass', function getInitiativeCategoryClassHelper() {
   return s.slugify(this.category);
 });
@@ -41,20 +58,3 @@ Template.registerHelper('getFollowClass', function getFollowClassHelper() {
 Template.registerHelper('isMine', function isMineHelper() {
   return this.createdBy === Meteor.userId();
 });
-
-// Helper functions
-addOrRemoveVote = function addOrRemoveVote(initiative) {
-  Meteor.call('addOrRemoveVote', initiative, function addOrRemoveVoteCallback(err) {
-    if (err) {
-      sAlert.error(err.message);
-    }
-  });
-};
-
-followUnfollow = function followUnfollow(initiative) {
-  Meteor.call('followUnfollow', initiative, function followUnfollowCallback(err) {
-    if (err) {
-      sAlert.error(err.message);
-    }
-  });
-};

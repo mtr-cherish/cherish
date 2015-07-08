@@ -125,10 +125,11 @@ Meteor.methods({
     return slug;
   },
 
-  updateInitiative: function(initiative, props){
-    if(!initiative._id)
+  updateInitiative: function updateInitiative(initiative, props) {
+    if (!initiative._id) {
       throw new Meteor.Error(302, 'Can only edit initiatives with ID');
-    
+    }
+
     check(props, {
       title: String,
       summary: String,
@@ -136,6 +137,6 @@ Meteor.methods({
       active: Boolean
     });
 
-    return Initiatives.update(initiative._id, {$set: props });
+    return Initiatives.update(initiative._id, {$set: props});
   }
 });
