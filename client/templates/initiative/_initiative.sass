@@ -1,4 +1,34 @@
+$categories: event open-source non-profit charity
+$colors: #ffca28 #66BB6A #d4e157 #ff7043
+
+
+=category-badges
+  $color_pos: 1
+  @each $category in $categories
+    
+    $current-color: nth($colors, $color_pos)
+    $lightness: lightness($current-color)
+    
+    &.#{$category}
+      background: $current-color
+      @if $lightness < 50
+        color: lighten($current-color, 40%)
+      @else
+        color: darken($current-color, 40%)
+    $color_pos: $color_pos + 1
+ 
 .initiative
+  .edit-initiative
+    position: absolute
+    top: 0
+    left: 50%
+    color: #333
+    background-color: #fff
+    transform: translateX(-50%)
+    padding: .3em 1em .5em 1em
+    i.material-icons
+      position: relative
+      top: 2px
   .votes
     color: #000
     cursor: pointer
@@ -43,3 +73,7 @@
     &.is-Inactive
       background: #aaa
       color: darken(#aaa, 40%)
+
+body.show-initiative
+  .initiatives-header--mine
+    top: -67px

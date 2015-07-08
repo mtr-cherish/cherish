@@ -27,9 +27,9 @@ Template.publicSignup.events({
       },
       votedOn: [],
       commentedOn: []
-    }, function onCreateUserError(err) {
-      if (err) {
-        sAlert.error(err.reason);
+    }, function onCreateUserError(error) {
+      if (error) {
+        sAlert.error(error.reason);
         return;
       }
       Session.set('accountCreated', true);

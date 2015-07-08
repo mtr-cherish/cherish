@@ -1,6 +1,16 @@
 // Note: Not responsive, only works in large and mobile
-
 .initiative-card
+  .edit-initiative
+    position: absolute
+    top: 0
+    left: 50%
+    color: #333
+    background-color: #fff
+    transform: translateX(-50%)
+    padding: 0.2em .5em 0.2em .5em
+    i.material-icons
+      position: relative
+      top: 2px
   p
     padding: 0
     margin: 0
@@ -15,17 +25,18 @@
         min-height: 100%
         height: 100px
         transform: translateX(-50%)
-  .card:hover
-    box-shadow: 0 0 1px 2px #FFF
-  &--user-image
-    display: block
+    .card-reveal
+      display: block
+    .card:hover
+      box-shadow: 0 0 1px 2px #FFF
+  .user-image
+    display: inline-block
     position: relative
     float: right
-    top: -55px
+    top: -30px
     right: 0
-    height: 60px
-    width: 60px
-  &--content
+
+  .content
     padding: 0 1em
     .card-title
       margin: .5em 0 .2em 0 

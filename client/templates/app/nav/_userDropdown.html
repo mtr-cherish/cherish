@@ -1,7 +1,11 @@
 <template name="userDropdown">
   <ul id="profile-dropdown" class="dropdown-content user-dropdown">
     <li><a href="{{pathFor 'profile'}}"><i class="material-icons tiny">account_circle</i> My profile</a></li>
-    <li><a href="{{pathFor 'initiative.mine'}}"><i class="material-icons tiny">favorite</i> My Initiative</a></li>
+    {{#if currentUser.hasInitiative}}
+      <li><a href="{{pathFor 'initiative.mine'}}"><i class="material-icons tiny">favorite</i> My Initiative</a></li>
+    {{else}}
+      <li><a href="{{pathFor 'initiative.create'}}"><i class="material-icons tiny">favorite</i> Start Initiative</a></li>
+    {{/if}}
     <li class="divider"></li>
     <li><a class="logout" href="#"><i class="material-icons tiny">lock_open</i> Sign out</a></li>
   </ul>

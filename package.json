@@ -4,7 +4,12 @@
   "description": "An open source community",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "meteor -p 8000 --settings dev-settings.json",
+    "build": "meteor -p 8000 --settings settings.json",
+    "prebuild": "meteor reset",
+    "prebuild:dev": "meteor reset",
+    "deploy:stage": "meteor deploy cherish.meteor.com --settings dev-settings.json",
+    "reset:stage": "meteor deploy --delete cherish.meteor.com && meteor deploy cherish.meteor.com --settings dev-settings.json"
   },
   "repository": {
     "type": "git",
@@ -16,12 +21,6 @@
     "url": "https://github.com/mtr-cherish/cherish/issues"
   },
   "homepage": "https://github.com/mtr-cherish/cherish",
-  "scripts": {
-    "build:dev": "meteor -p 8000 --settings dev-settings.json",
-    "build": "meteor -p 8000 --settings settings.json",
-    "prebuild": "meteor reset",
-    "prebuild:dev": "meteor reset",
-    "deploy:stage": "meteor deploy cherish.meteor.com --settings dev-settings.json",
-    "reset:stage": "meteor deploy --delete cherish.meteor.com && meteor deploy cherish.meteor.com --settings dev-settings.json"
+  "devDependencies": {
   }
 }

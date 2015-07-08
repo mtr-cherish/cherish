@@ -4,27 +4,32 @@ Template.initiativeCard.helpers({
   },
   status: function status() {
     return this.active ? 'Active' : 'Inactive';
+  },
+  getEditingClass: function getEditingClass() {
+    return Session.get('editing') === this._id ? 'open' : '';
   }
 });
 
 Template.initiativeCard.events({
   'click .votes': function clickVotes() {
-    // TODO: restrict votes to 1 pr initiative
     addOrRemoveVote(this);
   },
-  'dblclick .touch .card-image a': function doubleClickCard(ev) {
-    ev.preventDefault();
+  'dblclick .touch .card-image a': function doubleClickCard(event) {
+    event.preventDefault();
     addOrRemoveVote(this);
   },
   'click .status': function clickStatus() {
-    Meteor.call('setInactiveActive', this, function setInactiveActiveCallback(err) {
-      if (err) {
-        sAlert.error(err.message);
+    Meteor.call('setInactiveActive', this, function setInactiveActiveCallback(error) {
+      if (error) {
+        sAlert.error(error.message);
       }
     });
   },
-  'click .follow-button': function clickFollowButton(ev) {
-    ev.preventDefault();
+  'click .follow-button': function clickFollowButton(event) {
+    event.preventDefault();
     followUnfollow(this);
+  },
+  'click .edit-initiative': function clickEditInitiative() {
+    Session.set('editing', this._id);
   }
 });

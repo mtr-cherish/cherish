@@ -22,8 +22,8 @@ Template.publicLogin.events({
       return;
     }
 
-    Meteor.loginWithPassword(email, password, function loginWithPassword(err) {
-      if (err) {
+    Meteor.loginWithPassword(email, password, function loginWithPassword(error) {
+      if (error) {
         sAlert.error('Account login failed for unknown reason :(');
         return;
       }
@@ -33,8 +33,8 @@ Template.publicLogin.events({
 
   'click #facebook-login': function clickFacebookLogin(event) {
     event.preventDefault();
-    Meteor.loginWithFacebook({}, function facebookLogin(err) {
-      if (err) {
+    Meteor.loginWithFacebook({}, function facebookLogin(error) {
+      if (error) {
         if (!Meteor.settings.facebook) {
           sAlert.error('Facebook authentication is not setup for this app.');
         } else {
@@ -48,8 +48,8 @@ Template.publicLogin.events({
 
   'click #logout': function logout(event) {
     event.preventDefault();
-    Meteor.logout(function meteorLogout(err) {
-      if (err) {
+    Meteor.logout(function meteorLogout(error) {
+      if (error) {
         throw new Meteor.Error('Logout failed');
       }
     });

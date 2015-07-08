@@ -1,9 +1,9 @@
 <template name="initiativeHeader">
   {{#with initiative}}
-  <div class="initiative-header valign-wrapper" style="background-image: url({{getInitiativeImage}})">
-    <div class="container initiative-header--content">
+  <div class="initiatives-header--mine valign-wrapper" style="background-image: url({{getInitiativeImage}})">
+    <div class="container header-content">
       <h2 class="center-align valign">{{title}}</h2>
-      <div class="initiative-header--content__meta">
+      <div class="header-content__meta">
         <div class="comments-count">
           <i class="material-icons small">comment</i>
           <span class="comments-number">{{zeroIfEmptyOrNotExists comments}}</span>
