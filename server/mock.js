@@ -5,8 +5,8 @@ var initiatives;
 
 if (Meteor.settings.mode === 'dev') {
   console.log('======> Staging mock data...');
-  placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg',
-  users = [],
+  placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg';
+  users = [];
   initiatives = [];
 
   _.mixin({

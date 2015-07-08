@@ -165,14 +165,14 @@ _.each(Helpers, function eachHelpers(helper) {
 });
 
 Template.notificationsModal.events({
-  'click .unread': function clickUnread(e) {
+  'click .unread': function clickUnread(event) {
     // var initiative = Initiatives.findOne({_id: this.initiativeId});
 
-    e.preventDefault();
+    event.preventDefault();
 
     // Router.go('initiative', {slug: initiative.slug});
-    Meteor.call('markNotificationsAsRead', this.ids, function markNotificationsAsReadCallback(err) {
-      if (err) {
+    Meteor.call('markNotificationsAsRead', this.ids, function markNotificationsAsReadCallback(error) {
+      if (error) {
         sAlert.error('Something went wrong...');
       }
     });
@@ -184,8 +184,8 @@ Template.notificationsModal.events({
       notificationsToReadIds = notificationsToReadIds.concat(notification.ids);
     });
 
-    Meteor.call('markNotificationsAsRead', notificationsToReadIds, function markNotificationsAsReadCallback(err) {
-      if (err) {
+    Meteor.call('markNotificationsAsRead', notificationsToReadIds, function markNotificationsAsReadCallback(error) {
+      if (error) {
         sAlert.error('Something went wrong...');
       }
     });

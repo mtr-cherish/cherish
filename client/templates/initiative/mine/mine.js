@@ -3,6 +3,6 @@ Template.initiativeMine.onRendered(function initiativeMineOnRendered() {
   $('body').addClass('my-initiative');
 });
 
-Template.initiativeHeader.onDestroyed(function() {
+Template.initiativeHeader.onDestroyed(function initiativeHeaderDestroyed() {
   $('body.my-initiative').removeClass('my-initiative');
 });

@@ -5,10 +5,10 @@ Template.nav.onRendered(function navOnRendered() {
 });
 
 Template.nav.events({
-  'click .logout': function clickLogout(e) {
-    e.preventDefault();
-    Meteor.logout(function meteorLogout(err) {
-      if (err) {
+  'click .logout': function clickLogout(event) {
+    event.preventDefault();
+    Meteor.logout(function meteorLogout(error) {
+      if (error) {
         sAlert.error('Sorry, we were unable to log you out');
       }
     });
