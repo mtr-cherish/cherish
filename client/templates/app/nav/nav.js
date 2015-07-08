@@ -1,3 +1,10 @@
+goBack = function goBack() {
+  var previousRoute = Session.get('previousRoute');
+  var previousRouteParams = Session.get('previousRouteParams');
+
+  Router.go(previousRoute || 'initiatives', previousRouteParams || {});
+};
+
 Template.nav.onRendered(function navOnRendered() {
   this.$('.button-collapse').sideNav({
     closeOnClick: true
