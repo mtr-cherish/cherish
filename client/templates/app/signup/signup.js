@@ -33,7 +33,7 @@ Template.publicSignup.events({
         return;
       }
       Session.set('accountCreated', true);
-      Router.go('initiatives');
+      goBack();
     });
   }
 });

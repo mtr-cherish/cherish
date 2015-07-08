@@ -27,7 +27,7 @@ Template.publicLogin.events({
         sAlert.error('Account login failed for unknown reason :(');
         return;
       }
-      Router.go('initiatives');
+      goBack();
     });
   },
 
