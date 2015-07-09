@@ -6,6 +6,7 @@
   "globals": {
     "Meteor": false,
     "Mongo": false,
+    "Match": false,
     "Accounts": false,
     "Template": false,
     "Session": false,

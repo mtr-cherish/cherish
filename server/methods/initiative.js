@@ -4,7 +4,7 @@
  * @param initiative
  */
 checkInitiative = function checkInitiative(initiative) {
-  check (initiative, {
+  check(initiative, {
     _id: String,
     active: Boolean,
     category: String,
@@ -15,8 +15,8 @@ checkInitiative = function checkInitiative(initiative) {
     slug: String,
     summary: String,
     title: String,
-    comments: Match.Optional ([String]),
-    usersVoted: Match.Optional ([String]),
+    comments: Match.Optional([String]),
+    usersVoted: Match.Optional([String]),
     votes: Number
   });
 };
