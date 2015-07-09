@@ -26,6 +26,7 @@
 
     "checkEmailIsValid": true,
     "checkPasswordIsValid": true,
+    "checkInitiative": true,
     "addOrRemoveVote": true,
     "followUnfollow": true,
     "configureFacebook": true,

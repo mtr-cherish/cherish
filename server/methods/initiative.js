@@ -1,6 +1,31 @@
+/*
+ * Global function to help reduce boilerplate code for Meteor
+ * checks on the initiative object
+ * @param initiative
+ */
+checkInitiative = function checkInitiative(initiative) {
+  check (initiative, {
+    _id: String,
+    active: Boolean,
+    category: String,
+    categorySlug: String,
+    createdAt: Number,
+    createdBy: String,
+    imageUrl: String,
+    slug: String,
+    summary: String,
+    title: String,
+    comments: Match.Optional ([String]),
+    usersVoted: Match.Optional ([String]),
+    votes: Number
+  });
+};
+
 Meteor.methods({
   followUnfollow: function followUnfollow(initiative) {
     var user = Meteor.user();
+
+    checkInitiative(initiative);
 
     if (!user) {
       throw new Meteor.Error(401, 'You have to be logged in to do that');
@@ -32,6 +57,8 @@ Meteor.methods({
   addOrRemoveVote: function addOrRemoveVote(initiative) {
     var user = Meteor.user();
 
+    checkInitiative(initiative);
+
     if (!user) {
       throw new Meteor.Error(401, 'Can only vote as logged in user');
     }
@@ -62,6 +89,8 @@ Meteor.methods({
 
   setInactiveActive: function setInactiveActive(initiative) {
     var updated;
+
+    checkInitiative(initiative);
 
     if (initiative.createdBy === Meteor.userId()) {
       updated = Initiatives.update(initiative._id, {$set: {active: !initiative.active}});
@@ -101,6 +130,10 @@ Meteor.methods({
     var categorySlug;
     var initiative;
 
+    check(title, String);
+    check(summary, String);
+    check(category, String);
+
     if (!existingInitiatives && existingInitiatives.count() > initiativeLimit) {
       throw new Meteor.Error(403, 'You have reached the limit of ' + initiativeLimit + ' initiatives.');
     }
@@ -126,6 +159,7 @@ Meteor.methods({
   },
 
   updateInitiative: function updateInitiative(initiative, props) {
+    checkInitiative(initiative);
     if (!initiative._id) {
       throw new Meteor.Error(302, 'Can only edit initiatives with ID');
     }
