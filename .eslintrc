@@ -104,7 +104,7 @@
     "indent": [2, 2],
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
     "max-nested-callbacks": [2, 3],
-    "new-cap": 1,
+    "new-cap": [1, {newIsCap: true, capIsNew: false}],
     "new-parens": 1,
     "newline-after-var": [2, "always"],
     "no-array-constructor": 1,
