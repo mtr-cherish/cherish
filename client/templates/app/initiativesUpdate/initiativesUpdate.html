@@ -1,0 +1,15 @@
+<template name="initiativesUpdate">
+  {{#if currentUser}}
+    {{#if hasUpdates}}
+      {{#if this.mobile}}
+        <div class="initiatives-update--mobile hide-on-med-and-up">
+          <a href="#" class="update-button">New Initiatives <span class="ch-badge">{{newInitiatives}}</span></a>
+        </div>
+        {{else}}
+        <li class="initiatives-update--list hide-on-small-only">
+          <a href="#" class="update-button">New <span class="ch-badge">{{newInitiatives}}</span></a>
+        </li>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+</template>
