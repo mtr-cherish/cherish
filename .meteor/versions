@@ -91,5 +91,6 @@ underscorestring:underscore.string@3.1.1
 url@1.0.4
 webapp@1.2.0
 webapp-hashing@1.0.3
+wylio:mandrill@0.2.1
 yang2007chun:materialize-scss@1.1.0
 zeroasterisk:throttle@0.3.1
