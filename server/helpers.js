@@ -1,9 +1,9 @@
 Accounts.onCreateUser(function onCreateUserCallback(options, user) {
-  if (Meteor.settings.enableEmail) {
-    var content = {
+  var content = {
       user: user.username
-    };
+  };
 
+  if (Meteor.settings.enableEmail) {
     Meteor.call('sendEmail', 'helloworld', user.username, content);
   }
   if (user.services.facebook) {

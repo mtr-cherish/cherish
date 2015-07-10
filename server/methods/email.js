@@ -1,15 +1,15 @@
 Meteor.methods({
-  sendEmail: function sendEmail(template, to, content) {
+  sendEmail: function sendEmail(template, to) {
     Meteor.Mandrill.sendTemplate({
-      "template_name": template,
-      "template_content": [
+      template_name: template,
+      template_content: [
         {
 
         }
       ],
-      "message": {
-        "to": [
-          {"email": to}
+      message: {
+        to: [
+          {email: to}
         ]
       }
     });
