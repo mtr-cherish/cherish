@@ -29,6 +29,7 @@
     "checkPasswordIsValid": true,
     "checkInitiative": true,
     "addOrRemoveVote": true,
+    "sendFollowersNotification":true,
     "followUnfollow": true,
     "configureFacebook": true,
     "sendWelcomeEmail": true,
