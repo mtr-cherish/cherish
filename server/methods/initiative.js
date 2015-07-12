@@ -4,6 +4,7 @@
  * @param initiative
  */
 checkInitiative = function checkInitiative(initiative) {
+  console.log(initiative);
   check(initiative, {
     _id: String,
     active: Boolean,
@@ -15,9 +16,11 @@ checkInitiative = function checkInitiative(initiative) {
     slug: String,
     summary: String,
     title: String,
-    comments: Match.Optional([String]),
+    comments: Match.Optional([Object]),
     usersVoted: Match.Optional([String]),
-    votes: Number
+    votes: Number,
+    modifiedAt: Match.Optional(Number),
+    usersFollowing: Match.Optional([String])
   });
 };
 
@@ -159,11 +162,10 @@ Meteor.methods({
   },
 
   updateInitiative: function updateInitiative(initiative, props) {
-    checkInitiative(initiative);
     if (!initiative._id) {
       throw new Meteor.Error(302, 'Can only edit initiatives with ID');
     }
-
+    checkInitiative(initiative);
     check(props, {
       title: String,
       summary: String,
