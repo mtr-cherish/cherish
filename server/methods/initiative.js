@@ -4,7 +4,6 @@
  * @param initiative
  */
 checkInitiative = function checkInitiative(initiative) {
-  console.log(initiative);
   check(initiative, {
     _id: String,
     active: Boolean,
