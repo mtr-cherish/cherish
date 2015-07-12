@@ -52,8 +52,8 @@ Template.initiativeComments.helpers({
     return user.profile.avatarImg;
   },
   comments: function comments() {
-    if (!this && !this.comments) {
-      return [];
+    if (!this.comments) {
+      return;
     }
     return this.comments.sort(function commentSort(a, b) {
       if (a && b && a.createdAt && b.createdAt) {
