@@ -31,11 +31,8 @@ accounts-facebook
 service-configuration
 yang2007chun:materialize-scss
 digilord:faker
-<<<<<<< HEAD
 meteorhacks:kadira-debug
 useraccounts:materialize
 accounts-ui
-=======
 wylio:mandrill
 okgrow:iron-router-autoscroll
->>>>>>> f5e2795e485bf4356f83ef962d4244d9e893380e
