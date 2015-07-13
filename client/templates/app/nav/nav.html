@@ -3,12 +3,14 @@
     <div class="nav-wrapper">
       <a href="{{pathFor 'initiatives'}}" class="brand-logo center hide-on-small-only">Cherish</a>
       <a href="#" data-activates="cherish-mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+      {{> initiativesUpdate mobile=true}}
       <ul class="right hide-on-med-and-down">
-        {{#if currentUser}}
-        {{> notificationsButton}}
-        {{> userDropdown}}
+        {{#if currentUser}} 
+          {{> initiativesUpdate mobile=false}}
+          {{> notificationsButton}}
+          {{> userDropdown}}
         {{else}}
-        <li><a href="/signup">Login / Register</a></li>
+          <li><a href="/signup">Login / Register</a></li>
         {{/if}}
       </ul>
       {{> sideNav}}

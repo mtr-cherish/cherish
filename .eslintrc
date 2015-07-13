@@ -39,6 +39,7 @@
 
     "Throttle": false,
     "Router": false,
+    "IronRouterAutoscroll": false,
 
     "$": false,
     "_": false,

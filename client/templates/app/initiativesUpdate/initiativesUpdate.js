@@ -8,8 +8,8 @@ Template.initiativesUpdate.helpers({
 });
 
 Template.initiativesUpdate.events({
-  'click .update': function clickUpdate() {
-    Session.set('lastUpdated', new Date().getTime());
+  'click .update-button': function clickUpdateButton() {
     Router.go('initiatives');
+    Session.set('lastUpdated', new Date().getTime());
   }
 });

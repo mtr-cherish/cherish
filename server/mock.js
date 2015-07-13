@@ -41,7 +41,7 @@ if (Meteor.settings.mode === 'dev') {
           title: getWord() + ' ' + faker.lorem.sentence(5),
           summary: getWord() + ' ' + faker.lorem.paragraph(),
           votes: faker.random.number(200),
-          category: faker.random.array_element(Initiatives.InitiativeCategories),
+          category: faker.random.array_element(InitiativeCategories),
           imageUrl: placeholderInitiativeHeaderImage,
           createdBy: userId,
           active: true

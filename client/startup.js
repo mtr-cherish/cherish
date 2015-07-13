@@ -1,0 +1,1 @@
+IronRouterAutoscroll.animationDuration = 0;

@@ -13,6 +13,5 @@ configureFacebook = function configureFacebook(config) {
 };
 
 if (facebookConfig) {
-  console.log('Facebook settings received', facebookConfig);
   configureFacebook(facebookConfig);
 }
