@@ -1,4 +1,4 @@
-Template.publicSignup.events({
+/*Template.publicSignup.events({
   'submit .signup-form': function submitSignupForm(event, template) {
     var email = template.find('.email-address-input').value.replace(/^\s*|\s*$/g, '');
     var password = template.find('.password-input').value.replace(/^\s*|\s*$/g, '');
@@ -46,3 +46,4 @@ Template.publicSignup.onRendered(function publicSignupOnRendered() {
   }
   input.focus();
 });
+*/

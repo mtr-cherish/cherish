@@ -31,3 +31,6 @@ accounts-facebook
 service-configuration
 yang2007chun:materialize-scss
 digilord:faker
+meteorhacks:kadira-debug
+useraccounts:materialize
+accounts-ui
