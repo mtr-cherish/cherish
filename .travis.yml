@@ -5,3 +5,5 @@ before_script:
   - "npm -g install eslint"
 script:
   - "eslint `find . -name '*.js'`"
+notifications:
+  slack: mtr-cherish:A5PBkG9ZZeH57USA22FzNIMv
