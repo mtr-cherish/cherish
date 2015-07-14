@@ -53,7 +53,7 @@ Template.initiativeComments.helpers({
   },
   comments: function comments() {
     if (!this.comments) {
-      return;
+      return undefined;
     }
     return this.comments.sort(function commentSort(a, b) {
       if (a && b && a.createdAt && b.createdAt) {

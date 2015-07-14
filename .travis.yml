@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "iojs"
+before_script:
+  - "npm -g install eslint"
+script:
+  - "eslint `find . -name '*.js'`"
