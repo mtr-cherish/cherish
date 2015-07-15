@@ -5,6 +5,9 @@
         <a href="{{#unless isMine}}{{pathFor 'initiative'}}{{/unless}}">
           <img src="{{getInitiativeImage}}" />
         </a>
+        <div class="vote-action">
+          <a href="#">{{{voteIcon}}}</a>
+        </div>
       </div>
       
       <div class="content">       
@@ -25,9 +28,9 @@
             </div>
           {{/unless}}
         {{/if}}
-        <div class="votes">
+        <!-- <div class="votes">
           {{{voteIcon}}} {{votes}}
-        </div>
+        </div> -->
         <div class="comments-count">
           <i class="material-icons tiny">comment</i> {{zeroIfEmptyOrNotExists comments}}
         </div>
@@ -37,6 +40,9 @@
           </a>
         {{/unless}}
         <h2 class="card-title truncate">
+          <span class="votes">
+            {{votes}} Votes
+          </span>
           <a href="{{pathFor 'initiative'}}">
             {{title}}
           </a>

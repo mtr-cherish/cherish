@@ -11,7 +11,7 @@ Template.initiativeCard.helpers({
 });
 
 Template.initiativeCard.events({
-  'click .votes': function clickVotes() {
+  'click .vote-action': function clickVotes() {
     addOrRemoveVote(this);
   },
   'dblclick .touch .card-image a': function doubleClickCard(event) {
