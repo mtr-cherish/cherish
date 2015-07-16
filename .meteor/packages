@@ -27,9 +27,10 @@ sacha:spin
 multiply:iron-router-progress
 zeroasterisk:throttle
 percolate:synced-cron
-accounts-facebook
 service-configuration
 yang2007chun:materialize-scss
 digilord:faker
+useraccounts:materialize
+accounts-ui
 wylio:mandrill
 okgrow:iron-router-autoscroll
