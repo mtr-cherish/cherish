@@ -5,9 +5,11 @@
         <a href="{{#unless isMine}}{{pathFor 'initiative'}}{{/unless}}">
           <img src="{{getInitiativeImage}}" />
         </a>
-        <div class="vote-action">
-          <a href="#">{{{voteIcon}}}</a>
-        </div>
+        {{#unless isMine}}
+          <div class="vote-action">
+            <a href="#">{{{voteIcon}}}</a>
+          </div>
+        {{/unless}}
       </div>
       
       <div class="content">       
