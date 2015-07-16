@@ -44,15 +44,6 @@ Template.publicLogin.events({
       }
       Router.go('initiatives');
     });
-  },
-
-  'click #logout': function logout(event) {
-    event.preventDefault();
-    Meteor.logout(function meteorLogout(error) {
-      if (error) {
-        throw new Meteor.Error('Logout failed');
-      }
-    });
   }
 });
 
