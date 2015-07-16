@@ -37,7 +37,7 @@
           <i class="material-icons tiny">comment</i> {{zeroIfEmptyOrNotExists comments}}
         </div>
         {{#unless isMine}}
-          <a href="#" class="user-image">
+          <a href="{{pathFor 'profile.user' username=getUserName}}" class="user-image">
             <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
           </a>
         {{/unless}}

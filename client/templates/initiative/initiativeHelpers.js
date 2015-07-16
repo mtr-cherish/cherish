@@ -19,6 +19,12 @@ Template.registerHelper('getInitiativeCategoryClass', function getInitiativeCate
   return s.slugify(this.category);
 });
 
+Template.registerHelper('getUserName', function getUserName() {
+  var user = Users.findOne({_id: this.createdBy});
+
+  return user.username;
+});
+
 Template.registerHelper('hasUpdates', function hasUpdatesHelper() {
   return Initiatives.find({createdAt: {$gt: Session.get('lastUpdated')}, active: true}).count() > 0;
 });

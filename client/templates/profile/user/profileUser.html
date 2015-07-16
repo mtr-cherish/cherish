@@ -1,0 +1,38 @@
+<template name="profileUser">
+  <div class="profile-user">
+    {{#with user}}
+      <div class="row">
+         {{#with profile}}
+           <div class="col s12 m2">
+             <a href="#" class="user-image">
+              <img src="{{avatarImg}}" wiidth="100%" height="auto" alt="" class="circle responsive-img photo">
+            </a>
+          </div>
+          <div class="col s12 m10 profile-self--body">
+            <h4>{{name}}</h4>
+              <a class="button btn waves-effect waves-light follow-user {{#if following ../_id}}unfollow{{/if}}" href="#">{{#if following ../_id}}Unfollow{{else}}Follow{{/if}}</a>
+          </div>
+        {{/with}}
+      </div>
+     <div class="row profile-self__stats">
+      <div class="col s12">
+        <hr>
+        <ul class="row">
+          <li class="align-center col m4 s4">
+            <h4>{{votedOnCount}}</h4>
+            <p>Votes</p>
+          </li>
+          <li class="align-center col m4 s4">
+            <h4>{{followerCount}}</h4>
+            <p>Followers</p>
+          </li>
+          <li class="align-center col m4 s4">
+            <h4>0</h4>
+            <p>Stats?</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {{/with}}
+  </div>
+</template>
