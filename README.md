@@ -1,5 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/mtr-cherish/cherish.png?label=ready&title=Ready)](https://waffle.io/mtr-cherish/cherish)
 [![Code Climate](https://codeclimate.com/github/mtr-cherish/cherish/badges/gpa.svg)](https://codeclimate.com/github/mtr-cherish/cherish)
+[![Build Status](https://travis-ci.org/mtr-cherish/cherish.svg?branch=dev)](https://travis-ci.org/mtr-cherish/cherish)
 # Cherish
 
 Cherish is a cloud platform for showing off your Initiatives to the world, and allowing the community to decide which ones they want to see come to fruition.
