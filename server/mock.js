@@ -6,13 +6,17 @@ var initiatives;
 // delete all collections
 cleaner.resetDatabase();
 
-if (Meteor.settings.mode === 'dev') { 
+if (Meteor.settings.mode === 'dev') {
   placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg';
   users = [];
   initiatives = [];
 
   _.mixin({
     capitalize: function capitalize(string) {
+      if (string === undefined) {
+        return false;
+      }
+
       return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
     }
   });
@@ -41,7 +45,7 @@ if (Meteor.settings.mode === 'dev') {
         });
 
         var initiative = {
-          title: getWord() + ' ' + faker.lorem.sentence(5),
+          title: getWord() + ' ' + faker.lorem.sentence(3),
           summary: getWord() + ' ' + faker.lorem.paragraph(),
           votes: faker.random.number(200),
           category: faker.random.array_element(InitiativeCategories),
