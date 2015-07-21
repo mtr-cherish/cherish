@@ -1,10 +1,12 @@
-
+var cleaner = Package['xolvio:cleaner'];
 var placeholderInitiativeHeaderImage;
 var users;
 var initiatives;
 
-if (Meteor.settings.mode === 'dev') {
-  console.log('======> Staging mock data...');
+// delete all collections
+cleaner.resetDatabase();
+
+if (Meteor.settings.mode === 'dev') { 
   placeholderInitiativeHeaderImage = '/images/placeholder-initiative.jpg';
   users = [];
   initiatives = [];
@@ -23,6 +25,7 @@ if (Meteor.settings.mode === 'dev') {
     };
 
     if (Meteor.users.find().count() === 0) {
+      console.log('======> Staging mock data...');
       _.each(_.range(25), function eachNumber(number) {
         var randomName = faker.name.findName();
         var userName = 'cherishuser' + number;

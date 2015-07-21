@@ -5,6 +5,7 @@
   },
   "globals": {
     "Meteor": false,
+    "Package": false,
     "Mongo": false,
     "Match": false,
     "Accounts": false,
