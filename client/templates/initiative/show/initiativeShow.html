@@ -3,7 +3,7 @@
   {{#with initiative}}
   <div class="col s12 m6 l4">
     <div class="content">
-      <a href="#" class="user-image">
+      <a href="{{pathFor 'profile.user' username=getUserName}}" class="user-image">
         <img src="{{getInitiativeAuthorImage}}" alt="" class="circle responsive-img user-photo">
         <span class="user-name">
           {{creator}}
