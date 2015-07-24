@@ -1,18 +1,29 @@
+var buildRegExp = function buildRegExp(searchText) {
+  // this is a dumb implementation
+  var parts = searchText.trim().split(/[ \-\:]+/);
+
+  return new RegExp('(' + parts.join('|') + ')', 'ig');
+};
+
 Template.initiatives.helpers({
   initiatives: function initiatives() {
-    var cursor = {};
+    var query = {active: true};
+    var sort = {createdAt: -1, votes: -1, title: -1};
+    var regExp = regExp = buildRegExp(Session.get('searchTerm') || '');
+
+    if (Session.get('categories')) {
+      query.categorySlug = {$in: Session.get('categories')};
+    }
 
     if (Session.get('searchTerm')) {
-      cursor = _.extend(InitiativeSearch.getData({}, {
-        sort: {votes: -1}
-      }), cursor);
+      query.$or = [{
+        title: regExp
+      }, {
+        category: regExp
+      }];
     }
-    if (Session.get('categories')) {
-      cursor = _.extend(Initiatives.find({categorySlug: {$in: Session.get('categories')}, active: true}, {sort: {votes: -1}}), cursor);
-    } else if (!Session.get('categories') || !Session.get('searchTerm')) {
-      cursor = _.extend(Initiatives.find({createdAt: {$lt: Session.get('lastUpdated')}, active: true}, {sort: {createdAt: -1, votes: -1, title: -1}}), cursor);
-    }
-    return cursor;
+
+    return Initiatives.find(query, sort);
   },
   isLoading: function isLoading() {
     return InitiativeSearch.getStatus().loading;
@@ -21,7 +32,6 @@ Template.initiatives.helpers({
 
 Template.initiatives.onRendered(function initiativesOnRendered() {
   $('body').addClass('home');
-  InitiativeSearch.search('');
 });
 
 Template.initiatives.onDestroyed(function initiativesOnDestroyed() {

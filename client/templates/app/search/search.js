@@ -8,7 +8,6 @@ Template.search.events({
       var text = $(event.target).val().trim();
 
       Session.set('searchTerm', text);
-      InitiativeSearch.search(text);
     }, 200)
 });
 
