@@ -6,16 +6,21 @@ var getUserNameById = function getUserNameById(userId) {
   return Meteor.users.findOne({_id: userId}).profile.name;
 };
 
-var edAWord = function edAWord(word) {
-  var suffix = 'ed';
-
-  if (word[word.length - 1] === 'e') {
-    suffix = 'd';
+var getPastTenseAction = function getPastTenseAction(action) {
+  switch (action) {
+    case 'follow':
+      return 'followed';
+    case 'unfollow':
+      return 'unfollowed';
+    case 'follow-user':
+      return 'followed you';
+    case 'vote':
+      return 'voted on';
+    case 'comment':
+      return 'commented on';
+    default:
+      return '';
   }
-  if (word + suffix !== 'followed') {
-    return word + suffix + ' on';
-  }
-  return word + suffix;
 };
 
 var userArrayMap = function userArrayMap(userId) {
@@ -23,72 +28,58 @@ var userArrayMap = function userArrayMap(userId) {
 };
 
 var rollUpNotifications = function rollUpNotifications(notifications) {
-  var rolledUpNotifications = [];
-  var unreadNotifications = [];
-  var notificationDates = {};
-  var notificationIds = {};
-  var notificationsObj = {};
-  var userArray;
-  var users;
-  var userText;
-  var othersText;
-  var lastUser;
-  var initiativeId;
-  var type;
+  var notificationInfo = {};
 
-  notifications.forEach(function forEachNotification(notification) {
-    initiativeId = notification.initiativeId;
-    type = notification.type;
+  notifications.forEach(function forEachNotificaiton(notification) {
+    var idType = notification.initiativeId + notification.type;
+    var notificationObj;
 
-    if (!notificationsObj[initiativeId]) {
-      notificationsObj[initiativeId] = {};
+    if (!notificationInfo[idType]) {
+      notificationInfo[idType] = {
+        initiativeId: notification.initiativeId,
+        type: notification.type,
+        ids: [],
+        createdAt: undefined,
+        users: [],
+        isRead: false
+      };
     }
-    if (!notificationsObj[initiativeId][type]) {
-      notificationsObj[initiativeId][type] = [];
+    notificationObj = notificationInfo[idType];
+
+    if (!notificationObj.createdAt || notification.createdAt > notificationObj.createdAt) {
+      notificationObj.createdAt = notification.createdAt;
     }
-    if (!notificationDates[type + initiativeId] || notification.createdAt > notificationDates[type + initiativeId]) {
-      notificationDates[type + initiativeId] = notification.createdAt;
+    if (notificationObj.ids.indexOf(notification._id) === -1) {
+      notificationObj.ids.push(notification._id);
     }
-    if (!notificationIds[type + initiativeId]) {
-      notificationIds[type + initiativeId] = [];
+    if (notificationObj.users.indexOf(notification.userId) === -1) {
+      notificationObj.users.push(notification.userId);
     }
-    if (notificationIds[type + initiativeId].indexOf(notification._id) === -1) {
-      notificationIds[type + initiativeId].push(notification._id);
+    if (!notificationObj.isRead && notification.isRead) {
+      notificationObj.isRead = true;
     }
-    if (notificationsObj[initiativeId][type].indexOf(notification.userId)) {
-      notificationsObj[initiativeId][type].push(notification.userId);
-    }
-    if (notification.isRead || unreadNotifications.indexOf(type + initiativeId) !== -1) {
-      return;
-    }
-    unreadNotifications.push(type + initiativeId);
   });
 
-  for (initiativeId in notificationsObj) {
-    for (type in notificationsObj[initiativeId]) {
-      userArray = notificationsObj[initiativeId][type];
-      users = userArray.slice(0, 3).map(userArrayMap);
-      userText = users.join(', ') + ' ';
-      lastUser = othersText = '';
-      if (userArray.length > 3) {
-        othersText = 'and ' + userArray.slice(3).length + ' others ';
-      } else if (userArray.length <= 3 && userArray.length > 1) {
-        lastUser = users.pop();
-        userText = users.join(', ') + ' and ' + lastUser + ' ';
-      }
-      rolledUpNotifications.push({
-        ids: notificationIds[type + initiativeId],
-        avatar: getAvatar(userArray[0]),
-        users: userText,
-        text: edAWord(type),
-        othersText: othersText,
-        initiativeId: initiativeId,
-        isRead: unreadNotifications.indexOf(type + initiativeId) === -1,
-        createdAt: notificationDates[type + initiativeId]
-      });
-    }
-  }
-  return rolledUpNotifications;
+  return _.map(notificationInfo, function mapNotificationInfo(obj) {
+    var users = obj.users.slice(0, 3).map(function mapUsers(userId) {
+      return getUserNameById(userId);
+    });
+    var userText = (obj.users.length > 1 && obj.users.length <= 3 ?
+      users.slice(0, users.length - 1).join(', ') + ' and ' + users.pop() :
+      users.join(', ') + ' ');
+
+    return {
+      ids: obj.ids,
+      avatar: getAvatar(obj.users[0]),
+      users: userText,
+      text: getPastTenseAction(obj.type),
+      othersText: (obj.users.length > 3 ?
+        'and ' + obj.users.slice(3).length + ' others ' : ''),
+      initiativeId: obj.initiativeId,
+      isRead: obj.isRead,
+      createdAt: obj.createdAt
+    };
+  });
 };
 
 var getNotifications = function getNotifications() {

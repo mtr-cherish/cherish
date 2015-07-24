@@ -103,7 +103,7 @@
     "consistent-this": [0, "self"],
     "func-names": 1,
     "func-style": [2, "expression"],
-    "indent": [2, 2, {}],
+    "indent": [2, 2, {"indentSwitchCase": true}],
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
     "max-nested-callbacks": [2, 3],
     "new-cap": [1, {newIsCap: true, capIsNew: false}],
