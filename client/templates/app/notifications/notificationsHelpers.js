@@ -61,9 +61,7 @@ var rollUpNotifications = function rollUpNotifications(notifications) {
   });
 
   return _.map(notificationInfo, function mapNotificationInfo(obj) {
-    var users = obj.users.slice(0, 3).map(function mapUsers(userId) {
-      return getUserNameById(userId);
-    });
+    var users = obj.users.slice(0, 3).map(userArrayMap);
     var userText = (obj.users.length > 1 && obj.users.length <= 3 ?
       users.slice(0, users.length - 1).join(', ') + ' and ' + users.pop() :
       users.join(', ') + ' ');

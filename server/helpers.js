@@ -1,6 +1,6 @@
 Accounts.onCreateUser(function onCreateUserCallback(options, user) {
   var content = {
-      user: user.username
+    user: user.username
   };
 
   if (Meteor.settings.enableEmail) {
