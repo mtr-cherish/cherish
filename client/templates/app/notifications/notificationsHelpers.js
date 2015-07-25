@@ -137,11 +137,21 @@ var Helpers = [{
   }
 }, {
   name: 'getInitiativeTitle', helper: function getInitiativeTitleHelper() {
-    return Initiatives.findOne({_id: this.initiativeId}).title;
+    var initiative = Initiatives.findOne({_id: this.initiativeId});
+
+    if (initiative) {
+      return initiative.title;
+    }
+    return false;
   }
 }, {
   name: 'getInitiativeSlug', helper: function getInitiativeSlugHelper() {
-    return Initiatives.findOne({_id: this.initiativeId}).slug;
+    var initiative = Initiatives.findOne({_id: this.initiativeId});
+
+    if (initiative) {
+      return initiative.slug;
+    }
+    return false;
   }
 }, {
   name: 'getButtonState', helper: function getButtonStateHelper() {
