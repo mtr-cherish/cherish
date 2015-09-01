@@ -3,5 +3,5 @@ Meteor.publish('userData', function publishUserData() {
     this.ready();
     return undefined;
   }
-  return Meteor.users.find({_id: this.userId}, {fields: {votedOn: 1, avatarImg: 1, commentedOn: 1, followsUser: 1}});
+  return Users.find({_id: this.userId}, {fields: {votedOn: 1, avatarImg: 1, commentedOn: 1, followsUser: 1, followedByUser: 1}});
 });
