@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/mtr-cherish/cherish.svg?branch=dev)](https://travis-ci.org/mtr-cherish/cherish)
 # Cherish
 
+_Note: development is on-hold for Cherish. If you'd like to contribute please contact [@mario_catch](https://twitter.com/mario_catch)_
+
 Cherish is a cloud platform for showing off your Initiatives to the world, and allowing the community to decide which ones they want to see come to fruition.
 
 With Cherish you will be able to:
